@@ -143,6 +143,18 @@
   .section-head h2 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); font-weight: 600; margin-top: 10px; }
   .section-head p { color: var(--ink-secondary); max-width: 60ch; margin-top: 10px; }
 
+  main.wrap { counter-reset: section-num; }
+  section.numbered .section-head { counter-increment: section-num; }
+  section.numbered .section-head::before {
+    content: counter(section-num, decimal-leading-zero);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+
   /* ---------- Nav ---------- */
   header.nav {
     position: sticky;
@@ -187,6 +199,7 @@
   nav.links::-webkit-scrollbar { display: none; }
   nav.links a { color: var(--ink-secondary); white-space: nowrap; }
   nav.links a:hover { color: var(--accent); text-decoration: none; }
+  nav.links a.active { color: var(--accent); }
 
   .btn {
     display: inline-flex;
@@ -268,6 +281,17 @@
     flex-wrap: wrap;
   }
   .hero .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .hero-stats .stat { display: flex; flex-direction: column; gap: 4px; }
+  .hero-stats .stat b { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--ink); line-height: 1; }
+  .hero-stats .stat span { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-muted); }
 
   /* terminal card */
   .term {
@@ -510,7 +534,9 @@
   .hcard h3 { font-size: 0.92rem; font-weight: 600; font-family: var(--font-body); margin-bottom: 4px; }
   .hcard .sub { font-size: 0.8rem; color: var(--ink-muted); margin-bottom: 18px; }
 
+  .skill-bars { margin-bottom: 40px; max-width: 560px; }
   .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .skill-bars .bar-row .label { width: 130px; }
   .bar-row .label { width: 64px; font-size: 0.8rem; color: var(--ink-secondary); font-family: var(--font-mono); flex-shrink: 0; }
   .bar-track { flex: 1; height: 8px; background: var(--surface-2); border-radius: 5px; overflow: hidden; }
   .bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
@@ -643,6 +669,12 @@
         <span>4+ years in QA</span>
         <span>Web · Mobile · Desktop · API</span>
       </div>
+      <div class="hero-stats">
+        <div class="stat"><b>4+</b><span>Years in QA</span></div>
+        <div class="stat"><b>3,500+</b><span>Defects tracked</span></div>
+        <div class="stat"><b>93%</b><span>Pass rate, latest run</span></div>
+        <div class="stat"><b>4</b><span>Platforms covered</span></div>
+      </div>
     </div>
     <div class="term" aria-hidden="true">
       <div class="term-bar"><span></span><span></span><span></span></div>
@@ -656,7 +688,7 @@
     </div>
   </section>
 
-  <section id="intro-video">
+  <section id="intro-video" class="numbered">
     <div class="section-head">
       <div class="eyebrow">Introduction</div>
       <h2>A quick hello, on camera</h2>
@@ -667,7 +699,7 @@
     </div>
   </section>
 
-  <section id="about">
+  <section id="about" class="numbered">
     <div class="section-head">
       <div class="eyebrow">About</div>
       <h2>How I approach QA</h2>
@@ -681,12 +713,21 @@
     </div>
   </section>
 
-  <section id="toolbox">
+  <section id="toolbox" class="numbered">
     <div class="section-head">
       <div class="eyebrow">Toolbox</div>
       <h2>What I test with</h2>
       <p>The frameworks, tools, and practices I reach for most, grouped by where they sit in the testing workflow.</p>
     </div>
+
+    <div class="skill-bars">
+      <div class="bar-row"><span class="label">Manual &amp; regression</span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span class="pct">95%</span></div>
+      <div class="bar-row"><span class="label">Playwright</span><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div><span class="pct">92%</span></div>
+      <div class="bar-row"><span class="label">CI/CD &amp; reporting</span><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><span class="pct">88%</span></div>
+      <div class="bar-row"><span class="label">Appium</span><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div><span class="pct">85%</span></div>
+      <div class="bar-row"><span class="label">API testing</span><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><span class="pct">82%</span></div>
+    </div>
+
     <div class="tool-grid">
       <div class="tool-card">
         <h3>Automation &amp; frameworks</h3>
@@ -719,7 +760,7 @@
     </div>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="numbered">
     <div class="section-head">
       <div class="eyebrow">Featured projects</div>
       <h2>Selected work</h2>
@@ -830,7 +871,7 @@
     </div>
   </section>
 
-  <section id="highlights">
+  <section id="highlights" class="numbered">
     <div class="section-head">
       <div class="eyebrow">Proof of work</div>
       <h2>How I document, test, and report on quality</h2>
@@ -932,7 +973,7 @@
     </div>
   </section>
 
-  <section id="education">
+  <section id="education" class="numbered">
     <div class="section-head">
       <div class="eyebrow">Education</div>
       <h2>Background</h2>
@@ -960,7 +1001,7 @@
     </div>
   </section>
 
-  <section id="experience">
+  <section id="experience" class="numbered">
     <div class="section-head">
       <div class="eyebrow">Experience</div>
       <h2>Where I've worked</h2>
@@ -1089,5 +1130,32 @@
   </footer>
 </main>
 
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.links a'));
+  var pairs = links.map(function (link) {
+    var id = (link.getAttribute('href') || '').replace('#', '');
+    var sec = id ? document.getElementById(id) : null;
+    return sec ? { link: link, sec: sec } : null;
+  }).filter(Boolean);
+
+  if (!pairs.length || !('IntersectionObserver' in window)) return;
+
+  var linkBySection = new Map();
+  pairs.forEach(function (p) { linkBySection.set(p.sec, p.link); });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var link = linkBySection.get(entry.target);
+      if (!link) return;
+      links.forEach(function (l) { l.classList.remove('active'); });
+      link.classList.add('active');
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  pairs.forEach(function (p) { observer.observe(p.sec); });
+})();
+</script>
 </body>
 </html>
