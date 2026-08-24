@@ -495,17 +495,6 @@
   .stat-legend .legend-item .n { color: var(--ink-muted); font-family: var(--font-mono); margin-left: 3px; }
 
   /* ---------- Highlights ---------- */
-  .disclaimer {
-    font-size: 0.85rem;
-    color: var(--ink-muted);
-    background: var(--surface-2);
-    border-radius: 7px;
-    padding: 10px 14px;
-    margin-bottom: 28px;
-    display: inline-flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
   .highlight-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -561,13 +550,6 @@
   .result-box.actual { border-color: #C1553D; }
   .result-box.expected { border-color: var(--accent); }
   .result-box .rk { display: block; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); margin-bottom: 4px; }
-
-  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
-  table.qa-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 640px; }
-  table.qa-table th, table.qa-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  table.qa-table th { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); background: var(--surface-2); white-space: nowrap; }
-  table.qa-table td { color: var(--ink-secondary); }
-  table.qa-table tbody tr:last-child td { border-bottom: none; }
 
   .split-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
   .split-row .label { width: 64px; font-size: 0.8rem; color: var(--ink-secondary); font-family: var(--font-mono); flex-shrink: 0; }
@@ -635,11 +617,10 @@
       <a href="#intro-video">Intro</a>
       <a href="#about">About</a>
       <a href="#toolbox">Toolbox</a>
-      <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#highlights">Highlights</a>
-      <a href="#deliverables">Deliverables</a>
       <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
     </nav>
     <a class="btn btn-solid" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">Connect on LinkedIn</a>
   </div>
@@ -734,109 +715,6 @@
           <span class="chip">Postman</span><span class="chip">JMeter</span><span class="chip">k6</span>
           <span class="chip">Claude Code</span><span class="chip">MCP</span><span class="chip">GitHub Copilot</span><span class="chip">Python</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="section-head">
-      <div class="eyebrow">Experience</div>
-      <h2>Where I've worked</h2>
-      <p>Five and a half years growing from operations and post-deployment testing into leading QA and automation strategy end to end.</p>
-    </div>
-
-    <div class="company-card">
-      <div class="company-head">
-        <h3>CodeBlaze</h3>
-        <span class="span">Aug 2026 — Present · India</span>
-      </div>
-      <ul class="role-list">
-        <li class="role current" style="border-top:none;">
-          <div class="role-head">
-            <span class="title">Quality Assurance Automation Lead<span class="tag-current">Current</span></span>
-          </div>
-          <ul>
-            <li>Build and maintain automated suites for web, desktop, and mobile apps using Python, Playwright, Appium, Behave/BDD, and PyTest.</li>
-            <li>Use MCP and Claude Code to speed up test creation and expand coverage.</li>
-            <li>Run CI/CD test execution with automated Grafana reporting, alongside manual regression, UI, and cross-platform testing.</li>
-            <li>Document and track defects in JIRA with detailed evidence, and drive root-cause analysis on failures.</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-
-    <div class="company-card">
-      <div class="company-head">
-        <h3>ConnectedLife</h3>
-        <span class="span">Feb 2021 — Jul 2026 · 5 yrs 6 mos · Singapore</span>
-      </div>
-      <ul class="role-list">
-        <li class="role" style="border-top:none;">
-          <div class="role-head">
-            <span class="title">QA and Automation Lead</span>
-            <span class="dates">Feb 2026 — Jul 2026</span>
-          </div>
-          <ul>
-            <li>Defined and drove end-to-end QA and automation strategy, leveraging Claude AI and GitHub Copilot for faster test delivery.</li>
-            <li>Led and mentored the QA team, setting testing standards and shift-left practices across the SDLC.</li>
-            <li>Built and maintained Playwright (web) and Appium (iOS &amp; Android) frameworks in Python within a monorepo.</li>
-            <li>Managed CI/CD pipelines via GitHub Actions and Jenkins for continuous regression, API, and backend validation.</li>
-          </ul>
-        </li>
-        <li class="role">
-          <div class="role-head">
-            <span class="title">QA Lead</span>
-            <span class="dates">Jul 2024 — Feb 2026</span>
-          </div>
-          <ul>
-            <li>Led end-to-end testing — web, mobile, API, load, and manual — to ensure stable, high-quality releases.</li>
-            <li>Built scalable Playwright automation frameworks using MCP, BDD, and POM design patterns.</li>
-            <li>Ran cross-platform mobile automation with Appium across Android and iOS.</li>
-            <li>Managed MySQL test data seeding, database validation, and CI/CD pipeline improvements.</li>
-          </ul>
-        </li>
-        <li class="role">
-          <div class="role-head">
-            <span class="title">QA Tester — eCOA &amp; Deployment</span>
-            <span class="dates">Sep 2023 — Jun 2024</span>
-          </div>
-          <ul>
-            <li>Designed automation scripts in Playwright using the POM structure and BDD model.</li>
-            <li>Performed manual, API, and load testing across all application layers.</li>
-            <li>Tracked and resolved defects with cross-functional teams in Jira.</li>
-          </ul>
-        </li>
-        <li class="role">
-          <div class="role-head">
-            <span class="title">eCOA Project &amp; Operations Executive</span>
-            <span class="dates">Feb 2021 — Aug 2023</span>
-          </div>
-          <ul>
-            <li>Conducted post-deployment testing and wrote test cases for web and mobile applications.</li>
-            <li>Deployed surveys on a CMS platform and analysed user data to support quality and insights.</li>
-            <li>Created user flowcharts, use cases, and ER diagrams; managed Agile delivery via Jira.</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-
-    <div class="earlier">
-      <h3>Earlier experience</h3>
-      <div class="earlier-row">
-        <span class="role-name">Next Billion — Key Account Executive</span>
-        <span class="dates">Nov 2019 — Sep 2020</span>
-      </div>
-      <div class="earlier-row">
-        <span class="role-name">Dmoney Bangladesh Ltd — NID Verification Officer</span>
-        <span class="dates">Sep 2019 — Oct 2019</span>
-      </div>
-      <div class="earlier-row">
-        <span class="role-name">Craftic Arts — Customer Relationship Manager</span>
-        <span class="dates">Aug 2018 — Aug 2019</span>
-      </div>
-      <div class="earlier-row">
-        <span class="role-name">Devine Intervention IT Solutions — Web Designer</span>
-        <span class="dates">Apr 2018 — Jul 2018</span>
       </div>
     </div>
   </section>
@@ -954,12 +832,27 @@
 
   <section id="highlights">
     <div class="section-head">
-      <div class="eyebrow">Sample work</div>
-      <h2>The kind of reporting and specs I build</h2>
+      <div class="eyebrow">Proof of work</div>
+      <h2>How I document, test, and report on quality</h2>
+      <p>The habits that keep a QA process trustworthy — clear defect writeups, specs that hold up under review, and reporting a team can act on without chasing me for details.</p>
     </div>
-    <p class="disclaimer">⚠️ Recreated for illustration — the figures and labels below are generic examples, not client data or dashboards.</p>
 
     <div class="highlight-grid">
+      <div class="hcard full">
+        <h3>Automation &amp; release reporting</h3>
+        <div class="sub">Real pass/fail results from a mobile regression run, grouped by platform</div>
+        <div class="split-row"><span class="label">Web</span><div class="split-track"><div class="split-fill pass" style="width:96%"></div><div class="split-fill fail" style="width:4%"></div></div><span class="count">191 / 199</span></div>
+        <div class="split-row"><span class="label">Desktop</span><div class="split-track"><div class="split-fill pass" style="width:66%"></div><div class="split-fill fail" style="width:34%"></div></div><span class="count">27 / 41</span></div>
+        <div class="split-row"><span class="label">Mobile</span><div class="split-track"><div class="split-fill pass" style="width:0%"></div><div class="split-fill fail" style="width:100%"></div></div><span class="count">0 / 12</span></div>
+        <div class="report-total">
+          <span><b>86</b> total cases</span>
+          <span><b>80</b> passed</span>
+          <span><b>5</b> failed</span>
+          <span><b>1</b> skipped</span>
+          <span><b>93%</b> pass rate</span>
+        </div>
+      </div>
+
       <div class="hcard">
         <h3>Automation coverage by platform</h3>
         <div class="sub">Illustrative example of a coverage summary I'd report to a team</div>
@@ -987,111 +880,8 @@
       </div>
 
       <div class="hcard full">
-        <h3>BDD spec style</h3>
-        <div class="sub">A generic example in the Gherkin/POM style I write against — not a real project's feature file</div>
-        <div class="snippet">
-<span class="cm"># features/checkout/apply_discount.feature</span><br>
-<span class="kw">Feature:</span> Apply discount code at checkout<br><br>
-&nbsp;&nbsp;<span class="kw">Scenario:</span> Shopper applies a valid discount code<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">Given</span> the shopper has items in their cart<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">When</span> they enter a valid discount code at checkout<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">Then</span> the order total should reflect the discount<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">And</span> a confirmation message should be shown
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="deliverables">
-    <div class="section-head">
-      <div class="eyebrow">Deliverable samples</div>
-      <h2>Bug reports, test cases &amp; release reporting</h2>
-      <p>A look at how I document and communicate quality — from a single defect writeup, to a manual test case, to the pass/fail summary I share after an automated run.</p>
-    </div>
-    <p class="disclaimer">⚠️ Bug report, test case, and feature-file/terminal content below use generic, recreated data — not a real ticket, client test suite, or project name. The pass/fail figures in the release reporting card are real aggregate counts from a mobile regression run, shown without feature-level or client detail.</p>
-
-    <div class="highlight-grid">
-      <div class="hcard full">
-        <h3>Sample bug report</h3>
-        <div class="sub">The format I use to write up a defect so a developer can act on it without follow-up questions</div>
-        <div class="tag-row" style="margin-bottom:16px;">
-          <span class="chip">Priority: High</span><span class="chip">Android</span><span class="chip">Mobile app</span>
-        </div>
-        <div class="bug-row"><span class="k">Title</span><span class="v">Height/weight validation range on confirm-details screen doesn't match backend configuration</span></div>
-        <div class="bug-row"><span class="k">Description</span><span class="v">The measurement field is configured server-side with a min/max range (e.g. height 90–200 cm), but the app rejects values inside that range and displays an error referencing a different, hardcoded range instead.</span></div>
-        <div class="bug-row"><span class="k">Repro steps</span><span class="v">
-          <ol>
-            <li>Configure the height field's min/max range in the admin dashboard and save.</li>
-            <li>Open the app's "Confirm details" screen.</li>
-            <li>Enter a height value that falls inside the configured range.</li>
-            <li>Observe the validation message shown under the field.</li>
-          </ol>
-        </span></div>
-        <div class="bug-row"><span class="k">Devices</span><span class="v">Samsung Galaxy A32, Android 12</span></div>
-        <div class="bug-row"><span class="k">Result</span><span class="v">
-          <div class="result-pair">
-            <div class="result-box actual"><span class="rk">Actual</span>A value inside the configured range is rejected, and the error text shows an unrelated min/max pair.</div>
-            <div class="result-box expected"><span class="rk">Expected</span>The value is accepted, and any error message reflects the range currently configured in the dashboard.</div>
-          </div>
-        </span></div>
-      </div>
-
-      <div class="hcard full">
-        <h3>Sample manual test case</h3>
-        <div class="sub">A login test suite written the way I'd hand it to a team — scenario, steps, data, and expected result</div>
-        <div class="table-wrap">
-          <table class="qa-table">
-            <thead>
-              <tr><th>Scenario</th><th>Description</th><th>Test data</th><th>Expected result</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Valid credentials</td>
-                <td>Verify login with a valid email and password</td>
-                <td>Email: user@example.com<br>Password: ••••••••</td>
-                <td>User is logged in and redirected to the home screen.</td>
-              </tr>
-              <tr>
-                <td>Invalid password</td>
-                <td>Verify login fails with an incorrect password</td>
-                <td>Email: user@example.com<br>Password: wrong-pass</td>
-                <td>An "invalid email or password" error is shown; login is blocked.</td>
-              </tr>
-              <tr>
-                <td>Empty required field</td>
-                <td>Verify validation when the password field is left blank</td>
-                <td>Email: user@example.com<br>Password: (blank)</td>
-                <td>A "password is required" validation message is shown; no request is sent.</td>
-              </tr>
-              <tr>
-                <td>Account lockout</td>
-                <td>Verify behaviour after repeated failed attempts</td>
-                <td>5 consecutive incorrect passwords</td>
-                <td>Account is temporarily locked or a rate-limit warning is shown.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="hcard full">
-        <h3>Automation &amp; release reporting</h3>
-        <div class="sub">The pass/fail summary I share with a team after a regression run — grouped by platform, plus an overall total</div>
-        <div class="split-row"><span class="label">Web</span><div class="split-track"><div class="split-fill pass" style="width:96%"></div><div class="split-fill fail" style="width:4%"></div></div><span class="count">191 / 199</span></div>
-        <div class="split-row"><span class="label">Desktop</span><div class="split-track"><div class="split-fill pass" style="width:66%"></div><div class="split-fill fail" style="width:34%"></div></div><span class="count">27 / 41</span></div>
-        <div class="split-row"><span class="label">Mobile</span><div class="split-track"><div class="split-fill pass" style="width:0%"></div><div class="split-fill fail" style="width:100%"></div></div><span class="count">0 / 12</span></div>
-        <div class="report-total">
-          <span><b>86</b> total cases</span>
-          <span><b>80</b> passed</span>
-          <span><b>5</b> failed</span>
-          <span><b>1</b> skipped</span>
-          <span><b>93%</b> pass rate</span>
-        </div>
-      </div>
-
-      <div class="hcard full">
         <h3>BDD scenario &amp; failure trace</h3>
-        <div class="sub">How a failing step looks when I run a suite — the feature file, then the step trace and assertion behave reports</div>
+        <div class="sub">A generic scenario showing how I trace a failing step back to its assertion — not from a real project</div>
         <div class="snippet" style="margin-bottom:16px;">
 <span class="cm"># features/dashboard/summary_score.feature</span><br>
 <span class="kw">Feature:</span> Dashboard summary score<br><br>
@@ -1113,6 +903,31 @@
           <div>1 scenario (0 passed, 1 failed)</div>
           <div>3 steps (2 passed, 1 failed)</div>
         </div>
+      </div>
+
+      <div class="hcard full">
+        <h3>Sample bug report</h3>
+        <div class="sub">The format I use to write up a defect so a developer can act on it without follow-up questions — generic example, not a real ticket</div>
+        <div class="tag-row" style="margin-bottom:16px;">
+          <span class="chip">Priority: High</span><span class="chip">Android</span><span class="chip">Mobile app</span>
+        </div>
+        <div class="bug-row"><span class="k">Title</span><span class="v">Height/weight validation range on confirm-details screen doesn't match backend configuration</span></div>
+        <div class="bug-row"><span class="k">Description</span><span class="v">The measurement field is configured server-side with a min/max range (e.g. height 90–200 cm), but the app rejects values inside that range and displays an error referencing a different, hardcoded range instead.</span></div>
+        <div class="bug-row"><span class="k">Repro steps</span><span class="v">
+          <ol>
+            <li>Configure the height field's min/max range in the admin dashboard and save.</li>
+            <li>Open the app's "Confirm details" screen.</li>
+            <li>Enter a height value that falls inside the configured range.</li>
+            <li>Observe the validation message shown under the field.</li>
+          </ol>
+        </span></div>
+        <div class="bug-row"><span class="k">Devices</span><span class="v">Samsung Galaxy A32, Android 12</span></div>
+        <div class="bug-row"><span class="k">Result</span><span class="v">
+          <div class="result-pair">
+            <div class="result-box actual"><span class="rk">Actual</span>A value inside the configured range is rejected, and the error text shows an unrelated min/max pair.</div>
+            <div class="result-box expected"><span class="rk">Expected</span>The value is accepted, and any error message reflects the range currently configured in the dashboard.</div>
+          </div>
+        </span></div>
       </div>
     </div>
   </section>
@@ -1142,6 +957,109 @@
         <div class="degree">Secondary School Certificate</div>
       </div>
       <div class="dates">2012 — 2014</div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <div class="eyebrow">Experience</div>
+      <h2>Where I've worked</h2>
+      <p>Five and a half years growing from operations and post-deployment testing into leading QA and automation strategy end to end.</p>
+    </div>
+
+    <div class="company-card">
+      <div class="company-head">
+        <h3>CodeBlaze</h3>
+        <span class="span">Aug 2026 — Present · India</span>
+      </div>
+      <ul class="role-list">
+        <li class="role current" style="border-top:none;">
+          <div class="role-head">
+            <span class="title">Quality Assurance Automation Lead<span class="tag-current">Current</span></span>
+          </div>
+          <ul>
+            <li>Build and maintain automated suites for web, desktop, and mobile apps using Python, Playwright, Appium, Behave/BDD, and PyTest.</li>
+            <li>Use MCP and Claude Code to speed up test creation and expand coverage.</li>
+            <li>Run CI/CD test execution with automated Grafana reporting, alongside manual regression, UI, and cross-platform testing.</li>
+            <li>Document and track defects in JIRA with detailed evidence, and drive root-cause analysis on failures.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="company-card">
+      <div class="company-head">
+        <h3>ConnectedLife</h3>
+        <span class="span">Feb 2021 — Jul 2026 · 5 yrs 6 mos · Singapore</span>
+      </div>
+      <ul class="role-list">
+        <li class="role" style="border-top:none;">
+          <div class="role-head">
+            <span class="title">QA and Automation Lead</span>
+            <span class="dates">Feb 2026 — Jul 2026</span>
+          </div>
+          <ul>
+            <li>Defined and drove end-to-end QA and automation strategy, leveraging Claude AI and GitHub Copilot for faster test delivery.</li>
+            <li>Led and mentored the QA team, setting testing standards and shift-left practices across the SDLC.</li>
+            <li>Built and maintained Playwright (web) and Appium (iOS &amp; Android) frameworks in Python within a monorepo.</li>
+            <li>Managed CI/CD pipelines via GitHub Actions and Jenkins for continuous regression, API, and backend validation.</li>
+          </ul>
+        </li>
+        <li class="role">
+          <div class="role-head">
+            <span class="title">QA Lead</span>
+            <span class="dates">Jul 2024 — Feb 2026</span>
+          </div>
+          <ul>
+            <li>Led end-to-end testing — web, mobile, API, load, and manual — to ensure stable, high-quality releases.</li>
+            <li>Built scalable Playwright automation frameworks using MCP, BDD, and POM design patterns.</li>
+            <li>Ran cross-platform mobile automation with Appium across Android and iOS.</li>
+            <li>Managed MySQL test data seeding, database validation, and CI/CD pipeline improvements.</li>
+          </ul>
+        </li>
+        <li class="role">
+          <div class="role-head">
+            <span class="title">QA Tester — eCOA &amp; Deployment</span>
+            <span class="dates">Sep 2023 — Jun 2024</span>
+          </div>
+          <ul>
+            <li>Designed automation scripts in Playwright using the POM structure and BDD model.</li>
+            <li>Performed manual, API, and load testing across all application layers.</li>
+            <li>Tracked and resolved defects with cross-functional teams in Jira.</li>
+          </ul>
+        </li>
+        <li class="role">
+          <div class="role-head">
+            <span class="title">eCOA Project &amp; Operations Executive</span>
+            <span class="dates">Feb 2021 — Aug 2023</span>
+          </div>
+          <ul>
+            <li>Conducted post-deployment testing and wrote test cases for web and mobile applications.</li>
+            <li>Deployed surveys on a CMS platform and analysed user data to support quality and insights.</li>
+            <li>Created user flowcharts, use cases, and ER diagrams; managed Agile delivery via Jira.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="earlier">
+      <h3>Earlier experience</h3>
+      <div class="earlier-row">
+        <span class="role-name">Next Billion — Key Account Executive</span>
+        <span class="dates">Nov 2019 — Sep 2020</span>
+      </div>
+      <div class="earlier-row">
+        <span class="role-name">Dmoney Bangladesh Ltd — NID Verification Officer</span>
+        <span class="dates">Sep 2019 — Oct 2019</span>
+      </div>
+      <div class="earlier-row">
+        <span class="role-name">Craftic Arts — Customer Relationship Manager</span>
+        <span class="dates">Aug 2018 — Aug 2019</span>
+      </div>
+      <div class="earlier-row">
+        <span class="role-name">Devine Intervention IT Solutions — Web Designer</span>
+        <span class="dates">Apr 2018 — Jul 2018</span>
+      </div>
     </div>
   </section>
 
