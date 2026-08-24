@@ -286,6 +286,7 @@
   .term .prompt { color: var(--term-muted); }
   .term .ok { color: var(--term-accent); }
   .term .warn { color: var(--term-amber); }
+  .term .fail { color: #E0796A; }
   .term .cursor {
     display: inline-block; width: 7px; height: 1em; background: var(--term-accent);
     vertical-align: -2px; margin-left: 2px;
@@ -535,6 +536,36 @@
 
   .hcard.full { grid-column: 1 / -1; }
 
+  /* ---------- Deliverable samples ---------- */
+  .bug-row { display: flex; gap: 16px; padding: 10px 0; border-top: 1px solid var(--border); }
+  .bug-row:first-child { border-top: none; padding-top: 0; }
+  .bug-row .k { width: 110px; flex-shrink: 0; color: var(--ink-muted); font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 2px; }
+  .bug-row .v { color: var(--ink-secondary); font-size: 0.92rem; }
+  .bug-row .v ol { margin: 0; padding-left: 18px; }
+  .bug-row .v ol li { margin-bottom: 4px; }
+  .result-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 4px; }
+  @media (max-width: 620px) { .result-pair { grid-template-columns: 1fr; } }
+  .result-box { border-radius: 8px; padding: 12px 14px; font-size: 0.88rem; color: var(--ink-secondary); border-left: 3px solid; background: var(--surface-2); }
+  .result-box.actual { border-color: #C1553D; }
+  .result-box.expected { border-color: var(--accent); }
+  .result-box .rk { display: block; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); margin-bottom: 4px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.qa-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 640px; }
+  table.qa-table th, table.qa-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.qa-table th { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); background: var(--surface-2); white-space: nowrap; }
+  table.qa-table td { color: var(--ink-secondary); }
+  table.qa-table tbody tr:last-child td { border-bottom: none; }
+
+  .split-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .split-row .label { width: 64px; font-size: 0.8rem; color: var(--ink-secondary); font-family: var(--font-mono); flex-shrink: 0; }
+  .split-track { flex: 1; display: flex; height: 8px; border-radius: 5px; overflow: hidden; background: var(--surface-2); }
+  .split-fill.pass { height: 100%; background: var(--accent); }
+  .split-fill.fail { height: 100%; background: #C1553D; }
+  .split-row .count { width: 72px; text-align: right; font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-muted); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+  .report-total { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--ink-secondary); display: flex; flex-wrap: wrap; gap: 16px; }
+  .report-total b { color: var(--ink); font-family: var(--font-mono); }
+
   /* ---------- Education ---------- */
   .edu-row {
     display: flex;
@@ -594,6 +625,7 @@
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#highlights">Highlights</a>
+      <a href="#deliverables">Deliverables</a>
       <a href="#education">Education</a>
     </nav>
     <a class="btn btn-solid" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">Connect on LinkedIn</a>
@@ -941,6 +973,121 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">When</span> they enter a valid discount code at checkout<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">Then</span> the order total should reflect the discount<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">And</span> a confirmation message should be shown
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="deliverables">
+    <div class="section-head">
+      <div class="eyebrow">Deliverable samples</div>
+      <h2>Bug reports, test cases &amp; release reporting</h2>
+      <p>A look at how I document and communicate quality — from a single defect writeup, to a manual test case, to the pass/fail summary I share after an automated run.</p>
+    </div>
+    <p class="disclaimer">⚠️ Bug report, test case, and feature-file/terminal content below use generic, recreated data — not a real ticket, client test suite, or project name. The pass/fail figures in the release reporting card are real aggregate counts from a mobile regression run, shown without feature-level or client detail.</p>
+
+    <div class="highlight-grid">
+      <div class="hcard full">
+        <h3>Sample bug report</h3>
+        <div class="sub">The format I use to write up a defect so a developer can act on it without follow-up questions</div>
+        <div class="tag-row" style="margin-bottom:16px;">
+          <span class="chip">Priority: High</span><span class="chip">Android</span><span class="chip">Mobile app</span>
+        </div>
+        <div class="bug-row"><span class="k">Title</span><span class="v">Height/weight validation range on confirm-details screen doesn't match backend configuration</span></div>
+        <div class="bug-row"><span class="k">Description</span><span class="v">The measurement field is configured server-side with a min/max range (e.g. height 90–200 cm), but the app rejects values inside that range and displays an error referencing a different, hardcoded range instead.</span></div>
+        <div class="bug-row"><span class="k">Repro steps</span><span class="v">
+          <ol>
+            <li>Configure the height field's min/max range in the admin dashboard and save.</li>
+            <li>Open the app's "Confirm details" screen.</li>
+            <li>Enter a height value that falls inside the configured range.</li>
+            <li>Observe the validation message shown under the field.</li>
+          </ol>
+        </span></div>
+        <div class="bug-row"><span class="k">Devices</span><span class="v">Samsung Galaxy A32, Android 12</span></div>
+        <div class="bug-row"><span class="k">Result</span><span class="v">
+          <div class="result-pair">
+            <div class="result-box actual"><span class="rk">Actual</span>A value inside the configured range is rejected, and the error text shows an unrelated min/max pair.</div>
+            <div class="result-box expected"><span class="rk">Expected</span>The value is accepted, and any error message reflects the range currently configured in the dashboard.</div>
+          </div>
+        </span></div>
+      </div>
+
+      <div class="hcard full">
+        <h3>Sample manual test case</h3>
+        <div class="sub">A login test suite written the way I'd hand it to a team — scenario, steps, data, and expected result</div>
+        <div class="table-wrap">
+          <table class="qa-table">
+            <thead>
+              <tr><th>Scenario</th><th>Description</th><th>Test data</th><th>Expected result</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Valid credentials</td>
+                <td>Verify login with a valid email and password</td>
+                <td>Email: user@example.com<br>Password: ••••••••</td>
+                <td>User is logged in and redirected to the home screen.</td>
+              </tr>
+              <tr>
+                <td>Invalid password</td>
+                <td>Verify login fails with an incorrect password</td>
+                <td>Email: user@example.com<br>Password: wrong-pass</td>
+                <td>An "invalid email or password" error is shown; login is blocked.</td>
+              </tr>
+              <tr>
+                <td>Empty required field</td>
+                <td>Verify validation when the password field is left blank</td>
+                <td>Email: user@example.com<br>Password: (blank)</td>
+                <td>A "password is required" validation message is shown; no request is sent.</td>
+              </tr>
+              <tr>
+                <td>Account lockout</td>
+                <td>Verify behaviour after repeated failed attempts</td>
+                <td>5 consecutive incorrect passwords</td>
+                <td>Account is temporarily locked or a rate-limit warning is shown.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="hcard full">
+        <h3>Automation &amp; release reporting</h3>
+        <div class="sub">The pass/fail summary I share with a team after a regression run — grouped by platform, plus an overall total</div>
+        <div class="split-row"><span class="label">Web</span><div class="split-track"><div class="split-fill pass" style="width:96%"></div><div class="split-fill fail" style="width:4%"></div></div><span class="count">191 / 199</span></div>
+        <div class="split-row"><span class="label">Desktop</span><div class="split-track"><div class="split-fill pass" style="width:66%"></div><div class="split-fill fail" style="width:34%"></div></div><span class="count">27 / 41</span></div>
+        <div class="split-row"><span class="label">Mobile</span><div class="split-track"><div class="split-fill pass" style="width:0%"></div><div class="split-fill fail" style="width:100%"></div></div><span class="count">0 / 12</span></div>
+        <div class="report-total">
+          <span><b>86</b> total cases</span>
+          <span><b>80</b> passed</span>
+          <span><b>5</b> failed</span>
+          <span><b>1</b> skipped</span>
+          <span><b>93%</b> pass rate</span>
+        </div>
+      </div>
+
+      <div class="hcard full">
+        <h3>BDD scenario &amp; failure trace</h3>
+        <div class="sub">How a failing step looks when I run a suite — the feature file, then the step trace and assertion behave reports</div>
+        <div class="snippet" style="margin-bottom:16px;">
+<span class="cm"># features/dashboard/summary_score.feature</span><br>
+<span class="kw">Feature:</span> Dashboard summary score<br><br>
+&nbsp;&nbsp;<span class="kw">Scenario:</span> Verify dashboard summary score is displayed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">Given</span> the user is logged in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">When</span> they open the dashboard<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">Then</span> the summary score should be displayed
+        </div>
+        <div class="term" aria-hidden="true" style="box-shadow:none;">
+          <div class="term-bar"><span></span><span></span><span></span></div>
+          <div><span class="prompt">$</span> behave features/dashboard/summary_score.feature</div>
+          <div>&nbsp;</div>
+          <div><span class="ok">✓</span> Given the user is logged in</div>
+          <div><span class="ok">✓</span> When they open the dashboard</div>
+          <div><span class="fail">✗</span> Then the summary score should be displayed</div>
+          <div>&nbsp;</div>
+          <div><span class="fail">Assertion failed:</span> summary score value 13 is not displayed on screen</div>
+          <div>&nbsp;</div>
+          <div>1 scenario (0 passed, 1 failed)</div>
+          <div>3 steps (2 passed, 1 failed)</div>
         </div>
       </div>
     </div>
