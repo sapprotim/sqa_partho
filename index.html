@@ -296,6 +296,18 @@
   }
   @keyframes blink { 50% { opacity: 0; } }
 
+  /* ---------- Intro video ---------- */
+  .video-embed-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #0d0d0d;
+  }
+  .video-embed-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
   /* ---------- About ---------- */
   .about-grid {
     display: grid;
@@ -620,6 +632,7 @@
   <div class="nav-inner">
     <div class="nav-mark"><span class="dot"></span>Partho Protim</div>
     <nav class="links">
+      <a href="#intro-video">Intro</a>
       <a href="#about">About</a>
       <a href="#toolbox">Toolbox</a>
       <a href="#experience">Experience</a>
@@ -659,6 +672,17 @@
       <div><span class="warn">◐</span> regression suite queued on GitHub Actions</div>
       <div>&nbsp;</div>
       <div><span class="prompt">$</span> <span class="cursor"></span></div>
+    </div>
+  </section>
+
+  <section id="intro-video">
+    <div class="section-head">
+      <div class="eyebrow">Introduction</div>
+      <h2>A quick hello, on camera</h2>
+      <p>A short video introduction — who I am and what I focus on in QA — before you read through the rest.</p>
+    </div>
+    <div class="video-embed-wrap">
+      <iframe src="https://www.loom.com/embed/564f559706ed490fbbe824ce45eac46c" title="Partho Protim — introduction video" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
     </div>
   </section>
 
