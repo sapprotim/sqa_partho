@@ -368,21 +368,18 @@
   .read-more-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    align-self: flex-start;
-    justify-self: start;
-    padding: 9px 18px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--surface-2);
-    color: var(--ink);
+    gap: 4px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--accent);
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: border-color 0.15s, color 0.15s;
+    transition: color 0.15s;
   }
-  .read-more-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .read-more-btn:hover { color: var(--accent-strong); text-decoration: underline; }
   .read-more-btn .chev { font-size: 0.7rem; transition: transform 0.2s ease; }
   .read-more-btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
 
@@ -690,6 +687,9 @@
   }
   .snippet .kw { color: var(--term-accent); }
   .snippet .cm { color: var(--term-muted); }
+  .trace-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+  .trace-pair .snippet, .trace-pair .term { margin: 0; }
+  @media (max-width: 760px) { .trace-pair { grid-template-columns: 1fr; } }
 
   .hcard.full { grid-column: 1 / -1; }
 
@@ -706,6 +706,7 @@
   .result-box.actual { border-color: #C1553D; }
   .result-box.expected { border-color: var(--accent); }
   .result-box .rk { display: block; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); margin-bottom: 4px; }
+  .bug-evidence { display: block; width: 100%; border-radius: 8px; border: 1px solid var(--border); }
 
   .split-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
   .split-row .label { width: 64px; font-size: 0.8rem; color: var(--ink-secondary); font-family: var(--font-mono); flex-shrink: 0; }
@@ -791,6 +792,7 @@
       <p class="lede">I design and automate the tests that keep releases honest — 4+ years across manual QA, Playwright/Selenium/Appium automation, API and performance testing, and CI/CD, most recently leading QA strategy for a healthtech platform.</p>
       <div class="cta-row">
         <a class="btn btn-solid" href="mailto:parthoprotim49@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="https://wa.me/8801761441989" target="_blank" rel="noopener">WhatsApp ↗</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">View LinkedIn ↗</a>
       </div>
       <div class="meta">
@@ -828,13 +830,10 @@
         <iframe src="https://www.loom.com/embed/564f559706ed490fbbe824ce45eac46c?hideEmbedTopBar=true" title="Partho Protim — introduction video" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="intro-copy">
-        <p>I'm a QA professional with 4+ years of experience across web, mobile, and desktop applications — covering manual testing, test automation, API testing, regression, performance testing, and defect management. I design and execute functional, regression, UI, API, data, and end-to-end test cases, and I build the automation frameworks that carry that coverage forward, using Playwright, Selenium, Appium, Behave/BDD, and the Page Object Model.</p>
+        <p>I'm a QA professional with 4+ years of experience across web, mobile, and desktop applications — covering manual testing, test automation, API testing, regression, performance testing, and defect management. I design and execute functional, regression, UI, API, data, and end-to-end test cases, and I build the automation frameworks that carry that coverage forward, using Playwright, Selenium, Appium, Behave/BDD, and the Page Object Model. <button type="button" class="read-more-btn" aria-expanded="false" aria-controls="aboutMore" data-label-open="Read more" data-label-close="Show less"><span class="label">Read more</span><span class="chev">▾</span></button></p>
         <div class="about-more" id="aboutMore" hidden>
           <p>Day to day, that means wiring CI/CD test execution through GitHub Actions and Jenkins with automated reporting, tracking defects through JIRA with clear evidence, and doing the root-cause digging to tell whether a failure is the app, the automation, the backend, or the environment. I also do a fair amount of API and performance testing with Postman, JMeter, and k6, backed by SQL and database validation. More recently, I've been using AI-assisted tools like Claude Code and MCP to speed up test development without cutting corners on coverage.</p>
         </div>
-        <button type="button" class="read-more-btn" aria-expanded="false" aria-controls="aboutMore" data-label-open="Read more" data-label-close="Show less">
-          <span class="label">Read more</span><span class="chev">▾</span>
-        </button>
       </div>
     </div>
   </section>
@@ -1088,7 +1087,8 @@
       <div class="hcard full">
         <h3>BDD scenario &amp; failure trace</h3>
         <div class="sub">A generic scenario showing how I trace a failing step back to its assertion — not from a real project</div>
-        <div class="snippet" style="margin-bottom:16px;">
+        <div class="trace-pair">
+        <div class="snippet">
 <span class="cm"># features/dashboard/summary_score.feature</span><br>
 <span class="kw">Feature:</span> Dashboard summary score<br><br>
 &nbsp;&nbsp;<span class="kw">Scenario:</span> Verify dashboard summary score is displayed<br>
@@ -1109,6 +1109,7 @@
           <div>1 scenario (0 passed, 1 failed)</div>
           <div>3 steps (2 passed, 1 failed)</div>
         </div>
+        </div>
       </div>
 
       <div class="hcard full">
@@ -1128,6 +1129,9 @@
           </ol>
         </span></div>
         <div class="bug-row"><span class="k">Devices</span><span class="v">Samsung Galaxy A32, Android 12</span></div>
+        <div class="bug-row"><span class="k">Evidence</span><span class="v">
+          <img class="bug-evidence" src="assets/bug-evidence.jpg" alt="App validation error on the left showing a hardcoded 130&ndash;230cm/40&ndash;200kg range, next to the admin dashboard on the right showing the actual configured range of 90&ndash;200cm/35&ndash;160kg">
+        </span></div>
         <div class="bug-row"><span class="k">Result</span><span class="v">
           <div class="result-pair">
             <div class="result-box actual"><span class="rk">Actual</span>A value inside the configured range is rejected, and the error text shows an unrelated min/max pair.</div>
@@ -1296,6 +1300,7 @@
         <p>Whether it's a QA Lead role, an automation project that needs a framework rebuild, or just a conversation about testing and quality — I'm happy to connect.</p>
         <div class="cta-row">
           <a class="btn btn-solid" href="mailto:parthoprotim49@gmail.com">Email me</a>
+          <a class="btn btn-ghost" href="https://wa.me/8801761441989" target="_blank" rel="noopener">WhatsApp ↗</a>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
         </div>
       </div>
