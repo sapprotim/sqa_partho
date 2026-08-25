@@ -466,22 +466,34 @@
   .role-card.is-open ul { display: block; }
   .role-card ul li { margin-bottom: 6px; }
   .role-toggle {
-    display: inline-flex;
+    flex: 0 0 auto;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    margin-top: 12px;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
     padding: 0;
-    border: 0;
-    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
     color: var(--term-accent);
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.85rem;
     cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
   }
-  .role-toggle:hover { text-decoration: underline; }
-  .role-toggle .chev { font-size: 0.7rem; transition: transform 0.2s ease; }
+  .role-toggle:hover { background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 255, 255, 0.24); }
+  .role-toggle .chev { font-size: 0.72rem; transition: transform 0.2s ease; }
   .role-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+  .role-toggle .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
   @media (max-width: 560px) {
     .role-card-top { flex-wrap: wrap; }
     .role-card-dates { text-align: left; }
@@ -1141,10 +1153,10 @@
           <div class="dates">Aug 2026 — Present</div>
           <div class="duration">~1 mo</div>
         </div>
+        <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less" aria-label="Show more details">
+          <span class="label">More</span><span class="chev">▾</span>
+        </button>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
-        <span class="label">More</span><span class="chev">▾</span>
-      </button>
       <ul>
         <li>Build and maintain automated suites for web, desktop, and mobile apps using Python, Playwright, Appium, Behave/BDD, and PyTest.</li>
         <li>Use MCP and Claude Code to speed up test creation and expand coverage.</li>
@@ -1164,10 +1176,10 @@
           <div class="dates">Feb 2026 — Jul 2026</div>
           <div class="duration">~6 mos</div>
         </div>
+        <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less" aria-label="Show more details">
+          <span class="label">More</span><span class="chev">▾</span>
+        </button>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
-        <span class="label">More</span><span class="chev">▾</span>
-      </button>
       <ul>
         <li>Defined and drove end-to-end QA and automation strategy, leveraging Claude AI and GitHub Copilot for faster test delivery.</li>
         <li>Led and mentored the QA team, setting testing standards and shift-left practices across the SDLC.</li>
@@ -1187,10 +1199,10 @@
           <div class="dates">Jul 2024 — Feb 2026</div>
           <div class="duration">~1 yr 7 mos</div>
         </div>
+        <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less" aria-label="Show more details">
+          <span class="label">More</span><span class="chev">▾</span>
+        </button>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
-        <span class="label">More</span><span class="chev">▾</span>
-      </button>
       <ul>
         <li>Led end-to-end testing — web, mobile, API, load, and manual — to ensure stable, high-quality releases.</li>
         <li>Built scalable Playwright automation frameworks using MCP, BDD, and POM design patterns.</li>
@@ -1210,10 +1222,10 @@
           <div class="dates">Sep 2023 — Jun 2024</div>
           <div class="duration">~10 mos</div>
         </div>
+        <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less" aria-label="Show more details">
+          <span class="label">More</span><span class="chev">▾</span>
+        </button>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
-        <span class="label">More</span><span class="chev">▾</span>
-      </button>
       <ul>
         <li>Designed automation scripts in Playwright using the POM structure and BDD model.</li>
         <li>Performed manual, API, and load testing across all application layers.</li>
@@ -1232,10 +1244,10 @@
           <div class="dates">Feb 2021 — Aug 2023</div>
           <div class="duration">~2 yrs 6 mos</div>
         </div>
+        <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less" aria-label="Show more details">
+          <span class="label">More</span><span class="chev">▾</span>
+        </button>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
-        <span class="label">More</span><span class="chev">▾</span>
-      </button>
       <ul>
         <li>Conducted post-deployment testing and wrote test cases for web and mobile applications.</li>
         <li>Deployed surveys on a CMS platform and analysed user data to support quality and insights.</li>
