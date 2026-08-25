@@ -293,11 +293,11 @@
     flex-wrap: wrap;
   }
   .hero .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-side { display: flex; flex-direction: column; gap: 24px; }
   .hero-stats {
     display: flex;
     justify-content: center;
     gap: 30px;
-    margin-top: 28px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
     flex-wrap: wrap;
@@ -826,13 +826,8 @@
         <span>4+ years in QA</span>
         <span>Web · Mobile · Desktop · API</span>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><b class="js-count" data-count="4" data-suffix="+">4+</b><span>Years in QA</span></div>
-        <div class="stat"><b class="js-count" data-count="3500" data-suffix="+">3,500+</b><span>Defects tracked</span></div>
-        <div class="stat"><b class="js-count" data-count="93" data-suffix="%">93%</b><span>Pass rate, latest run</span></div>
-        <div class="stat"><b class="js-count" data-count="4">4</b><span>Platforms covered</span></div>
-      </div>
     </div>
+    <div class="hero-side">
     <div class="term" aria-hidden="true">
       <div class="term-bar"><span></span><span></span><span></span></div>
       <div><span class="prompt">$</span> behave features/ --format progress</div>
@@ -842,6 +837,13 @@
       <div><span class="warn">◐</span> regression suite queued on GitHub Actions</div>
       <div>&nbsp;</div>
       <div><span class="prompt">$</span> <span class="cursor"></span></div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b class="js-count" data-count="4" data-suffix="+">4+</b><span>Years in QA</span></div>
+      <div class="stat"><b class="js-count" data-count="3500" data-suffix="+">3,500+</b><span>Defects tracked</span></div>
+      <div class="stat"><b class="js-count" data-count="93" data-suffix="%">93%</b><span>Pass rate, latest run</span></div>
+      <div class="stat"><b class="js-count" data-count="4">4</b><span>Platforms covered</span></div>
+    </div>
     </div>
   </section>
 
