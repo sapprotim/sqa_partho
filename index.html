@@ -351,7 +351,7 @@
     justify-content: center;
     gap: 16px;
   }
-  .intro-copy p { color: var(--ink-secondary); max-width: 48ch; font-size: 1rem; }
+  .intro-copy p { color: var(--ink-secondary); font-size: 1rem; }
   @media (max-width: 800px) {
     .intro-panel { grid-template-columns: 1fr; }
     .intro-media { min-height: 220px; }
@@ -600,27 +600,24 @@
   .project-card ul { margin: 16px 0 0; padding-left: 18px; color: var(--ink-secondary); font-size: 0.94rem; }
   .project-card ul li { margin-bottom: 7px; }
 
-  .card-actions { display: flex; gap: 10px; margin-top: auto; }
+  .card-actions { display: flex; gap: 18px; margin-top: auto; }
   .details-toggle,
   .view-image {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    flex: 1;
-    padding: 10px 14px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--surface-2);
-    color: var(--ink);
+    gap: 4px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--accent);
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: border-color 0.15s, color 0.15s;
+    transition: color 0.15s;
   }
   .details-toggle:hover,
-  .view-image:hover { border-color: var(--accent); color: var(--accent); }
+  .view-image:hover { color: var(--accent-strong); text-decoration: underline; }
   .details-toggle .chev { font-size: 0.7rem; transition: transform 0.2s ease; }
   .details-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
   .project-details { margin-top: 20px; }
