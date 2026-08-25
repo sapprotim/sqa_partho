@@ -381,23 +381,7 @@
   .open-to strong { color: var(--ink); }
 
   /* ---------- Toolbox ---------- */
-  .tool-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-  @media (max-width: 700px) { .tool-grid { grid-template-columns: 1fr; } }
-  .tool-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 20px 18px;
-  }
-  .tool-card h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    font-family: var(--font-body);
-  }
+  .skill-marquees { display: flex; flex-direction: column; gap: 14px; }
 
   .marquee {
     margin-top: 14px;
@@ -748,7 +732,7 @@
     <nav class="links">
       <a href="#intro-video">Intro</a>
       <a href="#about">About</a>
-      <a href="#toolbox">Toolbox</a>
+      <a href="#toolbox">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#highlights">Highlights</a>
       <a href="#experience">Experience</a>
@@ -825,9 +809,8 @@
 
   <section id="toolbox" class="numbered">
     <div class="section-head">
-      <div class="eyebrow">Toolbox</div>
-      <h2>What I test with</h2>
-      <p>The frameworks, tools, and practices I reach for most, grouped by where they sit in the testing workflow.</p>
+      <div class="eyebrow">Skills</div>
+      <h2>Skills</h2>
     </div>
 
     <div class="skill-bars">
@@ -838,92 +821,64 @@
       <div class="bar-row"><span class="label">API testing</span><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><span class="pct">82%</span></div>
     </div>
 
-    <div class="tool-grid">
-      <div class="tool-card">
-        <h3>Automation &amp; frameworks</h3>
-        <div class="marquee">
-          <div class="marquee-track">
-            <div class="marquee-group">
-              <span class="skill-pill"><span class="icon c-accent">🎭</span>Playwright</span>
-              <span class="skill-pill"><span class="icon c-amber">🕸️</span>Selenium</span>
-              <span class="skill-pill"><span class="icon c-rose">📱</span>Appium</span>
-              <span class="skill-pill"><span class="icon c-slate">🥒</span>Behave / BDD</span>
-              <span class="skill-pill"><span class="icon c-accent">📄</span>Page Object Model</span>
-              <span class="skill-pill"><span class="icon c-amber">🐍</span>PyTest</span>
-            </div>
-            <div class="marquee-group" aria-hidden="true">
-              <span class="skill-pill"><span class="icon c-accent">🎭</span>Playwright</span>
-              <span class="skill-pill"><span class="icon c-amber">🕸️</span>Selenium</span>
-              <span class="skill-pill"><span class="icon c-rose">📱</span>Appium</span>
-              <span class="skill-pill"><span class="icon c-slate">🥒</span>Behave / BDD</span>
-              <span class="skill-pill"><span class="icon c-accent">📄</span>Page Object Model</span>
-              <span class="skill-pill"><span class="icon c-amber">🐍</span>PyTest</span>
-            </div>
+    <div class="skill-marquees">
+      <div class="marquee">
+        <div class="marquee-track">
+          <div class="marquee-group">
+            <span class="skill-pill"><span class="icon c-accent">🎭</span>Playwright</span>
+            <span class="skill-pill"><span class="icon c-amber">🕸️</span>Selenium</span>
+            <span class="skill-pill"><span class="icon c-rose">📱</span>Appium</span>
+            <span class="skill-pill"><span class="icon c-slate">🥒</span>Behave / BDD</span>
+            <span class="skill-pill"><span class="icon c-accent">📄</span>Page Object Model</span>
+            <span class="skill-pill"><span class="icon c-amber">🐍</span>PyTest</span>
+            <span class="skill-pill"><span class="icon c-slate">🔍</span>Manual &amp; regression</span>
+            <span class="skill-pill"><span class="icon c-accent">🔌</span>API testing</span>
+            <span class="skill-pill"><span class="icon c-amber">⚡</span>Performance &amp; load</span>
+            <span class="skill-pill"><span class="icon c-rose">🖥️</span>Cross-platform QA</span>
+            <span class="skill-pill"><span class="icon c-slate">🗄️</span>SQL / DB validation</span>
+          </div>
+          <div class="marquee-group" aria-hidden="true">
+            <span class="skill-pill"><span class="icon c-accent">🎭</span>Playwright</span>
+            <span class="skill-pill"><span class="icon c-amber">🕸️</span>Selenium</span>
+            <span class="skill-pill"><span class="icon c-rose">📱</span>Appium</span>
+            <span class="skill-pill"><span class="icon c-slate">🥒</span>Behave / BDD</span>
+            <span class="skill-pill"><span class="icon c-accent">📄</span>Page Object Model</span>
+            <span class="skill-pill"><span class="icon c-amber">🐍</span>PyTest</span>
+            <span class="skill-pill"><span class="icon c-slate">🔍</span>Manual &amp; regression</span>
+            <span class="skill-pill"><span class="icon c-accent">🔌</span>API testing</span>
+            <span class="skill-pill"><span class="icon c-amber">⚡</span>Performance &amp; load</span>
+            <span class="skill-pill"><span class="icon c-rose">🖥️</span>Cross-platform QA</span>
+            <span class="skill-pill"><span class="icon c-slate">🗄️</span>SQL / DB validation</span>
           </div>
         </div>
       </div>
-      <div class="tool-card">
-        <h3>Testing practice</h3>
-        <div class="marquee">
-          <div class="marquee-track reverse">
-            <div class="marquee-group">
-              <span class="skill-pill"><span class="icon c-slate">🔍</span>Manual &amp; regression</span>
-              <span class="skill-pill"><span class="icon c-accent">🔌</span>API testing</span>
-              <span class="skill-pill"><span class="icon c-amber">⚡</span>Performance &amp; load</span>
-              <span class="skill-pill"><span class="icon c-rose">🖥️</span>Cross-platform QA</span>
-              <span class="skill-pill"><span class="icon c-slate">🗄️</span>SQL / DB validation</span>
-            </div>
-            <div class="marquee-group" aria-hidden="true">
-              <span class="skill-pill"><span class="icon c-slate">🔍</span>Manual &amp; regression</span>
-              <span class="skill-pill"><span class="icon c-accent">🔌</span>API testing</span>
-              <span class="skill-pill"><span class="icon c-amber">⚡</span>Performance &amp; load</span>
-              <span class="skill-pill"><span class="icon c-rose">🖥️</span>Cross-platform QA</span>
-              <span class="skill-pill"><span class="icon c-slate">🗄️</span>SQL / DB validation</span>
-            </div>
+      <div class="marquee">
+        <div class="marquee-track reverse">
+          <div class="marquee-group">
+            <span class="skill-pill"><span class="icon c-accent">⚙️</span>GitHub Actions</span>
+            <span class="skill-pill"><span class="icon c-amber">🔧</span>Jenkins</span>
+            <span class="skill-pill"><span class="icon c-rose">📋</span>JIRA</span>
+            <span class="skill-pill"><span class="icon c-slate">📊</span>Grafana reporting</span>
+            <span class="skill-pill"><span class="icon c-amber">📮</span>Postman</span>
+            <span class="skill-pill"><span class="icon c-accent">📈</span>JMeter</span>
+            <span class="skill-pill"><span class="icon c-rose">🚀</span>k6</span>
+            <span class="skill-pill"><span class="icon c-slate">🤖</span>Claude Code</span>
+            <span class="skill-pill"><span class="icon c-accent">🔗</span>MCP</span>
+            <span class="skill-pill"><span class="icon c-amber">🧠</span>GitHub Copilot</span>
+            <span class="skill-pill"><span class="icon c-rose">🐍</span>Python</span>
           </div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <h3>CI/CD &amp; defect tracking</h3>
-        <div class="marquee">
-          <div class="marquee-track">
-            <div class="marquee-group">
-              <span class="skill-pill"><span class="icon c-accent">⚙️</span>GitHub Actions</span>
-              <span class="skill-pill"><span class="icon c-amber">🔧</span>Jenkins</span>
-              <span class="skill-pill"><span class="icon c-rose">📋</span>JIRA</span>
-              <span class="skill-pill"><span class="icon c-slate">📊</span>Grafana reporting</span>
-            </div>
-            <div class="marquee-group" aria-hidden="true">
-              <span class="skill-pill"><span class="icon c-accent">⚙️</span>GitHub Actions</span>
-              <span class="skill-pill"><span class="icon c-amber">🔧</span>Jenkins</span>
-              <span class="skill-pill"><span class="icon c-rose">📋</span>JIRA</span>
-              <span class="skill-pill"><span class="icon c-slate">📊</span>Grafana reporting</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <h3>API, performance &amp; AI-assisted</h3>
-        <div class="marquee">
-          <div class="marquee-track reverse">
-            <div class="marquee-group">
-              <span class="skill-pill"><span class="icon c-amber">📮</span>Postman</span>
-              <span class="skill-pill"><span class="icon c-accent">📈</span>JMeter</span>
-              <span class="skill-pill"><span class="icon c-rose">🚀</span>k6</span>
-              <span class="skill-pill"><span class="icon c-slate">🤖</span>Claude Code</span>
-              <span class="skill-pill"><span class="icon c-accent">🔗</span>MCP</span>
-              <span class="skill-pill"><span class="icon c-amber">🧠</span>GitHub Copilot</span>
-              <span class="skill-pill"><span class="icon c-rose">🐍</span>Python</span>
-            </div>
-            <div class="marquee-group" aria-hidden="true">
-              <span class="skill-pill"><span class="icon c-amber">📮</span>Postman</span>
-              <span class="skill-pill"><span class="icon c-accent">📈</span>JMeter</span>
-              <span class="skill-pill"><span class="icon c-rose">🚀</span>k6</span>
-              <span class="skill-pill"><span class="icon c-slate">🤖</span>Claude Code</span>
-              <span class="skill-pill"><span class="icon c-accent">🔗</span>MCP</span>
-              <span class="skill-pill"><span class="icon c-amber">🧠</span>GitHub Copilot</span>
-              <span class="skill-pill"><span class="icon c-rose">🐍</span>Python</span>
-            </div>
+          <div class="marquee-group" aria-hidden="true">
+            <span class="skill-pill"><span class="icon c-accent">⚙️</span>GitHub Actions</span>
+            <span class="skill-pill"><span class="icon c-amber">🔧</span>Jenkins</span>
+            <span class="skill-pill"><span class="icon c-rose">📋</span>JIRA</span>
+            <span class="skill-pill"><span class="icon c-slate">📊</span>Grafana reporting</span>
+            <span class="skill-pill"><span class="icon c-amber">📮</span>Postman</span>
+            <span class="skill-pill"><span class="icon c-accent">📈</span>JMeter</span>
+            <span class="skill-pill"><span class="icon c-rose">🚀</span>k6</span>
+            <span class="skill-pill"><span class="icon c-slate">🤖</span>Claude Code</span>
+            <span class="skill-pill"><span class="icon c-accent">🔗</span>MCP</span>
+            <span class="skill-pill"><span class="icon c-amber">🧠</span>GitHub Copilot</span>
+            <span class="skill-pill"><span class="icon c-rose">🐍</span>Python</span>
           </div>
         </div>
       </div>
