@@ -752,13 +752,13 @@
   .contact-card .k { color: var(--ink-muted); font-family: var(--font-mono); font-size: 0.78rem; }
   .contact-card .v { color: var(--ink); text-align: right; }
 
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0 40px;
+  footer { background: var(--term-bg); }
+  footer .footer-inner {
+    padding: 32px 24px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: var(--ink-muted);
+    color: var(--term-muted);
     font-size: 0.8rem;
     flex-wrap: wrap;
     gap: 16px;
@@ -770,18 +770,18 @@
     font-family: var(--font-mono);
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--ink);
+    color: var(--term-ink);
   }
   footer .footer-brand .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
+    background: var(--term-accent);
+    box-shadow: 0 0 0 3px rgba(89, 199, 166, 0.2);
   }
   footer .footer-links { display: flex; gap: 18px; }
-  footer .footer-links a { color: var(--ink-secondary); }
-  footer .footer-links a:hover { color: var(--accent); }
+  footer .footer-links a { color: var(--term-ink); opacity: 0.75; }
+  footer .footer-links a:hover { color: var(--term-accent); opacity: 1; }
 </style>
 </head>
 <body>
@@ -1322,8 +1322,10 @@
       </div>
     </div>
   </section>
+</main>
 
-  <footer>
+<footer>
+  <div class="wrap footer-inner">
     <div class="footer-brand"><span class="dot"></span>Partho Protim</div>
     <div class="footer-links">
       <a href="mailto:parthoprotim49@gmail.com">Email</a>
@@ -1331,8 +1333,8 @@
       <a href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <span>© 2026 · QA Automation Lead · Dhaka, Bangladesh</span>
-  </footer>
-</main>
+  </div>
+</footer>
 
 <script>
 (function () {
