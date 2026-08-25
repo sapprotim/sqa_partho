@@ -753,14 +753,35 @@
   .contact-card .v { color: var(--ink); text-align: right; }
 
   footer {
-    padding: 28px 0 40px;
+    border-top: 1px solid var(--border);
+    padding: 32px 0 40px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     color: var(--ink-muted);
     font-size: 0.8rem;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 16px;
   }
+  footer .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+  footer .footer-brand .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  footer .footer-links { display: flex; gap: 18px; }
+  footer .footer-links a { color: var(--ink-secondary); }
+  footer .footer-links a:hover { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -1303,8 +1324,13 @@
   </section>
 
   <footer>
-    <span>© 2026 Partho Protim</span>
-    <span>QA Automation Lead · Dhaka, Bangladesh</span>
+    <div class="footer-brand"><span class="dot"></span>Partho Protim</div>
+    <div class="footer-links">
+      <a href="mailto:parthoprotim49@gmail.com">Email</a>
+      <a href="https://wa.me/8801761441989" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <span>© 2026 · QA Automation Lead · Dhaka, Bangladesh</span>
   </footer>
 </main>
 
