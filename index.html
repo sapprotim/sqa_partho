@@ -344,21 +344,11 @@
   }
   .intro-media { position: relative; min-height: 340px; background: #0d0d0d; }
   .intro-media iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .intro-copy {
-    padding: 46px 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 16px;
-  }
-  .intro-copy h2 { font-size: clamp(1.6rem, 2.8vw, 2.1rem); font-weight: 600; line-height: 1.15; }
-  .intro-copy p { color: var(--ink-secondary); font-size: 1rem; max-width: 42ch; }
-  .intro-copy .btn { align-self: flex-start; margin-top: 8px; }
-  .btn-pill { border-radius: 999px; padding: 11px 22px; }
+  .intro-panel-solo { grid-template-columns: 1fr; }
+  .intro-panel-solo .intro-media { min-height: 480px; }
   @media (max-width: 800px) {
     .intro-panel { grid-template-columns: 1fr; }
     .intro-media { min-height: 220px; }
-    .intro-copy { padding: 32px 26px; }
   }
 
   /* ---------- About ---------- */
@@ -370,6 +360,26 @@
   .intro-panel + .about-grid { margin-top: 40px; }
   .about-grid p { color: var(--ink-secondary); max-width: 74ch; font-size: 1.03rem; }
   .about-grid p + p { margin-top: 4px; }
+  .about-more { display: flex; flex-direction: column; gap: 18px; }
+  .read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    justify-self: start;
+    padding: 9px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-2);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .read-more-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .read-more-btn .chev { font-size: 0.7rem; transition: transform 0.2s ease; }
+  .read-more-btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
   .open-to {
     margin-top: 22px;
     border: 1px solid var(--border);
@@ -839,21 +849,23 @@
     <div class="section-head">
       <div class="eyebrow">Introduction</div>
     </div>
-    <div class="intro-panel">
+    <div class="intro-panel intro-panel-solo">
       <div class="intro-media">
         <iframe src="https://www.loom.com/embed/564f559706ed490fbbe824ce45eac46c?hideEmbedTopBar=true" title="Partho Protim — introduction video" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="intro-copy">
-        <h2>How I approach QA</h2>
       </div>
     </div>
 
     <div class="about-grid">
       <p>I'm a QA professional with 4+ years of experience across web, mobile, and desktop applications — covering manual testing, test automation, API testing, regression, performance testing, and defect management. I design and execute functional, regression, UI, API, data, and end-to-end test cases, and I build the automation frameworks that carry that coverage forward, using Playwright, Selenium, Appium, Behave/BDD, and the Page Object Model.</p>
-      <p>Day to day, that means wiring CI/CD test execution through GitHub Actions and Jenkins with automated reporting, tracking defects through JIRA with clear evidence, and doing the root-cause digging to tell whether a failure is the app, the automation, the backend, or the environment. I also do a fair amount of API and performance testing with Postman, JMeter, and k6, backed by SQL and database validation. More recently, I've been using AI-assisted tools like Claude Code and MCP to speed up test development without cutting corners on coverage.</p>
-      <div class="open-to">
-        <strong>What I'm looking for:</strong> SQA, QA Engineer, QA Automation Engineer, or QA Lead roles where I can help a team ship with confidence — improving test coverage, reducing defects, and building automation that the whole team trusts.
+      <div class="about-more" id="aboutMore" hidden>
+        <p>Day to day, that means wiring CI/CD test execution through GitHub Actions and Jenkins with automated reporting, tracking defects through JIRA with clear evidence, and doing the root-cause digging to tell whether a failure is the app, the automation, the backend, or the environment. I also do a fair amount of API and performance testing with Postman, JMeter, and k6, backed by SQL and database validation. More recently, I've been using AI-assisted tools like Claude Code and MCP to speed up test development without cutting corners on coverage.</p>
+        <div class="open-to">
+          <strong>What I'm looking for:</strong> SQA, QA Engineer, QA Automation Engineer, or QA Lead roles where I can help a team ship with confidence — improving test coverage, reducing defects, and building automation that the whole team trusts.
+        </div>
       </div>
+      <button type="button" class="read-more-btn" aria-expanded="false" aria-controls="aboutMore" data-label-open="Read more" data-label-close="Show less">
+        <span class="label">Read more</span><span class="chev">▾</span>
+      </button>
     </div>
   </section>
 
@@ -1447,16 +1459,18 @@
 })();
 
 (function () {
-  var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle'));
+  var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle, .read-more-btn'));
   toggles.forEach(function (btn) {
     var target = document.getElementById(btn.getAttribute('aria-controls'));
     var label = btn.querySelector('.label');
     if (!target || !label) return;
+    var openLabel = btn.getAttribute('data-label-open') || 'More details';
+    var closeLabel = btn.getAttribute('data-label-close') || 'Hide details';
     btn.addEventListener('click', function () {
       var open = target.hidden === false;
       target.hidden = open;
       btn.setAttribute('aria-expanded', String(!open));
-      label.textContent = open ? 'More details' : 'Hide details';
+      label.textContent = open ? openLabel : closeLabel;
     });
   });
 })();
