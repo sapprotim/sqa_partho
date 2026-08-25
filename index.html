@@ -485,6 +485,37 @@
     padding: 28px 28px 30px;
   }
   .project-card + .project-card { margin-top: 20px; }
+
+  .project-carousel { overflow: hidden; }
+  .project-track { display: flex; transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+  .project-page {
+    flex: 0 0 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 20px;
+  }
+  .project-page .project-card { margin-top: 0; }
+  @media (max-width: 900px) { .project-page { grid-template-columns: 1fr; } }
+
+  .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }
+  .carousel-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 1.05rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .carousel-arrow:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  .carousel-arrow:disabled { opacity: 0.35; cursor: not-allowed; }
   .project-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; }
   .project-meta { font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 16px; }
   .project-hero-shot { margin: 4px 0 20px; }
@@ -767,6 +798,9 @@
       <p>Three projects that show the range of the role — from ground-up QA on a wellness platform, to testing a national digital health programme, to manual-first QA for a hospital application.</p>
     </div>
 
+    <div class="project-carousel">
+      <div class="project-track" id="projectTrack">
+        <div class="project-page">
     <div class="project-card">
       <h3 class="project-title">ConnectedLife V2.0</h3>
       <div class="tag-row">
@@ -835,7 +869,8 @@
         </div>
       </div>
     </div>
-
+        </div>
+        <div class="project-page">
     <div class="project-card">
       <h3 class="project-title">Alexandra Hospital</h3>
       <div class="project-meta">Public hospital under Singapore's National University Health System</div>
@@ -867,6 +902,13 @@
           <span class="legend-item"><span class="sw" style="background:#4E9C86;"></span>Low<span class="n">9</span></span>
           <span class="legend-item"><span class="sw" style="background:#C1553D;"></span>ShowStopper<span class="n">1</span></span>
         </div>
+      </div>
+    </div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button type="button" class="carousel-arrow" id="projPrev" aria-label="Previous projects">←</button>
+        <button type="button" class="carousel-arrow" id="projNext" aria-label="Next projects">→</button>
       </div>
     </div>
   </section>
@@ -1197,6 +1239,30 @@
   }, { threshold: 0.4 });
 
   counters.forEach(function (el) { countObserver.observe(el); });
+})();
+
+(function () {
+  var track = document.getElementById('projectTrack');
+  var prevBtn = document.getElementById('projPrev');
+  var nextBtn = document.getElementById('projNext');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  var pages = Array.prototype.slice.call(track.children);
+  if (pages.length < 2) { prevBtn.hidden = true; nextBtn.hidden = true; return; }
+
+  var index = 0;
+  function update() {
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === pages.length - 1;
+  }
+  prevBtn.addEventListener('click', function () {
+    if (index > 0) { index--; update(); }
+  });
+  nextBtn.addEventListener('click', function () {
+    if (index < pages.length - 1) { index++; update(); }
+  });
+  update();
 })();
 </script>
 </body>
