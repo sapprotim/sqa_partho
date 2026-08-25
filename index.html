@@ -580,7 +580,17 @@
   .carousel-arrow:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
   .carousel-arrow:disabled { opacity: 0.35; cursor: not-allowed; }
   .project-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; }
-  .project-meta { font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 16px; }
+  .project-meta {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--amber);
+    background: var(--amber-soft);
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  .project-meta a { color: inherit; font-weight: 700; text-decoration: underline; }
   .project-hero-shot { margin: 4px 0 20px; }
   .project-hero-shot img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 10px; border: 1px solid var(--border); background: #0d0d0d; }
   .project-card .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
