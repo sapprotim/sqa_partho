@@ -138,6 +138,7 @@
     font-size: clamp(1.8rem, 3.2vw, 2.4rem);
     font-weight: 700;
     letter-spacing: -0.01em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
     position: relative;
     padding-bottom: 16px;
   }
@@ -414,8 +415,8 @@
     background: var(--term-bg);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
-    padding: 22px 24px 24px;
-    margin-bottom: 16px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
     box-shadow: 0 12px 30px -20px rgba(0, 0, 0, 0.5);
   }
   .role-card-top { display: flex; align-items: flex-start; gap: 16px; }
@@ -439,10 +440,12 @@
     font-weight: 600;
     font-size: 1rem;
   }
-  .role-card-company { color: var(--term-muted); font-size: 0.88rem; margin-top: 3px; }
+  .role-card-company { display: none; color: var(--term-muted); font-size: 0.88rem; margin-top: 3px; }
   .role-card-dates { flex: 0 0 auto; text-align: right; font-family: var(--font-mono); }
   .role-card-dates .dates { color: var(--term-ink); font-size: 0.78rem; white-space: nowrap; }
-  .role-card-dates .duration { color: var(--term-muted); font-size: 0.72rem; margin-top: 4px; }
+  .role-card-dates .duration { display: none; color: var(--term-muted); font-size: 0.72rem; margin-top: 4px; }
+  .role-card.is-open .role-card-company,
+  .role-card.is-open .role-card-dates .duration { display: block; }
   .tag-current {
     font-family: var(--font-mono);
     font-size: 0.66rem;
@@ -454,17 +457,19 @@
     padding: 2px 6px;
   }
   .role-card ul {
+    display: none;
     margin: 16px 0 0;
     padding-left: 18px;
     color: rgba(232, 230, 224, 0.78);
     font-size: 0.9rem;
   }
+  .role-card.is-open ul { display: block; }
   .role-card ul li { margin-bottom: 6px; }
   .role-toggle {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: 14px;
+    margin-top: 12px;
     padding: 0;
     border: 0;
     background: none;
@@ -709,6 +714,7 @@
     font-size: clamp(1.8rem, 3.2vw, 2.4rem);
     font-weight: 700;
     letter-spacing: -0.01em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
     position: relative;
     padding-bottom: 16px;
   }
@@ -1133,10 +1139,10 @@
           <div class="duration">~1 mo</div>
         </div>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cb" data-label-open="More" data-label-close="Less">
+      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
         <span class="label">More</span><span class="chev">▾</span>
       </button>
-      <ul id="details-role-cb" hidden>
+      <ul>
         <li>Build and maintain automated suites for web, desktop, and mobile apps using Python, Playwright, Appium, Behave/BDD, and PyTest.</li>
         <li>Use MCP and Claude Code to speed up test creation and expand coverage.</li>
         <li>Run CI/CD test execution with automated Grafana reporting, alongside manual regression, UI, and cross-platform testing.</li>
@@ -1156,10 +1162,10 @@
           <div class="duration">~6 mos</div>
         </div>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cl1" data-label-open="More" data-label-close="Less">
+      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
         <span class="label">More</span><span class="chev">▾</span>
       </button>
-      <ul id="details-role-cl1" hidden>
+      <ul>
         <li>Defined and drove end-to-end QA and automation strategy, leveraging Claude AI and GitHub Copilot for faster test delivery.</li>
         <li>Led and mentored the QA team, setting testing standards and shift-left practices across the SDLC.</li>
         <li>Built and maintained Playwright (web) and Appium (iOS &amp; Android) frameworks in Python within a monorepo.</li>
@@ -1179,10 +1185,10 @@
           <div class="duration">~1 yr 7 mos</div>
         </div>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cl2" data-label-open="More" data-label-close="Less">
+      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
         <span class="label">More</span><span class="chev">▾</span>
       </button>
-      <ul id="details-role-cl2" hidden>
+      <ul>
         <li>Led end-to-end testing — web, mobile, API, load, and manual — to ensure stable, high-quality releases.</li>
         <li>Built scalable Playwright automation frameworks using MCP, BDD, and POM design patterns.</li>
         <li>Ran cross-platform mobile automation with Appium across Android and iOS.</li>
@@ -1202,10 +1208,10 @@
           <div class="duration">~10 mos</div>
         </div>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cl3" data-label-open="More" data-label-close="Less">
+      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
         <span class="label">More</span><span class="chev">▾</span>
       </button>
-      <ul id="details-role-cl3" hidden>
+      <ul>
         <li>Designed automation scripts in Playwright using the POM structure and BDD model.</li>
         <li>Performed manual, API, and load testing across all application layers.</li>
         <li>Tracked and resolved defects with cross-functional teams in Jira.</li>
@@ -1224,10 +1230,10 @@
           <div class="duration">~2 yrs 6 mos</div>
         </div>
       </div>
-      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cl4" data-label-open="More" data-label-close="Less">
+      <button type="button" class="role-toggle" aria-expanded="false" data-label-open="More" data-label-close="Less">
         <span class="label">More</span><span class="chev">▾</span>
       </button>
-      <ul id="details-role-cl4" hidden>
+      <ul>
         <li>Conducted post-deployment testing and wrote test cases for web and mobile applications.</li>
         <li>Deployed surveys on a CMS platform and analysed user data to support quality and insights.</li>
         <li>Created user flowcharts, use cases, and ER diagrams; managed Agile delivery via Jira.</li>
@@ -1415,7 +1421,7 @@
 })();
 
 (function () {
-  var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle, .role-toggle'));
+  var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle'));
   toggles.forEach(function (btn) {
     var target = document.getElementById(btn.getAttribute('aria-controls'));
     var label = btn.querySelector('.label');
@@ -1427,6 +1433,22 @@
       target.hidden = open;
       btn.setAttribute('aria-expanded', String(!open));
       label.textContent = open ? openLabel : closeLabel;
+    });
+  });
+})();
+
+(function () {
+  var toggles = Array.prototype.slice.call(document.querySelectorAll('.role-toggle'));
+  toggles.forEach(function (btn) {
+    var card = btn.closest('.role-card');
+    var label = btn.querySelector('.label');
+    if (!card || !label) return;
+    var openLabel = btn.getAttribute('data-label-open') || 'More';
+    var closeLabel = btn.getAttribute('data-label-close') || 'Less';
+    btn.addEventListener('click', function () {
+      var open = card.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+      label.textContent = open ? closeLabel : openLabel;
     });
   });
 })();
