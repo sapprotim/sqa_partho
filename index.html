@@ -363,26 +363,6 @@
     .intro-copy { padding: 30px 26px; }
   }
 
-  /* ---------- About ---------- */
-  .about-more { display: flex; flex-direction: column; gap: 16px; }
-  .read-more-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 0;
-    border: 0;
-    background: none;
-    color: var(--accent);
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: color 0.15s;
-  }
-  .read-more-btn:hover { color: var(--accent-strong); text-decoration: underline; }
-  .read-more-btn .chev { font-size: 0.7rem; transition: transform 0.2s ease; }
-  .read-more-btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
-
   /* ---------- Toolbox ---------- */
   .skill-marquees { display: flex; flex-direction: column; gap: 14px; }
 
@@ -830,10 +810,7 @@
         <iframe src="https://www.loom.com/embed/564f559706ed490fbbe824ce45eac46c?hideEmbedTopBar=true" title="Partho Protim — introduction video" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="intro-copy">
-        <p>I'm a QA professional with 4+ years of experience across web, mobile, and desktop applications — covering manual testing, test automation, API testing, regression, performance testing, and defect management. I design and execute functional, regression, UI, API, data, and end-to-end test cases, and I build the automation frameworks that carry that coverage forward, using Playwright, Selenium, Appium, Behave/BDD, and the Page Object Model. <button type="button" class="read-more-btn" aria-expanded="false" aria-controls="aboutMore" data-label-open="Read more" data-label-close="Show less"><span class="label">Read more</span><span class="chev">▾</span></button></p>
-        <div class="about-more" id="aboutMore" hidden>
-          <p>Day to day, that means wiring CI/CD test execution through GitHub Actions and Jenkins with automated reporting, tracking defects through JIRA with clear evidence, and doing the root-cause digging to tell whether a failure is the app, the automation, the backend, or the environment. I also do a fair amount of API and performance testing with Postman, JMeter, and k6, backed by SQL and database validation. More recently, I've been using AI-assisted tools like Claude Code and MCP to speed up test development without cutting corners on coverage.</p>
-        </div>
+        <p>I'm a QA professional with 4+ years of experience across web, mobile, and desktop applications — covering manual testing, test automation, API testing, regression, performance testing, and defect management. I design and execute functional, regression, UI, API, data, and end-to-end test cases, and I build the automation frameworks that carry that coverage forward, using Playwright, Selenium, Appium, Behave/BDD, and the Page Object Model.</p>
       </div>
     </div>
   </section>
@@ -1445,7 +1422,7 @@
 })();
 
 (function () {
-  var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle, .read-more-btn, .role-toggle'));
+  var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle, .role-toggle'));
   toggles.forEach(function (btn) {
     var target = document.getElementById(btn.getAttribute('aria-controls'));
     var label = btn.querySelector('.label');
