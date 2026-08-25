@@ -588,7 +588,7 @@
   .project-card ul { margin: 16px 0 0; padding-left: 18px; color: var(--ink-secondary); font-size: 0.94rem; }
   .project-card ul li { margin-bottom: 7px; }
 
-  .card-actions { display: flex; gap: 18px; margin-top: auto; }
+  .card-actions { display: flex; gap: 18px; margin-top: 4px; margin-bottom: 4px; }
   .details-toggle {
     display: inline-flex;
     align-items: center;
@@ -952,6 +952,11 @@
       </div>
       <div class="project-meta">Powered by Singapore's <a href="https://www.hpb.gov.sg/healthy-living/healthtrack-sg/" target="_blank" rel="noopener">Health Promotion Board</a>, in partnership with Google, ConnectedLife, and Fullerton Health</div>
       <p>HealthTrack SG is a national digital health programme run by Singapore's Health Promotion Board that helps residents manage or reduce their risk of chronic conditions, combining wearable data, clinical records, and lifestyle insights into a single wellness score.</p>
+      <div class="card-actions">
+        <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-hts">
+          <span class="label">More details</span><span class="chev">▾</span>
+        </button>
+      </div>
       <div class="stat-block">
         <div class="stat-number">2,499<span>defects tracked across the project</span></div>
         <div class="stat-sub">By severity, at last count</div>
@@ -967,11 +972,6 @@
           <span class="legend-item"><span class="sw" style="background:#8B5FBF;"></span>Medium<span class="n">670</span></span>
           <span class="legend-item"><span class="sw" style="background:#C1553D;"></span>ShowStopper<span class="n">318</span></span>
         </div>
-      </div>
-      <div class="card-actions">
-        <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-hts">
-          <span class="label">More details</span><span class="chev">▾</span>
-        </button>
       </div>
       <div class="project-details" id="details-hts" hidden>
       <p>I worked on QA for the platform end to end — from writing manual test cases against the product design, to testing the web app, to building out automation coverage.</p>
