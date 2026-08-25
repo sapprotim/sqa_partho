@@ -134,8 +134,24 @@
   section:last-of-type { border-bottom: none; }
 
   .section-head { margin-bottom: 24px; }
-  .section-head h2 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); font-weight: 600; }
-  .section-head p { color: var(--ink-secondary); max-width: 60ch; margin-top: 10px; }
+  .section-head h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-bottom: 16px;
+  }
+  .section-head h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 46px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+  .section-head p { color: var(--ink-secondary); margin-top: 10px; }
 
   /* ---------- Nav ---------- */
   header.nav {
@@ -689,8 +705,24 @@
     align-items: start;
   }
   @media (max-width: 760px) { .contact { grid-template-columns: 1fr; } }
-  .contact h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; }
-  .contact p { color: var(--ink-secondary); max-width: 46ch; margin-top: 14px; }
+  .contact h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-bottom: 16px;
+  }
+  .contact h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 46px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+  .contact p { color: var(--ink-secondary); margin-top: 14px; }
   .contact .cta-row { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
   .contact-card {
     background: var(--surface);
