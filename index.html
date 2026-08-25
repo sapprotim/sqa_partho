@@ -460,13 +460,9 @@
     height: 44px;
     border-radius: 10px;
     background: #fff;
-    color: #12181F;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.9rem;
+    object-fit: contain;
+    padding: 6px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
   }
   .role-card-info { flex: 1 1 auto; min-width: 0; }
   .role-card-title {
@@ -499,39 +495,28 @@
     font-size: 0.9rem;
   }
   .role-card ul li { margin-bottom: 6px; }
+  .role-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--term-accent);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .role-toggle:hover { text-decoration: underline; }
+  .role-toggle .chev { font-size: 0.7rem; transition: transform 0.2s ease; }
+  .role-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
   @media (max-width: 560px) {
     .role-card-top { flex-wrap: wrap; }
     .role-card-dates { text-align: left; }
   }
 
-  .earlier {
-    margin-top: 6px;
-    border: 1px dashed var(--border);
-    border-radius: 12px;
-    padding: 20px 26px;
-  }
-  .earlier h3 {
-    font-size: 0.82rem;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-muted);
-    font-weight: 500;
-    margin-bottom: 14px;
-  }
-  .earlier-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 14px;
-    padding: 8px 0;
-    font-size: 0.9rem;
-    color: var(--ink-secondary);
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-  .earlier-row:first-of-type { border-top: none; }
-  .earlier-row .role-name { color: var(--ink); font-weight: 500; }
-  .earlier-row .dates { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-muted); white-space: nowrap; }
 
   /* ---------- Projects ---------- */
   .project-card {
@@ -566,7 +551,6 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 10px 19% 40px;
-    margin: -10px -19% -40px;
   }
   .project-track::-webkit-scrollbar { display: none; }
   .project-track .project-card {
@@ -578,7 +562,7 @@
   }
   .project-track .project-card.active { opacity: 1; transform: scale(1); }
   @media (max-width: 900px) {
-    .project-track { padding: 10px 6% 40px; margin: -10px -6% -40px; }
+    .project-track { padding: 10px 6% 40px; }
     .project-track .project-card { flex-basis: 84%; }
   }
 
@@ -1161,7 +1145,7 @@
 
     <div class="role-card">
       <div class="role-card-top">
-        <div class="role-logo">CB</div>
+        <img class="role-logo" src="assets/codeblaze.jpg" alt="CodeBlaze logo">
         <div class="role-card-info">
           <div class="role-card-title">Quality Assurance Automation Lead<span class="tag-current">Current</span></div>
           <div class="role-card-company">CodeBlaze</div>
@@ -1171,7 +1155,10 @@
           <div class="duration">~1 mo</div>
         </div>
       </div>
-      <ul>
+      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cb" data-label-open="More" data-label-close="Less">
+        <span class="label">More</span><span class="chev">▾</span>
+      </button>
+      <ul id="details-role-cb" hidden>
         <li>Build and maintain automated suites for web, desktop, and mobile apps using Python, Playwright, Appium, Behave/BDD, and PyTest.</li>
         <li>Use MCP and Claude Code to speed up test creation and expand coverage.</li>
         <li>Run CI/CD test execution with automated Grafana reporting, alongside manual regression, UI, and cross-platform testing.</li>
@@ -1181,7 +1168,7 @@
 
     <div class="role-card">
       <div class="role-card-top">
-        <div class="role-logo">CL</div>
+        <img class="role-logo" src="assets/connectedlife.png" alt="ConnectedLife logo">
         <div class="role-card-info">
           <div class="role-card-title">QA and Automation Lead</div>
           <div class="role-card-company">ConnectedLife</div>
@@ -1191,7 +1178,10 @@
           <div class="duration">~6 mos</div>
         </div>
       </div>
-      <ul>
+      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cl1" data-label-open="More" data-label-close="Less">
+        <span class="label">More</span><span class="chev">▾</span>
+      </button>
+      <ul id="details-role-cl1" hidden>
         <li>Defined and drove end-to-end QA and automation strategy, leveraging Claude AI and GitHub Copilot for faster test delivery.</li>
         <li>Led and mentored the QA team, setting testing standards and shift-left practices across the SDLC.</li>
         <li>Built and maintained Playwright (web) and Appium (iOS &amp; Android) frameworks in Python within a monorepo.</li>
@@ -1201,7 +1191,7 @@
 
     <div class="role-card">
       <div class="role-card-top">
-        <div class="role-logo">CL</div>
+        <img class="role-logo" src="assets/connectedlife.png" alt="ConnectedLife logo">
         <div class="role-card-info">
           <div class="role-card-title">QA Lead</div>
           <div class="role-card-company">ConnectedLife</div>
@@ -1211,7 +1201,10 @@
           <div class="duration">~1 yr 7 mos</div>
         </div>
       </div>
-      <ul>
+      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cl2" data-label-open="More" data-label-close="Less">
+        <span class="label">More</span><span class="chev">▾</span>
+      </button>
+      <ul id="details-role-cl2" hidden>
         <li>Led end-to-end testing — web, mobile, API, load, and manual — to ensure stable, high-quality releases.</li>
         <li>Built scalable Playwright automation frameworks using MCP, BDD, and POM design patterns.</li>
         <li>Ran cross-platform mobile automation with Appium across Android and iOS.</li>
@@ -1221,7 +1214,7 @@
 
     <div class="role-card">
       <div class="role-card-top">
-        <div class="role-logo">CL</div>
+        <img class="role-logo" src="assets/connectedlife.png" alt="ConnectedLife logo">
         <div class="role-card-info">
           <div class="role-card-title">QA Tester — eCOA &amp; Deployment</div>
           <div class="role-card-company">ConnectedLife</div>
@@ -1231,7 +1224,10 @@
           <div class="duration">~10 mos</div>
         </div>
       </div>
-      <ul>
+      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cl3" data-label-open="More" data-label-close="Less">
+        <span class="label">More</span><span class="chev">▾</span>
+      </button>
+      <ul id="details-role-cl3" hidden>
         <li>Designed automation scripts in Playwright using the POM structure and BDD model.</li>
         <li>Performed manual, API, and load testing across all application layers.</li>
         <li>Tracked and resolved defects with cross-functional teams in Jira.</li>
@@ -1240,7 +1236,7 @@
 
     <div class="role-card">
       <div class="role-card-top">
-        <div class="role-logo">CL</div>
+        <img class="role-logo" src="assets/connectedlife.png" alt="ConnectedLife logo">
         <div class="role-card-info">
           <div class="role-card-title">eCOA Project &amp; Operations Executive</div>
           <div class="role-card-company">ConnectedLife</div>
@@ -1250,32 +1246,16 @@
           <div class="duration">~2 yrs 6 mos</div>
         </div>
       </div>
-      <ul>
+      <button type="button" class="role-toggle" aria-expanded="false" aria-controls="details-role-cl4" data-label-open="More" data-label-close="Less">
+        <span class="label">More</span><span class="chev">▾</span>
+      </button>
+      <ul id="details-role-cl4" hidden>
         <li>Conducted post-deployment testing and wrote test cases for web and mobile applications.</li>
         <li>Deployed surveys on a CMS platform and analysed user data to support quality and insights.</li>
         <li>Created user flowcharts, use cases, and ER diagrams; managed Agile delivery via Jira.</li>
       </ul>
     </div>
 
-    <div class="earlier">
-      <h3>Earlier experience</h3>
-      <div class="earlier-row">
-        <span class="role-name">Next Billion — Key Account Executive</span>
-        <span class="dates">Nov 2019 — Sep 2020</span>
-      </div>
-      <div class="earlier-row">
-        <span class="role-name">Dmoney Bangladesh Ltd — NID Verification Officer</span>
-        <span class="dates">Sep 2019 — Oct 2019</span>
-      </div>
-      <div class="earlier-row">
-        <span class="role-name">Craftic Arts — Customer Relationship Manager</span>
-        <span class="dates">Aug 2018 — Aug 2019</span>
-      </div>
-      <div class="earlier-row">
-        <span class="role-name">Devine Intervention IT Solutions — Web Designer</span>
-        <span class="dates">Apr 2018 — Jul 2018</span>
-      </div>
-    </div>
   </section>
 
   <section id="education" class="numbered">
@@ -1459,7 +1439,7 @@
 })();
 
 (function () {
-  var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle, .read-more-btn'));
+  var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle, .read-more-btn, .role-toggle'));
   toggles.forEach(function (btn) {
     var target = document.getElementById(btn.getAttribute('aria-controls'));
     var label = btn.querySelector('.label');
