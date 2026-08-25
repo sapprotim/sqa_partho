@@ -130,42 +130,12 @@
 
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 18px;
-    height: 1px;
-    background: var(--accent);
-    display: inline-block;
-  }
-
-  section { padding: 76px 0; border-bottom: 1px solid var(--border); }
+  section { padding: 56px 0; border-bottom: 1px solid var(--border); }
   section:last-of-type { border-bottom: none; }
 
-  .section-head { margin-bottom: 34px; }
-  .section-head h2 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); font-weight: 600; margin-top: 10px; }
+  .section-head { margin-bottom: 24px; }
+  .section-head h2 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); font-weight: 600; }
   .section-head p { color: var(--ink-secondary); max-width: 60ch; margin-top: 10px; }
-
-  main.wrap { counter-reset: section-num; }
-  section.numbered .section-head { counter-increment: section-num; }
-  section.numbered .section-head::before {
-    content: counter(section-num, decimal-leading-zero);
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    color: var(--ink-muted);
-    margin-bottom: 12px;
-  }
 
   /* ---------- Nav ---------- */
   header.nav {
@@ -802,9 +772,6 @@
   </section>
 
   <section id="intro-video" class="numbered">
-    <div class="section-head">
-      <div class="eyebrow">Introduction</div>
-    </div>
     <div class="intro-panel">
       <div class="intro-media">
         <iframe src="https://www.loom.com/embed/564f559706ed490fbbe824ce45eac46c?hideEmbedTopBar=true" title="Partho Protim — introduction video" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
@@ -817,7 +784,6 @@
 
   <section id="toolbox" class="numbered">
     <div class="section-head">
-      <div class="eyebrow">Skills</div>
       <h2>Skills</h2>
     </div>
 
@@ -895,7 +861,6 @@
 
   <section id="projects" class="numbered">
     <div class="section-head">
-      <div class="eyebrow">Featured projects</div>
       <h2>Selected work</h2>
       <p>Three projects that show the range of the role — from ground-up QA on a wellness platform, to testing a national digital health programme, to manual-first QA for a hospital application.</p>
     </div>
@@ -1011,7 +976,6 @@
 
   <section id="highlights" class="numbered">
     <div class="section-head">
-      <div class="eyebrow">Proof of work</div>
       <h2>How I document, test, and report on quality</h2>
       <p>The habits that keep a QA process trustworthy — clear defect writeups, specs that hold up under review, and reporting a team can act on without chasing me for details.</p>
     </div>
@@ -1121,7 +1085,6 @@
 
   <section id="experience" class="numbered">
     <div class="section-head">
-      <div class="eyebrow">Experience</div>
       <h2>Where I've worked</h2>
       <p>Five and a half years growing from operations and post-deployment testing into leading QA and automation strategy end to end.</p>
     </div>
@@ -1243,7 +1206,6 @@
 
   <section id="education" class="numbered">
     <div class="section-head">
-      <div class="eyebrow">Education</div>
       <h2>Background</h2>
     </div>
     <div class="edu-row">
@@ -1272,8 +1234,7 @@
   <section id="contact" style="border-bottom:none;">
     <div class="contact">
       <div>
-        <div class="eyebrow">Contact</div>
-        <h2 style="margin-top:10px;">Let's talk QA.</h2>
+        <h2>Let's talk QA.</h2>
         <p>Whether it's a QA Lead role, an automation project that needs a framework rebuild, or just a conversation about testing and quality — I'm happy to connect.</p>
         <div class="cta-row">
           <a class="btn btn-solid" href="mailto:parthoprotim49@gmail.com">Email me</a>
