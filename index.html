@@ -690,8 +690,9 @@
   .donut-ring { fill: none; stroke: var(--surface-2); stroke-width: 16; }
   .donut-seg { fill: none; stroke-width: 16; }
   .donut-labeled { width: 100%; max-width: 480px; height: auto; }
-  .donut-labeled .leader { stroke: var(--ink-muted); stroke-width: 0.6; fill: none; }
-  .donut-labeled .dlabel { font-family: var(--font-mono); font-size: 7.5px; fill: var(--ink-secondary); }
+  .donut-labeled .leader { stroke: var(--ink-muted); stroke-width: 1; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .donut-labeled .anchor { fill: var(--ink-muted); }
+  .donut-labeled .dlabel { font-family: var(--font-mono); font-size: 9px; font-weight: 500; fill: var(--ink); }
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--ink-secondary); }
   .legend-item .sw { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
 
@@ -1131,19 +1132,26 @@
               <circle class="donut-seg" cx="170" cy="70" r="40" style="stroke:#3E7CB8; stroke-dasharray:27.14 224.19; stroke-dashoffset:-203.83;" />
               <circle class="donut-seg" cx="170" cy="70" r="40" style="stroke:#D98F7F; stroke-dasharray:20.36 230.97; stroke-dashoffset:-230.97;" />
             </g>
-            <polyline class="leader" points="184.70,22.21 226,20" />
+            <circle class="anchor" cx="184.70" cy="22.21" r="1.4" />
+            <polyline class="leader" points="184.70,22.21 211,20 226,20" />
             <text class="dlabel" x="230" y="23">Defer · 9.5%</text>
-            <polyline class="leader" points="210.73,99.04 226,100" />
+            <circle class="anchor" cx="210.73" cy="99.04" r="1.4" />
+            <polyline class="leader" points="210.73,99.04 211,100 226,100" />
             <text class="dlabel" x="230" y="103">Ready for QA · 50.7%</text>
-            <polyline class="leader" points="157.38,21.61 100,15" />
+            <circle class="anchor" cx="157.38" cy="21.61" r="1.4" />
+            <polyline class="leader" points="157.38,21.61 115,15 100,15" />
             <text class="dlabel" x="95" y="18" text-anchor="end">Reopen · 8.1%</text>
-            <polyline class="leader" points="132.49,36.93 100,38" />
+            <circle class="anchor" cx="132.49" cy="36.93" r="1.4" />
+            <polyline class="leader" points="132.49,36.93 115,38 100,38" />
             <text class="dlabel" x="95" y="41" text-anchor="end">Hold · 10.8%</text>
-            <polyline class="leader" points="122.54,54.24 100,61" />
+            <circle class="anchor" cx="122.54" cy="54.24" r="1.4" />
+            <polyline class="leader" points="122.54,54.24 115,61 100,61" />
             <text class="dlabel" x="95" y="64" text-anchor="end">Dev In Progress · 2.0%</text>
-            <polyline class="leader" points="120.11,66.70 100,84" />
+            <circle class="anchor" cx="120.11" cy="66.70" r="1.4" />
+            <polyline class="leader" points="120.11,66.70 115,84 100,84" />
             <text class="dlabel" x="95" y="87" text-anchor="end">Dev Complete · 6.1%</text>
-            <polyline class="leader" points="126.77,95.20 100,107" />
+            <circle class="anchor" cx="126.77" cy="95.20" r="1.4" />
+            <polyline class="leader" points="126.77,95.20 115,107 100,107" />
             <text class="dlabel" x="95" y="110" text-anchor="end">Backlog · 12.8%</text>
           </svg>
         </div>
