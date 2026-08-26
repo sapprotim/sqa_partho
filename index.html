@@ -148,6 +148,10 @@
      bottom padding on top of that leaves an oversized gap before the next section. */
   #projects { padding-bottom: 32px; }
   #highlights { padding-bottom: 32px; }
+  @media (max-width: 800px) {
+    #projects, #highlights { padding-bottom: 20px; }
+    #highlights, #experience { padding-top: 32px; }
+  }
 
   .section-head { margin-bottom: 24px; }
   .section-head h2 {
@@ -570,7 +574,7 @@
   }
   .project-track .project-card.active { opacity: 1; transform: scale(1); }
   @media (max-width: 900px) {
-    .project-track { padding: 10px 0 40px; }
+    .project-track { padding: 10px 0 20px; }
     .project-track .project-card { flex-basis: 100%; }
     /* Scale the desktop card padding back down to something closer to the
        terminal card / intro-copy proportions so it doesn't dwarf the content
