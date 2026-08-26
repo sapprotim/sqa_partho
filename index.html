@@ -441,6 +441,7 @@
     padding: 16px 20px;
     margin-bottom: 12px;
     box-shadow: 0 12px 30px -20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
   }
   .role-card-top { display: flex; align-items: flex-start; gap: 16px; }
   .role-logo {
@@ -1546,7 +1547,10 @@
     if (!card || !label) return;
     var openLabel = btn.getAttribute('data-label-open') || 'More';
     var closeLabel = btn.getAttribute('data-label-close') || 'Less';
-    btn.addEventListener('click', function () {
+    // Single handler on the whole card so clicking anywhere (not just the small
+    // toggle button) expands it - the button click bubbles here too, so this
+    // covers both without double-toggling.
+    card.addEventListener('click', function () {
       var open = card.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', String(open));
       label.textContent = open ? closeLabel : openLabel;
