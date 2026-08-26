@@ -689,7 +689,9 @@
   .donut { width: 176px; height: 176px; transform: rotate(-90deg); }
   .donut-ring { fill: none; stroke: var(--surface-2); stroke-width: 16; }
   .donut-seg { fill: none; stroke-width: 16; }
-  .legend { display: flex; flex-wrap: wrap; gap: 14px; }
+  .donut-labeled { width: 100%; max-width: 480px; height: auto; }
+  .donut-labeled .leader { stroke: var(--ink-muted); stroke-width: 0.6; fill: none; }
+  .donut-labeled .dlabel { font-family: var(--font-mono); font-size: 7.5px; fill: var(--ink-secondary); }
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--ink-secondary); }
   .legend-item .sw { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
 
@@ -1118,25 +1120,32 @@
         <h3>Defect lifecycle snapshot</h3>
         <div class="sub">A defect-status breakdown from a recent project (148 issues)</div>
         <div class="donut-wrap">
-          <svg class="donut" viewBox="0 0 100 100" role="img" aria-label="Defect lifecycle breakdown: Defer 9.5%, Ready for QA 50.7%, Backlog 12.8%, Dev Complete 6.1%, Dev In Progress 2.0%, Hold 10.8%, Reopen 8.1%">
-            <circle class="donut-ring" cx="50" cy="50" r="40" />
-            <circle class="donut-seg" cx="50" cy="50" r="40" style="stroke:#D9A441; stroke-dasharray:23.88 227.45; stroke-dashoffset:0;" />
-            <circle class="donut-seg" cx="50" cy="50" r="40" style="stroke:var(--accent); stroke-dasharray:127.42 123.91; stroke-dashoffset:-23.88;" />
-            <circle class="donut-seg" cx="50" cy="50" r="40" style="stroke:#C1553D; stroke-dasharray:32.17 219.16; stroke-dashoffset:-151.30;" />
-            <circle class="donut-seg" cx="50" cy="50" r="40" style="stroke:#C98A3E; stroke-dasharray:15.33 236.00; stroke-dashoffset:-183.47;" />
-            <circle class="donut-seg" cx="50" cy="50" r="40" style="stroke:#4FA8A0; stroke-dasharray:5.03 246.30; stroke-dashoffset:-198.80;" />
-            <circle class="donut-seg" cx="50" cy="50" r="40" style="stroke:#3E7CB8; stroke-dasharray:27.14 224.19; stroke-dashoffset:-203.83;" />
-            <circle class="donut-seg" cx="50" cy="50" r="40" style="stroke:#D98F7F; stroke-dasharray:20.36 230.97; stroke-dashoffset:-230.97;" />
+          <svg class="donut-labeled" viewBox="-30 0 370 140" role="img" aria-label="Defect lifecycle breakdown: Defer 9.5%, Ready for QA 50.7%, Backlog 12.8%, Dev Complete 6.1%, Dev In Progress 2.0%, Hold 10.8%, Reopen 8.1%">
+            <g transform="rotate(-90 170 70)">
+              <circle class="donut-ring" cx="170" cy="70" r="40" />
+              <circle class="donut-seg" cx="170" cy="70" r="40" style="stroke:#D9A441; stroke-dasharray:23.88 227.45; stroke-dashoffset:0;" />
+              <circle class="donut-seg" cx="170" cy="70" r="40" style="stroke:var(--accent); stroke-dasharray:127.42 123.91; stroke-dashoffset:-23.88;" />
+              <circle class="donut-seg" cx="170" cy="70" r="40" style="stroke:#C1553D; stroke-dasharray:32.17 219.16; stroke-dashoffset:-151.30;" />
+              <circle class="donut-seg" cx="170" cy="70" r="40" style="stroke:#C98A3E; stroke-dasharray:15.33 236.00; stroke-dashoffset:-183.47;" />
+              <circle class="donut-seg" cx="170" cy="70" r="40" style="stroke:#4FA8A0; stroke-dasharray:5.03 246.30; stroke-dashoffset:-198.80;" />
+              <circle class="donut-seg" cx="170" cy="70" r="40" style="stroke:#3E7CB8; stroke-dasharray:27.14 224.19; stroke-dashoffset:-203.83;" />
+              <circle class="donut-seg" cx="170" cy="70" r="40" style="stroke:#D98F7F; stroke-dasharray:20.36 230.97; stroke-dashoffset:-230.97;" />
+            </g>
+            <polyline class="leader" points="184.70,22.21 226,20" />
+            <text class="dlabel" x="230" y="23">Defer · 9.5%</text>
+            <polyline class="leader" points="210.73,99.04 226,100" />
+            <text class="dlabel" x="230" y="103">Ready for QA · 50.7%</text>
+            <polyline class="leader" points="157.38,21.61 100,15" />
+            <text class="dlabel" x="95" y="18" text-anchor="end">Reopen · 8.1%</text>
+            <polyline class="leader" points="132.49,36.93 100,38" />
+            <text class="dlabel" x="95" y="41" text-anchor="end">Hold · 10.8%</text>
+            <polyline class="leader" points="122.54,54.24 100,61" />
+            <text class="dlabel" x="95" y="64" text-anchor="end">Dev In Progress · 2.0%</text>
+            <polyline class="leader" points="120.11,66.70 100,84" />
+            <text class="dlabel" x="95" y="87" text-anchor="end">Dev Complete · 6.1%</text>
+            <polyline class="leader" points="126.77,95.20 100,107" />
+            <text class="dlabel" x="95" y="110" text-anchor="end">Backlog · 12.8%</text>
           </svg>
-        </div>
-        <div class="legend">
-          <span class="legend-item"><span class="sw" style="background:var(--accent);"></span>Ready for QA · 50.7%</span>
-          <span class="legend-item"><span class="sw" style="background:#C1553D;"></span>Backlog · 12.8%</span>
-          <span class="legend-item"><span class="sw" style="background:#3E7CB8;"></span>Hold · 10.8%</span>
-          <span class="legend-item"><span class="sw" style="background:#D9A441;"></span>Defer · 9.5%</span>
-          <span class="legend-item"><span class="sw" style="background:#D98F7F;"></span>Reopen · 8.1%</span>
-          <span class="legend-item"><span class="sw" style="background:#C98A3E;"></span>Dev Complete · 6.1%</span>
-          <span class="legend-item"><span class="sw" style="background:#4FA8A0;"></span>Dev In Progress · 2.0%</span>
         </div>
       </div>
 
