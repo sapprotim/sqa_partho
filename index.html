@@ -709,10 +709,6 @@
   }
   .snippet .kw { color: var(--term-accent); }
   .snippet .cm { color: var(--term-muted); }
-  .trace-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
-  .trace-pair .snippet, .trace-pair .term { margin: 0; }
-  @media (max-width: 760px) { .trace-pair { grid-template-columns: 1fr; } }
-
   .hcard.full { grid-column: 1 / -1; }
 
   /* ---------- Deliverable samples ---------- */
@@ -1158,10 +1154,9 @@
         </div>
       </div>
 
-      <div class="hcard full">
-        <h3>BDD scenario &amp; failure trace</h3>
-        <div class="sub">A generic scenario showing how I trace a failing step back to its assertion — not from a real project</div>
-        <div class="trace-pair">
+      <div class="hcard">
+        <h3>BDD scenario</h3>
+        <div class="sub">A generic scenario — not from a real project</div>
         <div class="snippet">
 <span class="cm"># features/dashboard/summary_score.feature</span><br>
 <span class="kw">Feature:</span> Dashboard summary score<br><br>
@@ -1170,6 +1165,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">When</span> they open the dashboard<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">Then</span> the summary score should be displayed
         </div>
+      </div>
+
+      <div class="hcard">
+        <h3>Failure trace</h3>
+        <div class="sub">Terminal output when the assertion fails</div>
         <div class="term" aria-hidden="true" style="box-shadow:none;">
           <div class="term-bar"><span></span><span></span><span></span></div>
           <div><span class="prompt">$</span> behave features/dashboard/summary_score.feature</div>
@@ -1182,7 +1182,6 @@
           <div>&nbsp;</div>
           <div>1 scenario (0 passed, 1 failed)</div>
           <div>3 steps (2 passed, 1 failed)</div>
-        </div>
         </div>
       </div>
 
