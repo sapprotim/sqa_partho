@@ -496,15 +496,15 @@
     width: 30px;
     height: 30px;
     padding: 0;
-    border: 1px solid var(--border);
+    border: 1px solid var(--accent);
     border-radius: 50%;
-    background: var(--surface);
-    color: var(--ink);
+    background: var(--accent-soft);
+    color: var(--accent);
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     transition: background 0.15s, border-color 0.15s, color 0.15s;
   }
-  .role-toggle:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+  .role-toggle:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
   .role-toggle .chev { font-size: 0.9rem; transition: transform 0.2s ease; }
   .role-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
   .role-toggle .label {
