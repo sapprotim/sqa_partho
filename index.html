@@ -102,7 +102,7 @@
 
   /* ---------- Base ---------- */
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; font-size: 18px; }
+  html { scroll-behavior: smooth; font-size: 18px; overflow-x: hidden; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
@@ -116,6 +116,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6;
+    overflow-x: hidden;
   }
 
   p {
