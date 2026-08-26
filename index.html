@@ -149,6 +149,9 @@
   #projects { padding-bottom: 32px; }
   #highlights { padding-bottom: 32px; }
   @media (max-width: 800px) {
+    /* Cut the base section padding site-wide on mobile first, then the
+       specific pairs below trim the tightest transitions even further. */
+    section { padding: 28px 0; }
     #projects, #highlights, #experience, #education { padding-bottom: 8px; }
     #highlights, #experience, #education, #contact { padding-top: 20px; }
   }
