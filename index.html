@@ -144,6 +144,9 @@
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
   section { padding: 56px 0; }
+  /* The carousel nav already adds its own margin above it, so the full default
+     bottom padding on top of that leaves an oversized gap before the next section. */
+  #projects { padding-bottom: 32px; }
 
   .section-head { margin-bottom: 24px; }
   .section-head h2 {
@@ -574,7 +577,7 @@
     .hero-overlay { padding: 36px 20px 16px; }
   }
 
-  .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }
+  .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
   .carousel-arrow {
     width: 44px;
     height: 44px;
