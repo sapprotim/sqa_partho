@@ -663,8 +663,12 @@
   .hcard {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 22px 22px;
+    border-radius: 26px;
+    padding: 36px 32px 38px;
+  }
+  @media (max-width: 900px) {
+    /* Match the project cards' mobile scale-down so both card families read consistently. */
+    .hcard { padding: 24px 22px 26px; border-radius: 18px; }
   }
   .hcard h3 { font-size: 0.92rem; font-weight: 600; font-family: var(--font-body); margin-bottom: 4px; }
   .hcard .sub { font-size: 0.8rem; color: var(--ink-muted); margin-bottom: 18px; }
