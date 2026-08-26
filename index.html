@@ -123,6 +123,11 @@
     text-justify: inter-word;
     hyphens: auto;
   }
+  @media (max-width: 600px) {
+    /* Justify needs room to breathe — on narrow columns it stretches gaps between a
+       handful of words into ugly rivers of whitespace, so fall back to left-aligned. */
+    p { text-align: left; hyphens: none; }
+  }
 
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
