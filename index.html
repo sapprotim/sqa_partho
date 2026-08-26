@@ -123,9 +123,10 @@
     text-justify: inter-word;
     hyphens: auto;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     /* Justify needs room to breathe — on narrow columns it stretches gaps between a
-       handful of words into ugly rivers of whitespace, so fall back to left-aligned. */
+       handful of words into ugly rivers of whitespace, so fall back to left-aligned.
+       800px matches the rest of the site's mobile breakpoint (.intro-panel etc). */
     p { text-align: left; hyphens: none; }
   }
 
@@ -344,13 +345,17 @@
     background: var(--surface-2);
   }
   .intro-media { position: relative; aspect-ratio: 16 / 9; align-self: start; overflow: hidden; background: #0d0d0d; }
-  .intro-media iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .intro-media-bg {
-    transform: scale(3.6);
-    filter: blur(30px) saturate(1.15) brightness(0.55);
-    pointer-events: none;
+  .intro-media iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* Source recording is portrait (720x1320); scale it up so it fills the
+       16:9 panel edge-to-edge instead of being letterboxed by Loom. */
+    transform: scale(3.3);
+    transform-origin: center;
   }
-  .intro-media-fg { z-index: 1; }
   .intro-copy {
     padding: 40px 44px;
     display: flex;
@@ -859,8 +864,7 @@
   <section id="intro-video" class="numbered">
     <div class="intro-panel">
       <div class="intro-media">
-        <iframe class="intro-media-bg" src="https://www.loom.com/embed/564f559706ed490fbbe824ce45eac46c?hideEmbedTopBar=true&amp;autoplay=0" tabindex="-1" aria-hidden="true" allow="" loading="lazy"></iframe>
-        <iframe class="intro-media-fg" src="https://www.loom.com/embed/564f559706ed490fbbe824ce45eac46c?hideEmbedTopBar=true" title="Partho Protim — introduction video" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.loom.com/embed/564f559706ed490fbbe824ce45eac46c?hideEmbedTopBar=true" title="Partho Protim — introduction video" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="intro-copy">
         <p>I'm a QA professional with 4+ years of experience across web, mobile, and desktop applications — covering manual testing, test automation, API testing, regression, performance testing, and defect management. I design and execute functional, regression, UI, API, data, and end-to-end test cases, and I build the automation frameworks that carry that coverage forward, using Playwright, Selenium, Appium, Behave/BDD, and the Page Object Model. <button type="button" class="details-toggle" aria-expanded="false" aria-controls="aboutMore" data-label-open="More" data-label-close="Less"><span class="label">More</span><span class="chev">▾</span></button></p>
