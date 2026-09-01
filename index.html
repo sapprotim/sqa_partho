@@ -182,9 +182,14 @@
     position: sticky;
     top: 0;
     z-index: 40;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     background: color-mix(in srgb, var(--bg) 86%, transparent);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
   }
   .nav-inner {
     display: flex;
@@ -254,26 +259,44 @@
   .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
   .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+  .nav-backdrop {
+    display: none;
+  }
   @media (max-width: 800px) {
     .nav-toggle { display: flex; }
+
+    .nav-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 39;
+    }
+    .nav-backdrop.open { opacity: 1; pointer-events: auto; }
+
     nav.links {
-      position: absolute;
-      top: 100%;
-      left: 0;
+      position: fixed;
+      top: var(--nav-h, 62px);
       right: 0;
+      bottom: 0;
+      width: min(76vw, 300px);
       flex-direction: column;
       align-items: stretch;
       gap: 0;
       background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.25s ease, opacity 0.2s ease;
+      border-left: 1px solid var(--border);
+      padding: 10px 24px 24px;
+      overflow-y: auto;
+      box-shadow: -16px 0 32px -18px rgba(0, 0, 0, 0.35);
+      transform: translateX(100%);
+      transition: transform 0.28s ease;
+      z-index: 39;
     }
-    nav.links.open { max-height: 320px; opacity: 1; padding: 8px 24px 14px; overflow-y: auto; }
-    nav.links a { padding: 10px 0; border-bottom: 1px solid var(--border); }
+    nav.links.open { transform: translateX(0); }
+    nav.links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
     nav.links a:last-child { border-bottom: none; }
   }
 
@@ -923,6 +946,7 @@
 <body>
 
 <header class="nav">
+  <div class="nav-bg"></div>
   <div class="nav-inner">
     <div class="nav-mark"><span class="dot"></span>Partho Protim</div>
     <nav class="links" id="nav-links">
@@ -938,6 +962,7 @@
       <span></span><span></span><span></span>
     </button>
   </div>
+  <div class="nav-backdrop" id="nav-backdrop"></div>
 </header>
 
 <main class="wrap">
@@ -1502,15 +1527,25 @@
 (function () {
   var toggle = document.getElementById('nav-toggle');
   var navLinks = document.getElementById('nav-links');
-  if (!toggle || !navLinks) return;
+  var backdrop = document.getElementById('nav-backdrop');
+  var header = document.querySelector('header.nav');
+  if (!toggle || !navLinks || !backdrop || !header) return;
+
+  function setNavHeight() {
+    document.documentElement.style.setProperty('--nav-h', header.offsetHeight + 'px');
+  }
+  setNavHeight();
+  window.addEventListener('resize', setNavHeight);
 
   function closeMenu() {
     toggle.setAttribute('aria-expanded', 'false');
     navLinks.classList.remove('open');
+    backdrop.classList.remove('open');
   }
 
   toggle.addEventListener('click', function () {
     var open = navLinks.classList.toggle('open');
+    backdrop.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
@@ -1518,11 +1553,7 @@
     if (e.target.tagName === 'A') closeMenu();
   });
 
-  document.addEventListener('click', function (e) {
-    if (!navLinks.classList.contains('open')) return;
-    if (navLinks.contains(e.target) || toggle.contains(e.target)) return;
-    closeMenu();
-  });
+  backdrop.addEventListener('click', closeMenu);
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeMenu();
