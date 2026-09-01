@@ -335,6 +335,13 @@
   .hero-stats .stat { display: flex; flex-direction: column; gap: 4px; }
   .hero-stats .stat b { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--term-ink); line-height: 1; }
   .hero-stats .stat span { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--term-muted); }
+  @media (max-width: 480px) {
+    /* Flex-wrap centers each wrapped row independently, so the second row of
+       stats drifts out of alignment with the first. A grid keeps every
+       stat's number/label lined up in the same two columns. */
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .hero-stats .stat { align-items: flex-start; }
+  }
 
   /* terminal card */
   .term {
