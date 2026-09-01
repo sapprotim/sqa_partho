@@ -228,6 +228,55 @@
     .nav-inner .btn { display: none; }
   }
 
+  .nav-toggle {
+    display: none;
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-direction: column;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    cursor: pointer;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  @media (max-width: 800px) {
+    .nav-toggle { display: flex; }
+    nav.links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.25s ease, opacity 0.2s ease;
+    }
+    nav.links.open { max-height: 320px; opacity: 1; padding: 8px 24px 14px; overflow-y: auto; }
+    nav.links a { padding: 10px 0; border-bottom: 1px solid var(--border); }
+    nav.links a:last-child { border-bottom: none; }
+  }
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -876,7 +925,7 @@
 <header class="nav">
   <div class="nav-inner">
     <div class="nav-mark"><span class="dot"></span>Partho Protim</div>
-    <nav class="links">
+    <nav class="links" id="nav-links">
       <a href="#intro-video">Intro</a>
       <a href="#toolbox">Skills</a>
       <a href="#projects">Projects</a>
@@ -885,6 +934,9 @@
       <a href="#education">Education</a>
     </nav>
     <a class="btn btn-solid" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -1447,6 +1499,36 @@
 </footer>
 
 <script>
+(function () {
+  var toggle = document.getElementById('nav-toggle');
+  var navLinks = document.getElementById('nav-links');
+  if (!toggle || !navLinks) return;
+
+  function closeMenu() {
+    toggle.setAttribute('aria-expanded', 'false');
+    navLinks.classList.remove('open');
+  }
+
+  toggle.addEventListener('click', function () {
+    var open = navLinks.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  navLinks.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') closeMenu();
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!navLinks.classList.contains('open')) return;
+    if (navLinks.contains(e.target) || toggle.contains(e.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
+
 (function () {
   var links = Array.prototype.slice.call(document.querySelectorAll('nav.links a'));
   var pairs = links.map(function (link) {
