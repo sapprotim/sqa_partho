@@ -222,6 +222,11 @@
   nav.links a { color: var(--ink-secondary); white-space: nowrap; }
   nav.links a:hover { color: var(--accent); text-decoration: none; }
   nav.links a.active { color: var(--accent); }
+  @media (max-width: 800px) {
+    /* The LinkedIn button crowds out the nav links on mobile; the same CTA
+       already appears in the hero and contact sections. */
+    .nav-inner .btn { display: none; }
+  }
 
   .btn {
     display: inline-flex;
@@ -265,6 +270,10 @@
     border-radius: 100px;
     padding: 6px 12px 6px 10px;
     margin-bottom: 22px;
+    white-space: nowrap;
+  }
+  @media (max-width: 480px) {
+    .status-pill { font-size: 0.58rem; gap: 6px; padding: 6px 10px 6px 8px; }
   }
   .status-pill .ping {
     width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
@@ -302,6 +311,19 @@
     flex-wrap: wrap;
   }
   .hero .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  @media (max-width: 480px) {
+    .hero .meta {
+      flex-wrap: nowrap;
+      gap: 6px;
+      font-size: 0.53rem;
+      min-width: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .hero .meta::-webkit-scrollbar { display: none; }
+    .hero .meta span { flex: 0 0 auto; white-space: nowrap; }
+  }
   .hero-side {
     background: var(--term-bg);
     border-radius: 14px;
@@ -785,6 +807,27 @@
   }
   .contact p { color: var(--ink-secondary); margin-top: 14px; }
   .contact .cta-row { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+  @media (max-width: 480px) {
+    /* Keep all three CTA buttons on one line instead of wrapping to a lonely second row.
+       Shrink them a touch first so they tend to fit outright; overflow-x is just the
+       safety net for the narrowest phones. min-width:0 stops the grid item from growing
+       to fit the nowrap content instead of letting the row scroll internally. */
+    .hero > div:first-child, .contact > div:first-child { min-width: 0; }
+    .hero .cta-row, .contact .cta-row {
+      flex-wrap: nowrap;
+      gap: 6px;
+      min-width: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .hero .cta-row::-webkit-scrollbar, .contact .cta-row::-webkit-scrollbar { display: none; }
+    .hero .cta-row .btn, .contact .cta-row .btn {
+      flex: 0 0 auto;
+      font-size: 0.7rem;
+      padding: 7px 9px;
+    }
+  }
   .contact-card {
     background: var(--surface);
     border: 1px solid var(--border);
