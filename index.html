@@ -226,7 +226,6 @@
   nav.links::-webkit-scrollbar { display: none; }
   nav.links a { color: var(--ink-secondary); white-space: nowrap; }
   nav.links a:hover { color: var(--accent); text-decoration: none; }
-  nav.links a.active { color: var(--accent); }
   @media (max-width: 800px) {
     /* The LinkedIn button crowds out the nav links on mobile; the same CTA
        already appears in the hero and contact sections. */
@@ -269,20 +268,17 @@
       display: block;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-      opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease;
       z-index: 39;
     }
-    .nav-backdrop.open { opacity: 1; pointer-events: auto; }
+    .nav-backdrop.open { pointer-events: auto; }
 
     nav.links {
       position: fixed;
       top: var(--nav-h, 62px);
       right: 0;
       bottom: 0;
-      width: min(76vw, 300px);
+      width: 30%;
       flex-direction: column;
       align-items: stretch;
       gap: 0;
@@ -1558,32 +1554,6 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeMenu();
   });
-})();
-
-(function () {
-  var links = Array.prototype.slice.call(document.querySelectorAll('nav.links a'));
-  var pairs = links.map(function (link) {
-    var id = (link.getAttribute('href') || '').replace('#', '');
-    var sec = id ? document.getElementById(id) : null;
-    return sec ? { link: link, sec: sec } : null;
-  }).filter(Boolean);
-
-  if (!pairs.length || !('IntersectionObserver' in window)) return;
-
-  var linkBySection = new Map();
-  pairs.forEach(function (p) { linkBySection.set(p.sec, p.link); });
-
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      var link = linkBySection.get(entry.target);
-      if (!link) return;
-      links.forEach(function (l) { l.classList.remove('active'); });
-      link.classList.add('active');
-    });
-  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-
-  pairs.forEach(function (p) { observer.observe(p.sec); });
 })();
 
 (function () {
