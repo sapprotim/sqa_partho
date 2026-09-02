@@ -326,7 +326,7 @@
     align-items: center;
   }
   @media (max-width: 800px) {
-    .hero { grid-template-columns: 1fr; padding-top: 40px; }
+    .hero { grid-template-columns: 1fr; padding-top: 40px; padding-bottom: 32px; }
   }
 
   .status-pill {
@@ -472,7 +472,7 @@
     justify-content: center;
     gap: 16px;
   }
-  .intro-copy p { color: var(--ink-secondary); font-size: 1rem; font-weight: 400; }
+  .intro-copy p { color: var(--ink-secondary); font-size: 1rem; font-weight: 400; text-wrap: pretty; }
   @media (max-width: 800px) {
     .intro-panel { grid-template-columns: 1fr; }
     .intro-copy { padding: 30px 26px; }
