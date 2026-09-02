@@ -124,12 +124,6 @@
     text-justify: inter-word;
     hyphens: auto;
   }
-  @media (max-width: 800px) {
-    /* Justify needs room to breathe — on narrow columns it stretches gaps between a
-       handful of words into ugly rivers of whitespace, so fall back to left-aligned.
-       800px matches the rest of the site's mobile breakpoint (.intro-panel etc). */
-    p { text-align: left; hyphens: none; }
-  }
 
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
@@ -472,7 +466,7 @@
     justify-content: center;
     gap: 16px;
   }
-  .intro-copy p { color: var(--ink-secondary); font-size: 1rem; font-weight: 400; text-align: justify; text-align-last: left; hyphens: auto; }
+  .intro-copy p { color: var(--ink-secondary); font-size: 1rem; font-weight: 400; text-align-last: left; }
   @media (max-width: 800px) {
     .intro-panel { grid-template-columns: 1fr; }
     .intro-copy { padding: 30px 26px; }
