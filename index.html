@@ -443,8 +443,10 @@
     height: 100%;
     border: 0;
     /* Source recording is portrait (720x1320); scale it up so it fills the
-       16:9 panel edge-to-edge instead of being letterboxed by Loom. */
-    transform: scale(3.3);
+       16:9 panel instead of being letterboxed by Loom. Kept below the
+       ~3.3x needed for a fully edge-to-edge fill so the crop isn't an
+       extreme face-only close-up; this leaves a slim letterboxed edge. */
+    transform: scale(2.6);
     transform-origin: center;
   }
   .intro-copy {
@@ -460,11 +462,13 @@
     font-size: 1.05rem;
     font-weight: 400;
     line-height: 1.7;
-    text-align: left;
+    text-align: justify;
+    text-align-last: left;
     text-justify: auto;
     hyphens: none;
     margin: 0;
   }
+  .intro-copy p + p, #aboutMore p + p { margin-top: 16px; }
   @media (max-width: 800px) {
     .intro-panel { grid-template-columns: 1fr; }
     .intro-copy { padding: 30px 26px; }
