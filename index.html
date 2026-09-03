@@ -21,7 +21,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
   /* ---------- Tokens ---------- */
@@ -455,21 +455,23 @@
     gap: 16px;
   }
   .intro-copy p {
-    color: var(--amber);
-    font-family: var(--font-display);
-    font-style: normal;
-    font-size: 1.1rem;
+    color: var(--ink-secondary);
+    font-family: var(--font-body);
+    font-size: 1.05rem;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.7;
     text-align: left;
     text-justify: auto;
     hyphens: none;
     margin: 0;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65), 0 -1px 1px rgba(0, 0, 0, 0.35);
   }
   @media (max-width: 800px) {
     .intro-panel { grid-template-columns: 1fr; }
     .intro-copy { padding: 30px 26px; }
+  }
+  @media (min-width: 801px) {
+    #aboutMore[hidden] { display: block; }
+    .intro-copy .details-toggle { display: none; }
   }
 
   /* ---------- Toolbox ---------- */
@@ -1036,9 +1038,11 @@
         <iframe src="https://www.loom.com/embed/077473f64f38444d985e2e85fec4e5ed?hideEmbedTopBar=true" title="Partho Protim, introduction video" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="intro-copy">
-        <p>I'm a Senior QA Engineer helping businesses build reliable, high-quality software. I have experience in both manual and automation testing, and I help startups and businesses test their web, mobile, and desktop applications, identify issues early, validate complete user journeys, and make sure their products work as expected before reaching real users.</p>
-        <p>My focus is on understanding the product, thinking from the user's perspective, finding potential risks, and delivering clear, actionable feedback. I help teams improve product quality, reduce release risks, save testing time, and release with greater confidence.</p>
-        <p>Whether you're building a new product, launching a new feature, or improving an existing application, I can help ensure your product is reliable, user-friendly, and ready for real users.</p>
+        <p>I'm a Senior QA Engineer helping businesses build reliable, high-quality software. I have experience in both manual and automation testing, and I help startups and businesses test their web, mobile, and desktop applications, identify issues early, validate complete user journeys, and make sure their products work as expected before reaching real users. <button type="button" class="details-toggle" aria-expanded="false" aria-controls="aboutMore" data-label-open="More" data-label-close="Less"><span class="label">More</span><span class="chev">▾</span></button></p>
+        <div id="aboutMore" hidden>
+          <p>My focus is on understanding the product, thinking from the user's perspective, finding potential risks, and delivering clear, actionable feedback. I help teams improve product quality, reduce release risks, save testing time, and release with greater confidence.</p>
+          <p>Whether you're building a new product, launching a new feature, or improving an existing application, I can help ensure your product is reliable, user-friendly, and ready for real users.</p>
+        </div>
       </div>
     </div>
   </section>
