@@ -282,12 +282,11 @@
       border-bottom-left-radius: 12px;
       padding: 10px 24px 14px;
       overflow-y: auto;
-      box-shadow: -16px 16px 32px -18px rgba(0, 0, 0, 0.35);
       transform: translateX(100%);
       transition: transform 0.28s ease;
       z-index: 39;
     }
-    nav.links.open { transform: translateX(0); }
+    nav.links.open { transform: translateX(0); box-shadow: -16px 16px 32px -18px rgba(0, 0, 0, 0.35); }
     nav.links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
     nav.links a:last-child { border-bottom: none; }
   }
@@ -621,20 +620,23 @@
     border: 0;
   }
   @media (max-width: 560px) {
+    .role-card { padding: 14px 16px; margin-bottom: 10px; }
     .role-card-top {
       display: grid;
-      grid-template-columns: 44px 1fr auto;
+      grid-template-columns: 38px 1fr auto;
       grid-template-areas:
         "logo info info"
         ".    dates toggle";
-      column-gap: 12px;
-      row-gap: 10px;
+      column-gap: 10px;
+      row-gap: 8px;
       align-items: start;
     }
-    .role-logo { grid-area: logo; }
-    .role-card-info { grid-area: info; }
+    .role-logo { grid-area: logo; width: 38px; height: 38px; }
+    .role-card-info { grid-area: info; min-height: 2.6em; }
+    .role-card-title { font-size: 0.92rem; line-height: 1.3; }
     .role-card-dates { grid-area: dates; text-align: left; align-self: center; }
-    .role-toggle { grid-area: toggle; justify-self: end; align-self: center; }
+    .role-card-dates .dates { font-size: 0.72rem; }
+    .role-toggle { grid-area: toggle; justify-self: end; align-self: center; width: 26px; height: 26px; }
   }
 
 
@@ -729,7 +731,7 @@
   #img-hts-hero { aspect-ratio: 1873 / 926; }
   #img-ah-hero { aspect-ratio: 1918 / 935; }
   .project-card .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-  .project-card p { color: var(--ink-secondary); font-size: 1rem; }
+  .project-card p { color: var(--ink-secondary); font-size: 1rem; margin: 0 0 16px; }
   .project-card ul { margin: 20px 0 0; padding-left: 18px; color: var(--ink-secondary); font-size: 0.94rem; }
   .project-card ul li { margin-bottom: 9px; }
 
@@ -751,7 +753,8 @@
   .details-toggle:hover { color: var(--accent-strong); text-decoration: underline; }
   .details-toggle .chev { font-size: 0.7rem; transition: transform 0.2s ease; }
   .details-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
-  .project-details { margin-top: 20px; }
+  .project-details { margin-top: 8px; }
+  .project-details p:first-child { margin-top: 0; }
 
   .stat-block { margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--border); }
   .stat-number {
@@ -992,7 +995,7 @@
       <div class="role">QA Automation Lead — Web · Mobile · Desktop · API</div>
       <p class="lede"><span class="lede-hook">Building a new product, launching a feature, or improving an existing one?</span>I can help you find bugs early, improve quality, and release with confidence through manual and automation testing. I ensure your product works smoothly and delivers a better user experience.</p>
       <div class="cta-row">
-        <a class="btn btn-solid" href="mailto:parthoprotim49@gmail.com">Email me</a>
+        <a class="btn btn-solid" href="mailto:hparthoprotim@gmail.com">Email me</a>
         <a class="btn btn-ghost" href="https://wa.me/8801761441989" target="_blank" rel="noopener">WhatsApp ↗</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">View LinkedIn ↗</a>
       </div>
@@ -1499,13 +1502,13 @@
         <h2>Let's talk QA.</h2>
         <p>Whether it's a QA Lead role, an automation project that needs a framework rebuild, or just a conversation about testing and quality — I'm happy to connect.</p>
         <div class="cta-row">
-          <a class="btn btn-solid" href="mailto:parthoprotim49@gmail.com">Email me</a>
+          <a class="btn btn-solid" href="mailto:hparthoprotim@gmail.com">Email me</a>
           <a class="btn btn-ghost" href="https://wa.me/8801761441989" target="_blank" rel="noopener">WhatsApp ↗</a>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
         </div>
       </div>
       <div class="contact-card">
-        <div class="row"><span class="k">EMAIL</span><span class="v">parthoprotim49@gmail.com</span></div>
+        <div class="row"><span class="k">EMAIL</span><span class="v">hparthoprotim@gmail.com</span></div>
         <div class="row"><span class="k">LINKEDIN</span><span class="v"><a href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">/in/partho-protim</a></span></div>
         <div class="row"><span class="k">LOCATION</span><span class="v">Dhaka, Bangladesh</span></div>
         <div class="row"><span class="k">STATUS</span><span class="v">Open to opportunities</span></div>
@@ -1518,7 +1521,7 @@
   <div class="wrap footer-inner">
     <div class="footer-brand"><span class="dot"></span>Partho Protim</div>
     <div class="footer-links">
-      <a href="mailto:parthoprotim49@gmail.com">Email</a>
+      <a href="mailto:hparthoprotim@gmail.com">Email</a>
       <a href="https://wa.me/8801761441989" target="_blank" rel="noopener">WhatsApp</a>
       <a href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
