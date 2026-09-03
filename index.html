@@ -621,8 +621,20 @@
     border: 0;
   }
   @media (max-width: 560px) {
-    .role-card-top { flex-wrap: wrap; }
-    .role-card-dates { text-align: left; }
+    .role-card-top {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      grid-template-areas:
+        "logo info info"
+        ".    dates toggle";
+      column-gap: 12px;
+      row-gap: 10px;
+      align-items: start;
+    }
+    .role-logo { grid-area: logo; }
+    .role-card-info { grid-area: info; }
+    .role-card-dates { grid-area: dates; text-align: left; align-self: center; }
+    .role-toggle { grid-area: toggle; justify-self: end; align-self: center; }
   }
 
 
@@ -837,6 +849,7 @@
   .split-track { flex: 1; display: flex; height: 8px; border-radius: 5px; overflow: hidden; background: var(--surface-2); }
   .split-fill.pass { height: 100%; background: var(--accent); }
   .split-fill.fail { height: 100%; background: #C1553D; }
+  .split-fill.skip { height: 100%; background: #C98A3E; }
   .split-row .count { width: 72px; text-align: right; font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-muted); font-variant-numeric: tabular-nums; flex-shrink: 0; }
   .report-total { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--ink-secondary); display: flex; flex-wrap: wrap; gap: 16px; }
   .report-total b { color: var(--ink); font-family: var(--font-mono); }
@@ -1100,6 +1113,15 @@
       </div>
       <div class="project-meta">ConnectedLife V2.0 Navig8 AI Digital health Monitor</div>
       <p>I was involved from the design stage — reviewing wireframes with the design team and feeding QA and usability input back before development began. <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-cl"><span class="label">More details</span><span class="chev">▾</span></button></p>
+      <div class="project-details" id="details-cl" hidden>
+      <p>I ran manual testing throughout the build, and once the product was roughly 70% complete, I started layering in automation with Playwright for web and Appium for mobile so regression coverage could keep pace with the growing feature set. I sent the team a QA status update every week, and toward the end I set up CI/CD for both web and mobile so every new build automatically triggers the full suite and produces a report — no manual kick-off needed.</p>
+      <ul>
+        <li>Reviewed design wireframes early and fed usability and edge-case concerns back before development started.</li>
+        <li>Ran manual testing throughout the build, then introduced Playwright (web) and Appium (mobile) automation once development hit roughly 70%.</li>
+        <li>Sent weekly QA status updates to the team as coverage and defect counts evolved.</li>
+        <li>Set up CI/CD so every new build automatically triggers the suite and produces a report.</li>
+      </ul>
+      </div>
       <div class="stat-block">
         <div class="stat-number">957<span>defects tracked across the project</span></div>
         <div class="stat-sub">Combined manual and automated testing, by severity at last count</div>
@@ -1116,15 +1138,6 @@
           <span class="legend-item"><span class="sw" style="background:#C1553D;"></span>ShowStopper<span class="n">15</span></span>
         </div>
       </div>
-      <div class="project-details" id="details-cl" hidden>
-      <p>I ran manual testing throughout the build, and once the product was roughly 70% complete, I started layering in automation with Playwright for web and Appium for mobile so regression coverage could keep pace with the growing feature set. I sent the team a QA status update every week, and toward the end I set up CI/CD for both web and mobile so every new build automatically triggers the full suite and produces a report — no manual kick-off needed.</p>
-      <ul>
-        <li>Reviewed design wireframes early and fed usability and edge-case concerns back before development started.</li>
-        <li>Ran manual testing throughout the build, then introduced Playwright (web) and Appium (mobile) automation once development hit roughly 70%.</li>
-        <li>Sent weekly QA status updates to the team as coverage and defect counts evolved.</li>
-        <li>Set up CI/CD so every new build automatically triggers the suite and produces a report.</li>
-      </ul>
-      </div>
     </div>
 
     <div class="project-card active">
@@ -1134,6 +1147,15 @@
       </div>
       <div class="project-meta">Powered by Singapore's <a href="https://www.hpb.gov.sg/healthy-living/healthtrack-sg/" target="_blank" rel="noopener">Health Promotion Board</a>, in partnership with Google, ConnectedLife, and Fullerton Health</div>
       <p>HealthTrack SG is a national digital health programme run by Singapore's Health Promotion Board that helps residents manage or reduce their risk of chronic conditions, combining wearable data, clinical records, and lifestyle insights into a single wellness score. <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-hts"><span class="label">More details</span><span class="chev">▾</span></button></p>
+      <div class="project-details" id="details-hts" hidden>
+      <p>I worked on QA for the platform end to end — from writing manual test cases against the product design, to testing the web app, to building out automation coverage.</p>
+      <ul>
+        <li>Wrote manual test cases based on the product design and specifications.</li>
+        <li>Tested the web application manually, logging and tracking defects as they surfaced.</li>
+        <li>Built automation coverage with Playwright for web and Maestro for mobile.</li>
+        <li>Owned QA end to end for the project — planning, execution, and sign-off.</li>
+      </ul>
+      </div>
       <div class="stat-block">
         <div class="stat-number">1,308<span>defects tracked across the project</span></div>
         <div class="stat-sub">By severity, at last count</div>
@@ -1150,15 +1172,6 @@
           <span class="legend-item"><span class="sw" style="background:#C1553D;"></span>ShowStopper<span class="n">36</span></span>
         </div>
       </div>
-      <div class="project-details" id="details-hts" hidden>
-      <p>I worked on QA for the platform end to end — from writing manual test cases against the product design, to testing the web app, to building out automation coverage.</p>
-      <ul>
-        <li>Wrote manual test cases based on the product design and specifications.</li>
-        <li>Tested the web application manually, logging and tracking defects as they surfaced.</li>
-        <li>Built automation coverage with Playwright for web and Maestro for mobile.</li>
-        <li>Owned QA end to end for the project — planning, execution, and sign-off.</li>
-      </ul>
-      </div>
     </div>
     <div class="project-card">
       <div class="project-hero-shot">
@@ -1167,6 +1180,14 @@
       </div>
       <div class="project-meta">Public hospital under Singapore's National University Health System</div>
       <p>Alexandra Hospital's application spans both mobile and web, and my work here was weighted heavily toward manual testing — walking through flows by hand, logging defects, and verifying fixes. <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-ah"><span class="label">More details</span><span class="chev">▾</span></button></p>
+      <div class="project-details" id="details-ah" hidden>
+      <p>I also built out a layer of automation for the web application using Selenium to cover key regression checks.</p>
+      <ul>
+        <li>Focused primarily on manual testing across the mobile app and web application.</li>
+        <li>Built Selenium automation for the web application to cover key regression checks.</li>
+        <li>Logged and tracked defects by severity, from show-stoppers down to low-priority issues.</li>
+      </ul>
+      </div>
       <div class="stat-block">
         <div class="stat-number">349<span>defects tracked across the project</span></div>
         <div class="stat-sub">By severity, at last count</div>
@@ -1182,14 +1203,6 @@
           <span class="legend-item"><span class="sw" style="background:#C98A3E;"></span>High<span class="n">36</span></span>
           <span class="legend-item"><span class="sw" style="background:#C1553D;"></span>ShowStopper<span class="n">10</span></span>
         </div>
-      </div>
-      <div class="project-details" id="details-ah" hidden>
-      <p>I also built out a layer of automation for the web application using Selenium to cover key regression checks.</p>
-      <ul>
-        <li>Focused primarily on manual testing across the mobile app and web application.</li>
-        <li>Built Selenium automation for the web application to cover key regression checks.</li>
-        <li>Logged and tracked defects by severity, from show-stoppers down to low-priority issues.</li>
-      </ul>
       </div>
     </div>
       </div>
@@ -1209,16 +1222,16 @@
     <div class="highlight-grid">
       <div class="hcard full">
         <h3>Automation &amp; release reporting</h3>
-        <div class="sub">Real pass/fail results from a mobile regression run, grouped by platform</div>
-        <div class="split-row"><span class="label">Web</span><div class="split-track"><div class="split-fill pass" style="width:96%"></div><div class="split-fill fail" style="width:4%"></div></div><span class="count">191 / 199</span></div>
-        <div class="split-row"><span class="label">Desktop</span><div class="split-track"><div class="split-fill pass" style="width:66%"></div><div class="split-fill fail" style="width:34%"></div></div><span class="count">27 / 41</span></div>
-        <div class="split-row"><span class="label">Mobile</span><div class="split-track"><div class="split-fill pass" style="width:0%"></div><div class="split-fill fail" style="width:100%"></div></div><span class="count">0 / 12</span></div>
+        <div class="sub">Real pass/fail/skipped results from a regression run, grouped by platform</div>
+        <div class="split-row"><span class="label">Web</span><div class="split-track"><div class="split-fill pass" style="width:96%"></div><div class="split-fill fail" style="width:3%"></div><div class="split-fill skip" style="width:1%"></div></div><span class="count">225 / 235</span></div>
+        <div class="split-row"><span class="label">Desktop</span><div class="split-track"><div class="split-fill pass" style="width:97%"></div><div class="split-fill fail" style="width:1%"></div><div class="split-fill skip" style="width:2%"></div></div><span class="count">205 / 211</span></div>
+        <div class="split-row"><span class="label">Mobile</span><div class="split-track"><div class="split-fill pass" style="width:91%"></div><div class="split-fill fail" style="width:6%"></div><div class="split-fill skip" style="width:3%"></div></div><span class="count">198 / 217</span></div>
         <div class="report-total">
-          <span><b>86</b> total cases</span>
-          <span><b>80</b> passed</span>
-          <span><b>5</b> failed</span>
-          <span><b>1</b> skipped</span>
-          <span><b>93%</b> pass rate</span>
+          <span><b>663</b> total cases</span>
+          <span><b>628</b> passed</span>
+          <span><b>22</b> failed</span>
+          <span><b>13</b> skipped</span>
+          <span><b>95%</b> pass rate</span>
         </div>
       </div>
 
