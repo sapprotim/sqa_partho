@@ -352,6 +352,8 @@
     margin-top: 20px;
     max-width: 52ch;
     color: var(--ink-secondary);
+    font-family: var(--font-body);
+    font-style: normal;
     font-size: 1.03rem;
   }
   .hero p.lede .lede-hook {
@@ -436,7 +438,7 @@
     border: 1px solid var(--border);
     background: var(--surface-2);
   }
-  .intro-media { position: relative; aspect-ratio: 16 / 9; align-self: start; overflow: hidden; background: #0d0d0d; }
+  .intro-media { position: relative; overflow: hidden; background: #0d0d0d; }
   .intro-media iframe {
     position: absolute;
     inset: 0;
@@ -444,11 +446,14 @@
     height: 100%;
     border: 0;
     /* Source recording is portrait (720x1320); scale it up so it fills the
-       16:9 panel instead of being letterboxed by Loom. Kept below the
+       panel instead of being letterboxed by Loom. Kept below the
        ~3.3x needed for a fully edge-to-edge fill so the crop isn't an
        extreme face-only close-up; this leaves a slim letterboxed edge. */
     transform: scale(2.2);
-    transform-origin: center;
+    transform-origin: 50% 40%;
+  }
+  @media (max-width: 800px) {
+    .intro-media { aspect-ratio: 16 / 9; }
   }
   .intro-copy {
     padding: 40px 44px;
