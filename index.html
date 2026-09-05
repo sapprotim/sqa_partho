@@ -1722,19 +1722,18 @@
     var clone = document.createElement('div');
     clone.className = 'project-card project-card-clone';
     clone.setAttribute('aria-hidden', 'true');
-    var hero = card.querySelector('.project-hero-shot');
-    if (hero) {
-      var heroClone = hero.cloneNode(true);
-      var origImg = hero.querySelector('img');
-      var cloneImg = heroClone.querySelector('img');
-      // Each hero image's real aspect ratio is set via an id-scoped rule
-      // (#img-*-hero) - carry the resolved value over inline before the id
-      // is stripped below, or the clone falls back to a generic ratio and
-      // letterboxes.
-      if (origImg && cloneImg) {
-        cloneImg.style.aspectRatio = getComputedStyle(origImg).aspectRatio;
-      }
-      clone.appendChild(heroClone);
+    // Clone the whole card, not just the hero shot - a hero-only clone is
+    // much shorter than a real neighbour (which shows its full badge/text/
+    // chart), so the two peek sides ended up mismatched heights.
+    clone.innerHTML = card.innerHTML;
+    var origImg = card.querySelector('.project-hero-shot img');
+    var cloneImg = clone.querySelector('.project-hero-shot img');
+    // Each hero image's real aspect ratio is set via an id-scoped rule
+    // (#img-*-hero) - carry the resolved value over inline before the id
+    // is stripped below, or the clone falls back to a generic ratio and
+    // letterboxes.
+    if (origImg && cloneImg) {
+      cloneImg.style.aspectRatio = getComputedStyle(origImg).aspectRatio;
     }
     Array.prototype.slice.call(clone.querySelectorAll('[id]')).forEach(function (el) {
       el.removeAttribute('id');
