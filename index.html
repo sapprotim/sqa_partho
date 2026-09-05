@@ -705,8 +705,7 @@
     transform: scale(0.86);
     transition: transform 0.35s ease, opacity 0.35s ease;
   }
-  .project-track .project-card:first-child { scroll-snap-align: start; }
-  .project-track .project-card:last-child { scroll-snap-align: end; }
+  .project-card-clone { pointer-events: none; }
   .project-track .project-card.active { opacity: 1; transform: scale(1); }
   @media (max-width: 900px) {
     .project-track { padding: 10px 0 20px; }
@@ -1716,6 +1715,23 @@
   var cards = Array.prototype.slice.call(track.children);
   if (cards.length < 2) { prevBtn.hidden = true; nextBtn.hidden = true; return; }
 
+  // Give the first/last card a neighbour to peek at too, so centering them
+  // never leaves a blank gutter on the side with no real card - clone just
+  // the hero shot (all a peek ever shows) from the opposite end.
+  function makePeekClone(card) {
+    var clone = document.createElement('div');
+    clone.className = 'project-card project-card-clone';
+    clone.setAttribute('aria-hidden', 'true');
+    var hero = card.querySelector('.project-hero-shot');
+    if (hero) clone.appendChild(hero.cloneNode(true));
+    Array.prototype.slice.call(clone.querySelectorAll('[id]')).forEach(function (el) {
+      el.removeAttribute('id');
+    });
+    return clone;
+  }
+  track.insertBefore(makePeekClone(cards[cards.length - 1]), cards[0]);
+  track.appendChild(makePeekClone(cards[0]));
+
   var index = 0;
   var syncing = false;
 
@@ -1744,11 +1760,7 @@
     markActive();
     closeOpenDetails();
     syncing = true;
-    // Center middle cards so both neighbours peek in, but snap the first/last
-    // card flush to its edge instead - centering them leaves an empty gutter
-    // on the side with no card to show.
-    var align = index === 0 ? 'start' : index === cards.length - 1 ? 'end' : 'center';
-    cards[index].scrollIntoView({ behavior: instant ? 'auto' : 'smooth', inline: align, block: 'nearest' });
+    cards[index].scrollIntoView({ behavior: instant ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
     setTimeout(function () { syncing = false; }, instant ? 50 : 500);
   }
 
