@@ -1832,9 +1832,15 @@
   goTo(1, true);
   window.addEventListener('load', function () { goTo(1, true); syncHeight(); });
 
-  // Text reflow at a new viewport width can change the reference card's
-  // height, so re-measure on resize - but only that, not on navigation.
-  window.addEventListener('resize', syncHeight);
+  // A one-off measurement can run before web fonts/images finish settling
+  // the reference card's real size, leaving the fixed height too short and
+  // its content spilling past the arrows. Watch the card itself so any
+  // later reflow (font swap, image load, viewport resize) re-measures it.
+  if (window.ResizeObserver) {
+    new ResizeObserver(syncHeight).observe(cards[1]);
+  } else {
+    window.addEventListener('resize', syncHeight);
+  }
 })();
 
 (function () {
