@@ -1660,9 +1660,24 @@
     nextBtn.disabled = index === cards.length - 1;
   }
 
+  // Collapse any expanded "More details" panel so it doesn't stay open
+  // pointing at a card that's no longer active.
+  function closeOpenDetails() {
+    Array.prototype.slice.call(track.querySelectorAll('.project-details')).forEach(function (panel) {
+      if (panel.hidden) return;
+      panel.hidden = true;
+      var toggle = track.querySelector('.details-toggle[aria-controls="' + panel.id + '"]');
+      if (!toggle) return;
+      var label = toggle.querySelector('.label');
+      toggle.setAttribute('aria-expanded', 'false');
+      if (label) label.textContent = toggle.getAttribute('data-label-open') || 'More details';
+    });
+  }
+
   function goTo(i, instant) {
     index = Math.max(0, Math.min(cards.length - 1, i));
     markActive();
+    closeOpenDetails();
     syncing = true;
     cards[index].scrollIntoView({ behavior: instant ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
     setTimeout(function () { syncing = false; }, instant ? 50 : 500);
