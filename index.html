@@ -704,9 +704,9 @@
     opacity: 0.4;
     transform: scale(0.86);
     transition: transform 0.35s ease, opacity 0.35s ease;
+    cursor: pointer;
   }
-  .project-card-clone { pointer-events: none; }
-  .project-track .project-card.active { opacity: 1; transform: scale(1); }
+  .project-track .project-card.active { opacity: 1; transform: scale(1); cursor: auto; }
   @media (max-width: 900px) {
     .project-track { padding: 10px 0 20px; }
     .project-track .project-card { flex-basis: 100%; }
@@ -1716,9 +1716,9 @@
   if (cards.length < 2) { prevBtn.hidden = true; nextBtn.hidden = true; return; }
 
   // Give the first/last card a neighbour to peek at too, so centering them
-  // never leaves a blank gutter on the side with no real card - clone just
-  // the hero shot (all a peek ever shows) from the opposite end.
-  function makePeekClone(card) {
+  // never leaves a blank gutter on the side with no real card - clone the
+  // opposite end's card and let clicking it jump straight to the real one.
+  function makePeekClone(card, targetIndex) {
     var clone = document.createElement('div');
     clone.className = 'project-card project-card-clone';
     clone.setAttribute('aria-hidden', 'true');
@@ -1738,10 +1738,16 @@
     Array.prototype.slice.call(clone.querySelectorAll('[id]')).forEach(function (el) {
       el.removeAttribute('id');
     });
+    // Strip the copied controls - they'd otherwise point at the real card's
+    // ids and could toggle it invisibly. The clone itself becomes the click
+    // target instead, jumping to that real card.
+    Array.prototype.slice.call(clone.querySelectorAll('button')).forEach(function (b) { b.remove(); });
+    Array.prototype.slice.call(clone.querySelectorAll('a[href]')).forEach(function (a) { a.removeAttribute('href'); });
+    clone.addEventListener('click', function () { goTo(targetIndex); });
     return clone;
   }
-  track.insertBefore(makePeekClone(cards[cards.length - 1]), cards[0]);
-  track.appendChild(makePeekClone(cards[0]));
+  track.insertBefore(makePeekClone(cards[cards.length - 1], cards.length - 1), cards[0]);
+  track.appendChild(makePeekClone(cards[0], 0));
 
   var index = 0;
   var syncing = false;
@@ -1777,6 +1783,17 @@
 
   prevBtn.addEventListener('click', function () { goTo(index - 1); });
   nextBtn.addEventListener('click', function () { goTo(index + 1); });
+
+  // Clicking a peeked (non-active) real card jumps to it, same as a clone.
+  // Capture phase so this runs before the card's own inner click handlers
+  // (description-text toggle, divider button) when it isn't active yet.
+  cards.forEach(function (c, i) {
+    c.addEventListener('click', function (e) {
+      if (i === index) return;
+      e.stopPropagation();
+      goTo(i);
+    }, true);
+  });
 
   // Keep the active card in sync if the user scrolls/swipes the track directly.
   var scrollTimer;
