@@ -1756,12 +1756,15 @@
   var index = 0;
   var syncing = false;
 
-  // Fix the carousel's height to the middle card's own size (collapsed),
-  // so the arrows sit at one constant position and never drift as you
-  // navigate between cards of different heights. A card whose "More
-  // details" expands taller than this just overflows visibly below.
+  // Fix the carousel's height once, so the arrows sit at one constant
+  // position and never drift as you navigate. It has to fit the tallest of
+  // the 3 cards, not just the middle one - all of them sit in the same row
+  // (peeking or not), so a shorter reference still gets overlapped by a
+  // taller neighbour painting past it. A card whose "More details" expands
+  // taller still than that just overflows visibly below.
   function syncHeight() {
-    track.parentElement.style.height = cards[1].scrollHeight + 'px';
+    var tallest = Math.max.apply(null, cards.map(function (c) { return c.scrollHeight; }));
+    track.parentElement.style.height = tallest + 'px';
   }
 
   function markActive() {
@@ -1833,11 +1836,12 @@
   window.addEventListener('load', function () { goTo(1, true); syncHeight(); });
 
   // A one-off measurement can run before web fonts/images finish settling
-  // the reference card's real size, leaving the fixed height too short and
-  // its content spilling past the arrows. Watch the card itself so any
-  // later reflow (font swap, image load, viewport resize) re-measures it.
+  // each card's real size, leaving the fixed height too short and content
+  // spilling past the arrows. Watch all 3 cards so any later reflow (font
+  // swap, image load, viewport resize) re-measures them.
   if (window.ResizeObserver) {
-    new ResizeObserver(syncHeight).observe(cards[1]);
+    var ro = new ResizeObserver(syncHeight);
+    cards.forEach(function (c) { ro.observe(c); });
   } else {
     window.addEventListener('resize', syncHeight);
   }
