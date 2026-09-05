@@ -788,8 +788,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 28px;
-    margin-top: 26px;
+    height: 38px;
+    margin-top: 28px;
     padding: 0;
     border: none;
     background: none;
@@ -808,15 +808,29 @@
     transform: translateY(-50%);
   }
   .details-divider .chev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     z-index: 1;
-    background: var(--surface);
-    padding: 0 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent-soft);
     color: var(--accent);
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     line-height: 1;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   }
-  .details-divider:hover .chev { color: var(--accent-strong); }
+  .details-divider:hover .chev {
+    background: var(--accent);
+    color: var(--accent-ink);
+    transform: scale(1.15);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+  }
+  .details-divider[aria-expanded="true"] .chev { transform: rotate(180deg); }
+  .details-divider[aria-expanded="true"]:hover .chev { transform: rotate(180deg) scale(1.15); }
 
   .stat-block { margin-top: 20px; padding-top: 0; border-top: none; }
   .stat-number {
