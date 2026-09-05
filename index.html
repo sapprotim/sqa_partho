@@ -1754,8 +1754,6 @@
 
   function markActive() {
     cards.forEach(function (c, i) { c.classList.toggle('active', i === index); });
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === cards.length - 1;
   }
 
   // Collapse any expanded "More details" panel so it doesn't stay open
@@ -1773,7 +1771,7 @@
   }
 
   function goTo(i, instant) {
-    index = Math.max(0, Math.min(cards.length - 1, i));
+    index = ((i % cards.length) + cards.length) % cards.length;
     markActive();
     closeOpenDetails();
     syncing = true;
