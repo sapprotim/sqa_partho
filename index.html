@@ -1790,6 +1790,16 @@
       btn.setAttribute('aria-expanded', String(!open));
       if (label) label.textContent = open ? openLabel : closeLabel;
     });
+    // On project cards, let the description text itself act as the trigger
+    // too - the divider line alone is easy to miss, and clicking again
+    // while details are open should close them, same as the divider.
+    if (btn.classList.contains('details-divider')) {
+      var lede = target.previousElementSibling;
+      if (lede && lede.tagName === 'P') {
+        lede.style.cursor = 'pointer';
+        lede.addEventListener('click', function () { btn.click(); });
+      }
+    }
   });
 })();
 
