@@ -685,7 +685,7 @@
   }
   .hero-overlay .project-title { color: #fff; margin: 0; }
 
-  .project-carousel { position: relative; overflow: hidden; }
+  .project-carousel { position: relative; overflow: hidden; transition: height 0.3s ease; }
   .project-track {
     display: flex;
     align-items: flex-start;
@@ -1756,8 +1756,17 @@
   var index = 0;
   var syncing = false;
 
+  // Peek cards left/right can be taller or shorter than the active one, so
+  // the track's own height (and the gap to the arrows below it) used to
+  // follow whichever sibling was tallest instead of the active card. Size
+  // the carousel to the active card's real height instead.
+  function syncHeight() {
+    track.parentElement.style.height = cards[index].scrollHeight + 'px';
+  }
+
   function markActive() {
     cards.forEach(function (c, i) { c.classList.toggle('active', i === index); });
+    syncHeight();
   }
 
   // Collapse any expanded "More details" panel so it doesn't stay open
@@ -1822,6 +1831,15 @@
   // a different card looking "active" on first paint.
   goTo(1, true);
   window.addEventListener('load', function () { goTo(1, true); });
+
+  // Re-measure when the active card's own height changes - a resize, or its
+  // "More details" panel opening/closing - so the arrow gap never drifts.
+  window.addEventListener('resize', syncHeight);
+  new MutationObserver(syncHeight).observe(track, {
+    attributes: true,
+    attributeFilter: ['hidden'],
+    subtree: true
+  });
 })();
 
 (function () {
