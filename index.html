@@ -783,7 +783,42 @@
   .project-details { margin-top: 8px; }
   .project-details p:first-child { margin-top: 0; }
 
-  .stat-block { margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .details-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 28px;
+    margin-top: 26px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+  }
+  .details-divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    transform: translateY(-50%);
+  }
+  .details-divider .chev {
+    position: relative;
+    z-index: 1;
+    background: var(--surface);
+    padding: 0 12px;
+    color: var(--accent);
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+  .details-divider:hover .chev { color: var(--accent-strong); }
+
+  .stat-block { margin-top: 20px; padding-top: 0; border-top: none; }
   .stat-number {
     font-family: var(--font-display);
     font-size: 2rem;
@@ -1148,7 +1183,7 @@
         <div class="hero-overlay"><h3 class="project-title">ConnectedLife V2.0, Navig8 AI Digital Health Monitor</h3></div>
       </div>
       <div class="project-meta">Powered by advanced AI, shaped by Google AI and ConnectedLife's in-house team</div>
-      <p>Navig8 AI connects wearables, lab results, face scans, and lifestyle metrics into one intelligent system, tracking 70+ biomarkers on a single dashboard. AI insights, validated by medical experts, are turned into personalised plans and nudges via a companion app, helping users catch health risks early and build lasting routines. <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-cl"><span class="label">More details</span><span class="chev">▾</span></button></p>
+      <p>Navig8 AI connects wearables, lab results, face scans, and lifestyle metrics into one intelligent system, tracking 70+ biomarkers on a single dashboard. AI insights, validated by medical experts, are turned into personalised plans and nudges via a companion app, helping users catch health risks early and build lasting routines.</p>
       <div class="project-details" id="details-cl" hidden>
       <p>I was involved across the full lifecycle, from reviewing wireframes with the design team to final delivery. I ran manual testing throughout the build, then introduced Playwright (web) and Appium (mobile) automation once development hit ~70%, which became my primary focus as the project matured. I owned Jira test management, led bug triage, sent weekly QA status updates, and set up CI/CD so every build auto-triggers the full suite and generates a report.</p>
       <ul>
@@ -1160,6 +1195,7 @@
         <li>Sent weekly QA status updates and set up CI/CD for automated builds and reporting.</li>
       </ul>
       </div>
+      <button type="button" class="details-toggle details-divider" aria-expanded="false" aria-controls="details-cl" aria-label="More details"><span class="chev">▾</span></button>
       <div class="stat-block">
         <div class="stat-number">957<span>defects tracked across the project</span></div>
         <div class="stat-sub">Combined manual and automated testing, by severity at last count</div>
@@ -1184,7 +1220,7 @@
         <div class="hero-overlay"><h3 class="project-title">HealthTrack SG</h3></div>
       </div>
       <div class="project-meta">Powered by Singapore's <a href="https://www.hpb.gov.sg/healthy-living/healthtrack-sg/" target="_blank" rel="noopener">Health Promotion Board</a>, in partnership with Google, ConnectedLife, and Fullerton Health</div>
-      <p>HealthTrack SG is a national digital health programme run by Singapore's Health Promotion Board, helping residents manage or reduce their risk of chronic conditions by combining wearable data, clinical records, and lifestyle insights into a single wellness score. The platform tracks 52+ biomarkers with real-time alerts and notification reminders, forming part of a broader national initiative to deliver person-centric, data-driven preventive health. <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-hts"><span class="label">More details</span><span class="chev">▾</span></button></p>
+      <p>HealthTrack SG is a national digital health programme run by Singapore's Health Promotion Board, helping residents manage or reduce their risk of chronic conditions by combining wearable data, clinical records, and lifestyle insights into a single wellness score. The platform tracks 52+ biomarkers with real-time alerts and notification reminders, forming part of a broader national initiative to deliver person-centric, data-driven preventive health.</p>
       <div class="project-details" id="details-hts" hidden>
       <p>I worked on QA for the platform end to end, from writing manual test cases against the product design, to testing the web app, to building out automation, API, and performance test coverage.</p>
       <ul>
@@ -1199,6 +1235,7 @@
         <li>Owned QA end to end for the project, planning, execution, and sign-off, helping the team consistently deliver a high-quality product.</li>
       </ul>
       </div>
+      <button type="button" class="details-toggle details-divider" aria-expanded="false" aria-controls="details-hts" aria-label="More details"><span class="chev">▾</span></button>
       <div class="stat-block">
         <div class="stat-number">1,308<span>defects tracked across the project</span></div>
         <div class="stat-sub">By severity, at last count</div>
@@ -1222,7 +1259,7 @@
         <div class="hero-overlay"><h3 class="project-title">Alexandra Hospital</h3></div>
       </div>
       <div class="project-meta">Public hospital under Singapore's National University Health System</div>
-      <p>Alexandra Hospital's application spans both mobile and web, and my work here was weighted heavily toward manual testing, walking through flows by hand, logging defects, and verifying fixes. I also built out a layer of automation for the web application using Selenium to cover key regression checks. <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-ah"><span class="label">More details</span><span class="chev">▾</span></button></p>
+      <p>Alexandra Hospital's application spans both mobile and web, and my work here was weighted heavily toward manual testing, walking through flows by hand, logging defects, and verifying fixes. I also built out a layer of automation for the web application using Selenium to cover key regression checks.</p>
       <div class="project-details" id="details-ah" hidden>
       <p>ConnectedLife's unique combination of AI capabilities and human expertise sets them apart in the digital health space. Their responsiveness and pioneering approach have made a tangible difference to this work, seen not just as a vendor, but as a long-term partner in driving impactful, technology-enabled care to Alexandra Hospital and its patients.</p>
       <ul>
@@ -1236,6 +1273,7 @@
         <li>Logged and tracked defects by severity, from show-stoppers down to low-priority issues, following through with developers until each was verified and closed.</li>
       </ul>
       </div>
+      <button type="button" class="details-toggle details-divider" aria-expanded="false" aria-controls="details-ah" aria-label="More details"><span class="chev">▾</span></button>
       <div class="stat-block">
         <div class="stat-number">349<span>defects tracked across the project</span></div>
         <div class="stat-sub">By severity, at last count</div>
@@ -1379,6 +1417,7 @@
             <li>Observe the validation message shown under the field.</li>
           </ol>
         </span></div>
+        <div class="bug-row"><span class="k">Devices</span><span class="v">Samsung A07, Android 14</span></div>
         <div class="bug-row"><span class="k">Evidence</span><span class="v">
           <img class="bug-evidence" src="assets/bug-evidence.jpg" alt="App validation error on the left showing a hardcoded 130&ndash;230cm/40&ndash;200kg range, next to the admin dashboard on the right showing the actual configured range of 90&ndash;200cm/35&ndash;160kg">
         </span></div>
@@ -1727,15 +1766,15 @@
   var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle'));
   toggles.forEach(function (btn) {
     var target = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!target) return;
     var label = btn.querySelector('.label');
-    if (!target || !label) return;
     var openLabel = btn.getAttribute('data-label-open') || 'More details';
     var closeLabel = btn.getAttribute('data-label-close') || 'Hide details';
     btn.addEventListener('click', function () {
       var open = target.hidden === false;
       target.hidden = open;
       btn.setAttribute('aria-expanded', String(!open));
-      label.textContent = open ? openLabel : closeLabel;
+      if (label) label.textContent = open ? openLabel : closeLabel;
     });
   });
 })();
