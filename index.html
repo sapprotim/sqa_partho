@@ -760,6 +760,19 @@
   #img-ah-hero { aspect-ratio: 1918 / 935; }
   .project-card .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
   .project-card p { color: var(--ink-secondary); font-size: 1rem; margin: 0 0 16px; }
+  .project-lede {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    overflow: hidden;
+  }
+  .project-lede.is-open {
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
   .project-card ul { margin: 20px 0 0; padding-left: 18px; color: var(--ink-secondary); font-size: 0.94rem; }
   .project-card ul li { margin-bottom: 9px; }
 
@@ -1200,7 +1213,7 @@
         <div class="hero-overlay"><h3 class="project-title">ConnectedLife V2.0, Navig8 AI Digital Health Monitor</h3></div>
       </div>
       <div class="project-meta">Powered by advanced AI, shaped by Google AI and ConnectedLife's in-house team</div>
-      <p>Navig8 AI connects wearables, lab results, face scans, and lifestyle metrics into one intelligent system, tracking 70+ biomarkers on a single dashboard. AI insights, validated by medical experts, are turned into personalised plans and nudges via a companion app, helping users catch health risks early and build lasting routines.</p>
+      <p class="project-lede">Navig8 AI connects wearables, lab results, face scans, and lifestyle metrics into one intelligent system, tracking 70+ biomarkers on a single dashboard. AI insights, validated by medical experts, are turned into personalised plans and nudges via a companion app, helping users catch health risks early and build lasting routines.</p>
       <div class="project-details" id="details-cl" hidden>
       <p>I was involved across the full lifecycle, from reviewing wireframes with the design team to final delivery. I ran manual testing throughout the build, then introduced Playwright (web) and Appium (mobile) automation once development hit ~70%, which became my primary focus as the project matured. I owned Jira test management, led bug triage, sent weekly QA status updates, and set up CI/CD so every build auto-triggers the full suite and generates a report.</p>
       <ul>
@@ -1237,7 +1250,7 @@
         <div class="hero-overlay"><h3 class="project-title">HealthTrack SG</h3></div>
       </div>
       <div class="project-meta">Powered by Singapore's <a href="https://www.hpb.gov.sg/healthy-living/healthtrack-sg/" target="_blank" rel="noopener">Health Promotion Board</a>, in partnership with Google, ConnectedLife, and Fullerton Health</div>
-      <p>HealthTrack SG is a national digital health programme run by Singapore's Health Promotion Board, helping residents manage or reduce their risk of chronic conditions by combining wearable data, clinical records, and lifestyle insights into a single wellness score. The platform tracks 52+ biomarkers with real-time alerts and notification reminders, forming part of a broader national initiative to deliver person-centric, data-driven preventive health.</p>
+      <p class="project-lede">HealthTrack SG is a national digital health programme run by Singapore's Health Promotion Board, helping residents manage or reduce their risk of chronic conditions by combining wearable data, clinical records, and lifestyle insights into a single wellness score. The platform tracks 52+ biomarkers with real-time alerts and notification reminders, forming part of a broader national initiative to deliver person-centric, data-driven preventive health.</p>
       <div class="project-details" id="details-hts" hidden>
       <p>I worked on QA for the platform end to end, from writing manual test cases against the product design, to testing the web app, to building out automation, API, and performance test coverage.</p>
       <ul>
@@ -1276,7 +1289,7 @@
         <div class="hero-overlay"><h3 class="project-title">Alexandra Hospital</h3></div>
       </div>
       <div class="project-meta">Public hospital under Singapore's National University Health System</div>
-      <p>Alexandra Hospital's application spans both mobile and web, and my work here was weighted heavily toward manual testing, walking through flows by hand, logging defects, and verifying fixes. I also built out a layer of automation for the web application using Selenium to cover key regression checks.</p>
+      <p class="project-lede">Alexandra Hospital's application spans both mobile and web, and my work here was weighted heavily toward manual testing, walking through flows by hand, logging defects, and verifying fixes. I also built out a layer of automation for the web application using Selenium to cover key regression checks.</p>
       <div class="project-details" id="details-ah" hidden>
       <p>ConnectedLife's unique combination of AI capabilities and human expertise sets them apart in the digital health space. Their responsiveness and pioneering approach have made a tangible difference to this work, seen not just as a vendor, but as a long-term partner in driving impactful, technology-enabled care to Alexandra Hospital and its patients.</p>
       <ul>
@@ -1832,21 +1845,24 @@
     var label = btn.querySelector('.label');
     var openLabel = btn.getAttribute('data-label-open') || 'More details';
     var closeLabel = btn.getAttribute('data-label-close') || 'Hide details';
+    var lede = target.previousElementSibling;
+    var isLede = lede && lede.classList.contains('project-lede');
     btn.addEventListener('click', function () {
       var open = target.hidden === false;
       target.hidden = open;
       btn.setAttribute('aria-expanded', String(!open));
       if (label) label.textContent = open ? openLabel : closeLabel;
+      // The description itself is clamped to 6 lines by default so every
+      // card starts at the same height - lift the clamp together with the
+      // rest of the details, so the full paragraph reads in one go.
+      if (isLede) lede.classList.toggle('is-open', !open);
     });
     // On project cards, let the description text itself act as the trigger
     // too - the divider line alone is easy to miss, and clicking again
     // while details are open should close them, same as the divider.
-    if (btn.classList.contains('details-divider')) {
-      var lede = target.previousElementSibling;
-      if (lede && lede.tagName === 'P') {
-        lede.style.cursor = 'pointer';
-        lede.addEventListener('click', function () { btn.click(); });
-      }
+    if (btn.classList.contains('details-divider') && isLede) {
+      lede.style.cursor = 'pointer';
+      lede.addEventListener('click', function () { btn.click(); });
     }
   });
 })();
