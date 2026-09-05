@@ -159,6 +159,16 @@
   }
   .section-head p { color: var(--ink-secondary); margin: 10px auto 0; max-width: 62ch; text-align: center; font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; }
   .section-head p em { font-style: italic; color: var(--ink); }
+  .section-head .eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
 
   /* ---------- Nav ---------- */
   header.nav {
@@ -1125,6 +1135,7 @@
 
   <section id="projects" class="numbered">
     <div class="section-head">
+      <span class="eyebrow">Projects</span>
       <h2>What I've Built</h2>
       <p>I have worked across three projects that show the range of the role, from ground-up QA on a wellness platform, to a national digital health programme, to manual-first QA for a hospital application.</p>
     </div>
@@ -1368,7 +1379,6 @@
             <li>Observe the validation message shown under the field.</li>
           </ol>
         </span></div>
-        <div class="bug-row"><span class="k">Devices</span><span class="v">Samsung Galaxy A32, Android 12</span></div>
         <div class="bug-row"><span class="k">Evidence</span><span class="v">
           <img class="bug-evidence" src="assets/bug-evidence.jpg" alt="App validation error on the left showing a hardcoded 130&ndash;230cm/40&ndash;200kg range, next to the admin dashboard on the right showing the actual configured range of 90&ndash;200cm/35&ndash;160kg">
         </span></div>
