@@ -791,14 +791,15 @@
     border-top: 1px solid var(--border);
   }
   /* keep a gap above the footer even when the card is at its natural height */
-  .pc-chips, .project-card .project-details { margin-bottom: 20px; }
-  .pc-foot .details-toggle .chev { font-size: 0.85rem; margin-left: 4px; }
-  .pc-foot .details-toggle[aria-expanded="true"] .chev { transform: rotate(-90deg); }
+  .pc-chips { margin-bottom: 20px; }
+  .pc-case-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.85rem; }
+  .pc-case-link .chev { transition: transform 0.15s ease; }
+  .pc-case-link:hover .chev { transform: translateX(3px); }
+  .pc-body .project-title a { color: inherit; }
+  .pc-body .project-title a:hover { color: var(--accent); text-decoration: none; }
   .pc-repo-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--ink-muted); }
   .pc-repo-link svg { width: 14px; height: 14px; }
   .pc-repo-link:hover { color: var(--accent); text-decoration: none; }
-  .project-card .project-details { margin-top: 20px; }
-  .project-details .stat-block { margin-top: 20px; }
 
   /* two cards per row; cards in a row stretch to the same height */
   .project-grid {
@@ -824,59 +825,6 @@
     line-clamp: 4;
     overflow: hidden;
   }
-  .project-lede.is-open {
-    display: block;
-    -webkit-line-clamp: unset;
-    line-clamp: unset;
-    overflow: visible;
-  }
-  .project-card ul { margin: 20px 0 0; padding-left: 18px; color: var(--ink-secondary); font-size: 0.94rem; }
-  .project-card ul li { margin-bottom: 9px; }
-
-  .card-actions { display: flex; gap: 18px; margin-top: 4px; margin-bottom: 4px; }
-  .details-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 0;
-    border: 0;
-    background: none;
-    color: var(--accent);
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: color 0.15s;
-  }
-  .details-toggle:hover { color: var(--accent-strong); text-decoration: underline; }
-  .details-toggle .chev { font-size: 0.7rem; transition: transform 0.2s ease; }
-  .details-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
-  .project-details { margin-top: 8px; }
-  .project-details p:first-child { margin-top: 0; }
-
-
-  .stat-block { margin-top: 8px; padding-top: 0; border-top: none; }
-  .stat-number {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .stat-number span {
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--ink-muted);
-    margin-left: 8px;
-  }
-  .stat-sub { font-size: 0.8rem; color: var(--ink-muted); margin-bottom: 16px; }
-  .stat-bar { display: flex; gap: 2px; height: 16px; border-radius: 4px; overflow: hidden; margin-bottom: 16px; }
-  .stat-bar div { height: 100%; border-radius: 2px; }
-  .stat-legend { display: grid; grid-template-columns: repeat(4, auto); gap: 10px 18px; }
-  @media (max-width: 700px) { .stat-legend { grid-template-columns: repeat(2, auto); } }
-  .stat-legend .legend-item { font-size: 0.8rem; }
-  .stat-legend .legend-item .n { color: var(--ink-muted); font-family: var(--font-mono); margin-left: 3px; }
 
   /* ---------- Highlights ---------- */
   .highlight-grid {
@@ -1324,40 +1272,13 @@
         </div>
       </div>
       <div class="pc-body">
-        <h3 class="project-title">ConnectedLife V2.0, Navig8 AI Digital Health Monitor</h3>
+        <h3 class="project-title"><a href="projects/connectedlife.html">ConnectedLife V2.0, Navig8 AI Digital Health Monitor</a></h3>
         <div class="project-meta">Powered by advanced AI, shaped by Google AI and ConnectedLife's in-house team</div>
         <p class="project-lede">Navig8 AI connects wearables, lab results, face scans, and lifestyle metrics into one intelligent system, tracking 70+ biomarkers on a single dashboard. AI insights, validated by medical experts, are turned into personalised plans and nudges via a companion app, helping users catch health risks early and build lasting routines.</p>
         <div class="pc-stats"><div><b>957</b><span>Defects tracked</span></div><div><b>70+</b><span>Biomarkers</span></div></div>
         <div class="pc-chips"><span>Playwright</span><span>Appium</span><span>Python</span><span>Behave / BDD</span><span>Jira</span><span>CI/CD</span></div>
-      <div class="project-details" id="details-cl" hidden>
-      <p>I was involved across the full lifecycle, from reviewing wireframes with the design team to final delivery. I ran manual testing throughout the build, then introduced Playwright (web) and Appium (mobile) automation once development hit ~70%, which became my primary focus as the project matured. I owned Jira test management, led bug triage, sent weekly QA status updates, and set up CI/CD so every build auto-triggers the full suite and generates a report.</p>
-      <ul>
-        <li>Owned QA end to end, from design review through build, stabilization, and final delivery.</li>
-        <li>Reviewed wireframes early and fed back usability and edge-case concerns.</li>
-        <li>Ran manual testing throughout the build, covering functional, data, and UI checks.</li>
-        <li>Introduced Playwright (web) and Appium (mobile) automation at ~70% development, later making it my primary focus.</li>
-        <li>Managed test cases in Jira and led bug triage to closure.</li>
-        <li>Sent weekly QA status updates and set up CI/CD for automated builds and reporting.</li>
-      </ul>
-        <div class="stat-block">
-          <div class="stat-number">957<span>defects tracked across the project</span></div>
-          <div class="stat-sub">Combined manual and automated testing, by severity at last count</div>
-          <div class="stat-bar" role="img" aria-label="957 defects by severity: High 527, Medium 263, Low 152, ShowStopper 15">
-            <div style="width:55.07%; background:#C98A3E;"></div>
-            <div style="width:27.48%; background:#8B5FBF;"></div>
-            <div style="width:15.88%; background:#4E9C86;"></div>
-            <div style="width:1.57%; background:#C1553D;"></div>
-          </div>
-          <div class="stat-legend">
-            <span class="legend-item"><span class="sw" style="background:#C98A3E;"></span>High<span class="n">527</span></span>
-            <span class="legend-item"><span class="sw" style="background:#8B5FBF;"></span>Medium<span class="n">263</span></span>
-            <span class="legend-item"><span class="sw" style="background:#4E9C86;"></span>Low<span class="n">152</span></span>
-            <span class="legend-item"><span class="sw" style="background:#C1553D;"></span>ShowStopper<span class="n">15</span></span>
-          </div>
-        </div>
-      </div>
         <div class="pc-foot">
-          <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-cl" data-label-open="Read the case study" data-label-close="Close case study"><span class="label">Read the case study</span><span class="chev">→</span></button>
+          <a class="pc-case-link" href="projects/connectedlife.html">Read the case study<span class="chev">→</span></a>
           <a class="pc-repo-link" href="https://github.com/sapprotim/Playwright-With_POM_BDD" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Repo</a>
         </div>
       </div>
@@ -1378,43 +1299,13 @@
         </div>
       </div>
       <div class="pc-body">
-        <h3 class="project-title">HealthTrack SG</h3>
+        <h3 class="project-title"><a href="projects/healthtrack-sg.html">HealthTrack SG</a></h3>
         <div class="project-meta">Powered by Singapore's <a href="https://www.hpb.gov.sg/healthy-living/healthtrack-sg/" target="_blank" rel="noopener">Health Promotion Board</a>, in partnership with Google, ConnectedLife, and Fullerton Health</div>
         <p class="project-lede">HealthTrack SG is a national digital health programme run by Singapore's Health Promotion Board, helping residents manage or reduce their risk of chronic conditions by combining wearable data, clinical records, and lifestyle insights into a single wellness score. The platform tracks 52+ biomarkers with real-time alerts and notification reminders, forming part of a broader national initiative to deliver person-centric, data-driven preventive health.</p>
         <div class="pc-stats"><div><b>1,308</b><span>Defects tracked</span></div><div><b>52+</b><span>Biomarkers</span></div></div>
         <div class="pc-chips"><span>Playwright</span><span>Maestro</span><span>Postman</span><span>JMeter</span><span>Xray</span></div>
-      <div class="project-details" id="details-hts" hidden>
-      <p>I worked on QA for the platform end to end, from writing manual test cases against the product design, to testing the web app, to building out automation, API, and performance test coverage.</p>
-      <ul>
-        <li>Wrote manual test cases based on the product design and specifications, and managed them in Xray for real-time indexing and full visibility across the testing lifecycle.</li>
-        <li>Tested the web application manually, logging and tracking defects as they surfaced.</li>
-        <li>Reported and tracked bugs through resolution, working closely with developers to reproduce, prioritize, and verify fixes.</li>
-        <li>Tested alert and notification reminder flows to ensure timely, accurate delivery across biomarker thresholds.</li>
-        <li>Built automation coverage with Playwright for web and Maestro for mobile.</li>
-        <li>Designed and executed API test suites in Postman, covering functional validation, data integrity, and edge cases across service endpoints.</li>
-        <li>Built and ran load and performance tests using JMeter to validate system behavior under expected and peak user loads, identifying bottlenecks before release.</li>
-        <li>Collaborated closely with developers, designers, and product managers to build a well-rounded, reliable product.</li>
-        <li>Owned QA end to end for the project, planning, execution, and sign-off, helping the team consistently deliver a high-quality product.</li>
-      </ul>
-        <div class="stat-block">
-          <div class="stat-number">1,308<span>defects tracked across the project</span></div>
-          <div class="stat-sub">By severity, at last count</div>
-          <div class="stat-bar" role="img" aria-label="1,308 defects by severity: Low 520, Medium 466, High 286, ShowStopper 36">
-            <div style="width:39.76%; background:#4E9C86;"></div>
-            <div style="width:35.63%; background:#8B5FBF;"></div>
-            <div style="width:21.87%; background:#C98A3E;"></div>
-            <div style="width:2.75%; background:#C1553D;"></div>
-          </div>
-          <div class="stat-legend">
-            <span class="legend-item"><span class="sw" style="background:#4E9C86;"></span>Low<span class="n">520</span></span>
-            <span class="legend-item"><span class="sw" style="background:#8B5FBF;"></span>Medium<span class="n">466</span></span>
-            <span class="legend-item"><span class="sw" style="background:#C98A3E;"></span>High<span class="n">286</span></span>
-            <span class="legend-item"><span class="sw" style="background:#C1553D;"></span>ShowStopper<span class="n">36</span></span>
-          </div>
-        </div>
-      </div>
         <div class="pc-foot">
-          <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-hts" data-label-open="Read the case study" data-label-close="Close case study"><span class="label">Read the case study</span><span class="chev">→</span></button>
+          <a class="pc-case-link" href="projects/healthtrack-sg.html">Read the case study<span class="chev">→</span></a>
           <a class="pc-repo-link" href="https://github.com/sapprotim/Playwright_With_POM" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Repo</a>
         </div>
       </div>
@@ -1435,42 +1326,13 @@
         </div>
       </div>
       <div class="pc-body">
-        <h3 class="project-title">Alexandra Hospital</h3>
+        <h3 class="project-title"><a href="projects/alexandra-hospital.html">Alexandra Hospital</a></h3>
         <div class="project-meta">Public hospital under Singapore's National University Health System</div>
         <p class="project-lede">Alexandra Hospital's application spans both mobile and web, and my work here was weighted heavily toward manual testing, walking through flows by hand, logging defects, and verifying fixes. I also built out a layer of automation for the web application using Selenium to cover key regression checks.</p>
         <div class="pc-stats"><div><b>349</b><span>Defects tracked</span></div><div><b>2</b><span>Platforms, web + mobile</span></div></div>
         <div class="pc-chips"><span>Selenium</span><span>Python</span><span>PyTest</span><span>Manual testing</span></div>
-      <div class="project-details" id="details-ah" hidden>
-      <p>ConnectedLife's unique combination of AI capabilities and human expertise sets them apart in the digital health space. Their responsiveness and pioneering approach have made a tangible difference to this work, seen not just as a vendor, but as a long-term partner in driving impactful, technology-enabled care to Alexandra Hospital and its patients.</p>
-      <ul>
-        <li>Owned full-cycle manual testing across both the mobile app and web application, covering functional, data, and UI validation end to end.</li>
-        <li>Verified data accuracy across the platform, checking that patient data, readings, and records were captured, calculated, and displayed correctly across every screen.</li>
-        <li>Validated business logic against product specifications, testing edge cases and boundary conditions to make sure the system behaved correctly under real-world scenarios.</li>
-        <li>Tested alerts and notification nudges for accuracy and timeliness, confirming they triggered correctly against defined thresholds and reached users as expected.</li>
-        <li>Walked through all user flows end to end, onboarding, daily use, and edge-case paths, to catch issues early and ensure a smooth, reliable experience.</li>
-        <li>Worked closely with developers and product team through regular discussion and feedback loops, using findings from each testing cycle to continuously improve product quality.</li>
-        <li>Built Selenium automation for the web application to cover key regression checks, reducing manual effort on repeat test cycles.</li>
-        <li>Logged and tracked defects by severity, from show-stoppers down to low-priority issues, following through with developers until each was verified and closed.</li>
-      </ul>
-        <div class="stat-block">
-          <div class="stat-number">349<span>defects tracked across the project</span></div>
-          <div class="stat-sub">By severity, at last count</div>
-          <div class="stat-bar" role="img" aria-label="349 defects by severity: Medium 190, Low 113, High 36, ShowStopper 10">
-            <div style="width:54.44%; background:#8B5FBF;"></div>
-            <div style="width:32.38%; background:#4E9C86;"></div>
-            <div style="width:10.32%; background:#C98A3E;"></div>
-            <div style="width:2.87%; background:#C1553D;"></div>
-          </div>
-          <div class="stat-legend">
-            <span class="legend-item"><span class="sw" style="background:#8B5FBF;"></span>Medium<span class="n">190</span></span>
-            <span class="legend-item"><span class="sw" style="background:#4E9C86;"></span>Low<span class="n">113</span></span>
-            <span class="legend-item"><span class="sw" style="background:#C98A3E;"></span>High<span class="n">36</span></span>
-            <span class="legend-item"><span class="sw" style="background:#C1553D;"></span>ShowStopper<span class="n">10</span></span>
-          </div>
-        </div>
-      </div>
         <div class="pc-foot">
-          <button type="button" class="details-toggle" aria-expanded="false" aria-controls="details-ah" data-label-open="Read the case study" data-label-close="Close case study"><span class="label">Read the case study</span><span class="chev">→</span></button>
+          <a class="pc-case-link" href="projects/alexandra-hospital.html">Read the case study<span class="chev">→</span></a>
           <a class="pc-repo-link" href="https://github.com/sapprotim/Selenium_Automation_Testcase" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Repo</a>
         </div>
       </div>
@@ -1924,36 +1786,6 @@
   }, { threshold: 0.4 });
 
   counters.forEach(function (el) { countObserver.observe(el); });
-})();
-
-(function () {
-  var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle'));
-  toggles.forEach(function (btn) {
-    var target = document.getElementById(btn.getAttribute('aria-controls'));
-    if (!target) return;
-    var label = btn.querySelector('.label');
-    var openLabel = btn.getAttribute('data-label-open') || 'More details';
-    var closeLabel = btn.getAttribute('data-label-close') || 'Hide details';
-    var card = btn.closest('.project-card');
-    var lede = card ? card.querySelector('.project-lede') : null;
-    var isLede = !!lede;
-    btn.addEventListener('click', function () {
-      var open = target.hidden === false;
-      target.hidden = open;
-      btn.setAttribute('aria-expanded', String(!open));
-      if (label) label.textContent = open ? openLabel : closeLabel;
-      // The description itself is clamped to 4 lines by default so every
-      // card starts at the same height - lift the clamp together with the
-      // rest of the details, so the full paragraph reads in one go.
-      if (isLede) lede.classList.toggle('is-open', !open);
-    });
-    // On project cards, let the description text itself act as the trigger
-    // too, and clicking again while details are open closes them.
-    if (isLede) {
-      lede.style.cursor = 'pointer';
-      lede.addEventListener('click', function () { btn.click(); });
-    }
-  });
 })();
 
 (function () {
