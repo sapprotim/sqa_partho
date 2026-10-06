@@ -1,6 +1,6 @@
 # Portfolio — Partho Protim
 
-Personal portfolio site for Partho Protim, QA Automation Lead. A single self-contained HTML file — no build step, no dependencies.
+Personal portfolio site for Partho Protim, Senior QA Lead Engineer. A single self-contained HTML file — no build step, no dependencies.
 
 ## View it locally
 
