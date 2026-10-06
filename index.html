@@ -112,7 +112,7 @@
 
   /* ---------- Base ---------- */
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; font-size: 18px; overflow-x: hidden; }
+  html { scroll-behavior: smooth; font-size: 18px; overflow-x: clip; scroll-padding-top: var(--nav-h, 62px); }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
@@ -126,7 +126,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   p {
@@ -215,8 +215,12 @@
     background: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-soft);
   }
+  .nav-mark, .nav-actions { flex: 0 0 auto; }
   nav.links {
     display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
     gap: 22px;
     font-size: 0.88rem;
     color: var(--ink-secondary);
@@ -284,7 +288,9 @@
   .nav-backdrop {
     display: none;
   }
-  @media (max-width: 800px) {
+  /* Six links + theme + demo button need ~1100px; below that the links
+     would be clipped, so switch to the slide-out menu instead. */
+  @media (max-width: 1100px) {
     .nav-toggle { display: flex; }
 
     .nav-backdrop {
@@ -301,7 +307,7 @@
       top: var(--nav-h, 62px);
       right: 0;
       max-height: calc(100vh - var(--nav-h, 62px));
-      width: 30%;
+      width: min(280px, 80vw);
       flex-direction: column;
       align-items: stretch;
       gap: 0;
@@ -748,61 +754,36 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   }
 
-  /* real product screenshot, framed as a browser window rising from a soft accent backdrop */
+  /* real product screenshot, full card width in a slim browser-window frame.
+     No fixed box: each image keeps its own shape, and the pairs that share a
+     row have near-identical ratios, so their heights still line up. */
   .pc-shot {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    /* wide enough that every screenshot (up to ~2.05:1) fits at full height */
-    aspect-ratio: 2 / 1;
-    padding: 26px 28px 0;
+    display: block;
+    padding: 12px 12px 0;
     overflow: hidden;
-    background:
-      radial-gradient(120% 90% at 50% 0%, var(--accent-soft), transparent 70%),
-      linear-gradient(180deg, var(--surface-2), var(--surface));
+    background: var(--surface-2);
     border-bottom: 1px solid var(--border);
   }
-  .pc-shot::before {
-    /* faint dot grid for texture */
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(var(--border) 1px, transparent 1px);
-    background-size: 16px 16px;
-    opacity: 0.7;
-    pointer-events: none;
-  }
   .pc-shot-frame {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: fit-content;
-    max-width: 100%;
-    border-radius: 10px 10px 0 0;
+    display: block;
+    border-radius: 8px 8px 0 0;
     overflow: hidden;
     background: #0d0d0d;
     border: 1px solid var(--border);
     border-bottom: 0;
-    box-shadow: 0 -2px 30px -8px rgba(0, 0, 0, 0.28);
-    transform: translateY(0);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: transform 0.35s ease;
   }
   .pc-shot-bar {
-    box-sizing: border-box;
-    height: 22px;
     display: flex;
     gap: 5px;
-    padding: 7px 10px;
+    padding: 6px 10px;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
   }
   .pc-shot-bar i { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
-  /* whole screenshot, never cropped: height fills the frame, width follows the image */
-  .pc-shot-frame img { display: block; height: calc(100% - 22px); width: auto; max-width: 100%; object-fit: contain; }
-  .pc-shot:hover .pc-shot-frame { transform: translateY(-4px); box-shadow: 0 -4px 40px -6px rgba(0, 0, 0, 0.35); }
-  @media (max-width: 480px) { .pc-shot { padding: 18px 16px 0; } }
+  .pc-shot-frame img { display: block; width: 100%; height: auto; }
+  .pc-shot:hover .pc-shot-frame { transform: translateY(-3px); }
+  @media (max-width: 480px) { .pc-shot { padding: 8px 8px 0; } }
 
   .pc-body { padding: 24px 24px 18px; display: flex; flex-direction: column; flex: 1; }
   .pc-body .project-title { font-size: 1.15rem; font-weight: 600; margin: 0 0 6px; }
