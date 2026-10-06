@@ -715,47 +715,23 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   }
 
-  /* terminal header: same dark look in both themes, like the other terminal cards */
-  .pc-term { background: var(--term-bg); color: var(--term-ink); font-family: var(--font-mono); }
-  .pc-term-bar {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+  /* real product screenshot at the top of each card */
+  .pc-shot {
+    display: block;
+    aspect-ratio: 16 / 8.5;
+    overflow: hidden;
+    background: #0d0d0d;
+    border-bottom: 1px solid var(--border);
   }
-  .pc-pill {
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--term-ink);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 100px;
-    padding: 4px 10px;
-    white-space: nowrap;
+  .pc-shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.4s ease;
   }
-  .pc-dots { display: inline-flex; gap: 6px; flex-shrink: 0; }
-  .pc-dots i { width: 9px; height: 9px; border-radius: 50%; background: #E0796A; }
-  .pc-dots i:nth-child(2) { background: var(--term-amber); }
-  .pc-dots i:nth-child(3) { background: var(--term-accent); }
-  .pc-repo { font-size: 0.7rem; color: var(--term-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-  .pc-term-body { padding: 20px 20px 16px; font-size: 0.76rem; line-height: 1.6; }
-  .pc-prompt { color: var(--term-accent); }
-  .pc-run { color: var(--term-muted); margin: 12px 0 8px; }
-  .pc-specs { list-style: none; margin: 0; padding: 0; }
-  .pc-specs li { display: flex; gap: 8px; white-space: nowrap; overflow: hidden; margin: 0 0 4px; }
-  .pc-specs .ok { color: var(--term-accent); }
-  .pc-specs .more { color: var(--term-muted); }
-  .pc-term-foot {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    margin-top: 18px;
-  }
-  .pc-term-foot b { color: var(--term-accent); font-weight: 600; white-space: nowrap; }
-  .pc-term-foot span { font-size: 0.66rem; color: var(--term-muted); text-align: right; }
+  .pc-shot:hover img { transform: scale(1.03); }
 
   .pc-body { padding: 24px 24px 18px; display: flex; flex-direction: column; flex: 1; }
   .pc-body .project-title { font-size: 1.15rem; font-weight: 600; margin: 0 0 6px; }
@@ -813,8 +789,6 @@
   }
   @media (max-width: 900px) {
     .pc-body { padding: 20px 18px 16px; }
-    .pc-term-body { padding: 16px 16px 14px; font-size: 0.7rem; }
-    .pc-term-bar { gap: 10px; padding: 10px 14px; }
   }
   .project-card .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
   .project-card p { color: var(--ink-secondary); font-size: 1rem; margin: 0 0 16px; }
@@ -1257,82 +1231,49 @@
 
     <div class="project-grid">
     <div class="project-card">
-      <div class="pc-term" aria-hidden="true">
-        <div class="pc-term-bar"><span class="pc-pill">QA + Automation</span><span class="pc-dots"><i></i><i></i><i></i></span><span class="pc-repo">Playwright-With_POM_BDD</span></div>
-        <div class="pc-term-body">
-          <div class="pc-cmd"><span class="pc-prompt">$</span> behave features/ --format progress</div>
-          <div class="pc-run">Collected 228 feature files</div>
-          <ul class="pc-specs">
-          <li><span class="ok">✓</span>Fullerton_health/fullerton_health_login.feature</li>
-          <li><span class="ok">✓</span>Fullerton_health/doctor_page_search.feature</li>
-          <li><span class="ok">✓</span>Fullerton_health/user_metrics_page_calendar.feature</li>
-          <li class="more"><span>…</span>225 more feature files</li>
-          </ul>
-          <div class="pc-term-foot"><b>228 features</b><span>python · playwright · behave</span></div>
-        </div>
-      </div>
+      <a class="pc-shot" href="projects/connectedlife.html" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <img src="assets/projects/connectedlife.jpg" alt="ConnectedLife V2.0, sign-in screen shown on desktop and mobile" width="1620" height="866" loading="lazy">
+      </a>
       <div class="pc-body">
-        <h3 class="project-title"><a href="projects/connectedlife.html">ConnectedLife V2.0, Navig8 AI Digital Health Monitor</a></h3>
+        <h3 class="project-title"><a href="projects/connectedlife.html" target="_blank" rel="noopener">ConnectedLife V2.0, Navig8 AI Digital Health Monitor</a></h3>
         <div class="project-meta">Powered by advanced AI, shaped by Google AI and ConnectedLife's in-house team</div>
         <p class="project-lede">Navig8 AI connects wearables, lab results, face scans, and lifestyle metrics into one intelligent system, tracking 70+ biomarkers on a single dashboard. AI insights, validated by medical experts, are turned into personalised plans and nudges via a companion app, helping users catch health risks early and build lasting routines.</p>
         <div class="pc-stats"><div><b>957</b><span>Defects tracked</span></div><div><b>70+</b><span>Biomarkers</span></div></div>
         <div class="pc-chips"><span>Playwright</span><span>Appium</span><span>Python</span><span>Behave / BDD</span><span>Jira</span><span>CI/CD</span></div>
         <div class="pc-foot">
-          <a class="pc-case-link" href="projects/connectedlife.html">Read the case study<span class="chev">→</span></a>
+          <a class="pc-case-link" href="projects/connectedlife.html" target="_blank" rel="noopener">Read the case study<span class="chev">→</span></a>
           <a class="pc-repo-link" href="https://github.com/sapprotim/Playwright-With_POM_BDD" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Repo</a>
         </div>
       </div>
     </div>
     <div class="project-card">
-      <div class="pc-term" aria-hidden="true">
-        <div class="pc-term-bar"><span class="pc-pill">QA + Automation</span><span class="pc-dots"><i></i><i></i><i></i></span><span class="pc-repo">Playwright_With_POM</span></div>
-        <div class="pc-term-body">
-          <div class="pc-cmd"><span class="pc-prompt">$</span> pytest tests/ -v</div>
-          <div class="pc-run">Collected 4 page-object suites</div>
-          <ul class="pc-specs">
-          <li><span class="ok">✓</span>tests/test_HPB_Admin.py</li>
-          <li><span class="ok">✓</span>tests/test_doctor.py</li>
-          <li><span class="ok">✓</span>tests/test_Clinic.py</li>
-          <li><span class="ok">✓</span>tests/test_fullerton_health.py</li>
-          </ul>
-          <div class="pc-term-foot"><b>4 suites</b><span>python · playwright · pytest</span></div>
-        </div>
-      </div>
+      <a class="pc-shot" href="projects/healthtrack-sg.html" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <img src="assets/projects/healthtrack-sg.jpg" alt="HealthTrack SG, clinician web dashboard and mobile wellness score view" width="1873" height="926" loading="lazy">
+      </a>
       <div class="pc-body">
-        <h3 class="project-title"><a href="projects/healthtrack-sg.html">HealthTrack SG</a></h3>
+        <h3 class="project-title"><a href="projects/healthtrack-sg.html" target="_blank" rel="noopener">HealthTrack SG</a></h3>
         <div class="project-meta">Powered by Singapore's <a href="https://www.hpb.gov.sg/healthy-living/healthtrack-sg/" target="_blank" rel="noopener">Health Promotion Board</a>, in partnership with Google, ConnectedLife, and Fullerton Health</div>
         <p class="project-lede">HealthTrack SG is a national digital health programme run by Singapore's Health Promotion Board, helping residents manage or reduce their risk of chronic conditions by combining wearable data, clinical records, and lifestyle insights into a single wellness score. The platform tracks 52+ biomarkers with real-time alerts and notification reminders, forming part of a broader national initiative to deliver person-centric, data-driven preventive health.</p>
         <div class="pc-stats"><div><b>1,308</b><span>Defects tracked</span></div><div><b>52+</b><span>Biomarkers</span></div></div>
         <div class="pc-chips"><span>Playwright</span><span>Maestro</span><span>Postman</span><span>JMeter</span><span>Xray</span></div>
         <div class="pc-foot">
-          <a class="pc-case-link" href="projects/healthtrack-sg.html">Read the case study<span class="chev">→</span></a>
+          <a class="pc-case-link" href="projects/healthtrack-sg.html" target="_blank" rel="noopener">Read the case study<span class="chev">→</span></a>
           <a class="pc-repo-link" href="https://github.com/sapprotim/Playwright_With_POM" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Repo</a>
         </div>
       </div>
     </div>
     <div class="project-card">
-      <div class="pc-term" aria-hidden="true">
-        <div class="pc-term-bar"><span class="pc-pill">Manual + Automation</span><span class="pc-dots"><i></i><i></i><i></i></span><span class="pc-repo">Selenium_Automation_Testcase</span></div>
-        <div class="pc-term-body">
-          <div class="pc-cmd"><span class="pc-prompt">$</span> pytest -v</div>
-          <div class="pc-run">Collected 31 test modules</div>
-          <ul class="pc-specs">
-          <li><span class="ok">✓</span>Login_logout/test_login_logout.py</li>
-          <li><span class="ok">✓</span>Programme Management/test_alerts_Nudges.py</li>
-          <li><span class="ok">✓</span>User/test_user_onboarding.py</li>
-          <li class="more"><span>…</span>28 more test modules</li>
-          </ul>
-          <div class="pc-term-foot"><b>31 modules</b><span>python · selenium · github actions</span></div>
-        </div>
-      </div>
+      <a class="pc-shot" href="projects/alexandra-hospital.html" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <img src="assets/projects/alexandra-hospital.jpg" alt="Alexandra Hospital application, web dashboard and mobile view from a test account" width="1918" height="935" loading="lazy">
+      </a>
       <div class="pc-body">
-        <h3 class="project-title"><a href="projects/alexandra-hospital.html">Alexandra Hospital</a></h3>
+        <h3 class="project-title"><a href="projects/alexandra-hospital.html" target="_blank" rel="noopener">Alexandra Hospital</a></h3>
         <div class="project-meta">Public hospital under Singapore's National University Health System</div>
         <p class="project-lede">Alexandra Hospital's application spans both mobile and web, and my work here was weighted heavily toward manual testing, walking through flows by hand, logging defects, and verifying fixes. I also built out a layer of automation for the web application using Selenium to cover key regression checks.</p>
         <div class="pc-stats"><div><b>349</b><span>Defects tracked</span></div><div><b>2</b><span>Platforms, web + mobile</span></div></div>
         <div class="pc-chips"><span>Selenium</span><span>Python</span><span>PyTest</span><span>Manual testing</span></div>
         <div class="pc-foot">
-          <a class="pc-case-link" href="projects/alexandra-hospital.html">Read the case study<span class="chev">→</span></a>
+          <a class="pc-case-link" href="projects/alexandra-hospital.html" target="_blank" rel="noopener">Read the case study<span class="chev">→</span></a>
           <a class="pc-repo-link" href="https://github.com/sapprotim/Selenium_Automation_Testcase" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Repo</a>
         </div>
       </div>
