@@ -786,10 +786,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: auto;
     padding-top: 14px;
     border-top: 1px solid var(--border);
   }
+  /* keep a gap above the footer even when the card is at its natural height */
+  .pc-chips, .project-card .project-details { margin-bottom: 20px; }
   .pc-foot .details-toggle .chev { font-size: 0.85rem; margin-left: 4px; }
   .pc-foot .details-toggle[aria-expanded="true"] .chev { transform: rotate(-90deg); }
   .pc-repo-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--ink-muted); }
@@ -798,14 +800,15 @@
   .project-card .project-details { margin-top: 20px; }
   .project-details .stat-block { margin-top: 20px; }
 
+  /* two cards per row; cards in a row stretch to the same height */
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
-    align-items: start;
+    align-items: stretch;
   }
-  @media (max-width: 1000px) {
-    .project-grid { grid-template-columns: minmax(0, 1fr); max-width: 680px; margin: 0 auto; }
+  @media (max-width: 800px) {
+    .project-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 900px) {
     .pc-body { padding: 20px 18px 16px; }
