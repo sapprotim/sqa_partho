@@ -492,75 +492,50 @@
   }
   @keyframes blink { 50% { opacity: 0; } }
 
-  /* ---------- Intro video ---------- */
-  .intro-panel {
+  /* ---------- About ---------- */
+  .about-grid {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-  }
-  .intro-media { position: relative; overflow: hidden; background: #0d0d0d; }
-  .video-tip {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 2;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    font-size: 0.85rem;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.55);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .intro-media iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    /* Source recording is portrait (720x1320); scale it up so it fills the
-       panel instead of being letterboxed by Loom. Kept below the
-       ~3.3x needed for a fully edge-to-edge fill so the crop isn't an
-       extreme face-only close-up; this leaves a slim letterboxed edge. */
-    transform: scale(2.2);
-    transform-origin: 50% 40%;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
   }
   @media (max-width: 800px) {
-    .intro-media { aspect-ratio: 16 / 9; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; }
   }
-  .intro-copy {
-    padding: 40px 44px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 16px;
-  }
-  .intro-copy p {
-    color: var(--ink-secondary);
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    font-weight: 400;
-    line-height: 1.7;
-    text-align: justify;
-    text-align-last: left;
-    text-justify: auto;
-    hyphens: none;
+  .about-copy p {
     margin: 0;
+    color: var(--ink-secondary);
+    font-size: 1.02rem;
+    line-height: 1.75;
   }
-  .intro-copy p + p, #aboutMore p + p { margin-top: 16px; }
-  @media (max-width: 800px) {
-    .intro-panel { grid-template-columns: 1fr; }
-    .intro-copy { padding: 30px 26px; }
+  .about-copy p + p { margin-top: 16px; }
+  .about-facts {
+    margin: 0;
+    padding: 6px 22px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
   }
-  @media (min-width: 801px) {
-    #aboutMore[hidden] { display: block; }
-    .intro-copy .details-toggle { display: none; }
+  .about-facts > div {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 16px;
+    align-items: baseline;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-facts > div:last-child { border-bottom: none; }
+  .about-facts dt {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .about-facts dd { margin: 0; color: var(--ink); font-size: 0.95rem; }
+  @media (max-width: 480px) {
+    .about-facts { padding: 4px 16px; }
+    .about-facts > div { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; }
   }
 
   /* ---------- Toolbox ---------- */
@@ -1159,7 +1134,7 @@
   <div class="nav-inner">
     <div class="nav-mark"><span class="dot"></span>Partho Protim</div>
     <nav class="links" id="nav-links">
-      <a href="#intro-video">Intro</a>
+      <a href="#about">About</a>
       <a href="#toolbox">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#highlights">Highlights</a>
@@ -1206,24 +1181,24 @@
     </div>
   </section>
 
-  <section id="intro-video" class="numbered">
+  <section id="about" class="numbered">
     <div class="section-head">
       <span class="eyebrow">About</span>
       <h2>Who I Am</h2>
-      <p>I have <em>4+ years of hands-on QA experience</em> across web, mobile, and desktop, here's a quick introduction to who I am and how I work.</p>
     </div>
-    <div class="intro-panel">
-      <div class="intro-media">
-        <span class="video-tip" title="Use player speed control to slow down">⚙</span>
-        <iframe src="https://www.loom.com/embed/71691c5eb6064384945a448aea416006?hideEmbedTopBar=true" title="Partho Protim, introduction video" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>QA Automation Lead at CodeBlaze, where I build and maintain automated suites for web, desktop, and mobile apps with Python, Playwright, Appium, Behave/BDD, and PyTest. I run CI/CD test execution with automated Grafana reporting, and use MCP and Claude Code to speed up test creation and expand coverage.</p>
+        <p>I have 4+ years of hands-on QA experience in both manual and automation testing. I help startups and businesses identify issues early, validate complete user journeys, and make sure their products work as expected before reaching real users.</p>
+        <p>My focus is on understanding the product, thinking from the user's perspective, finding potential risks, and delivering clear, actionable feedback, so teams reduce release risk, save testing time, and ship with confidence.</p>
       </div>
-      <div class="intro-copy">
-        <p>I'm a Senior QA Engineer helping businesses build reliable, high-quality software. I have experience in both manual and automation testing, and I help startups and businesses test their web, mobile, and desktop applications, identify issues early, validate complete user journeys, and make sure their products work as expected before reaching real users. <button type="button" class="details-toggle" aria-expanded="false" aria-controls="aboutMore" data-label-open="More" data-label-close="Less"><span class="label">More</span><span class="chev">▾</span></button></p>
-        <div id="aboutMore" hidden>
-          <p>My focus is on understanding the product, thinking from the user's perspective, finding potential risks, and delivering clear, actionable feedback. I help teams improve product quality, reduce release risks, save testing time, and release with greater confidence.</p>
-          <p>Whether you're building a new product, launching a new feature, or improving an existing application, I can help ensure your product is reliable, user-friendly, and ready for real users.</p>
-        </div>
-      </div>
+      <dl class="about-facts">
+        <div><dt>Currently</dt><dd>QA Automation Lead at CodeBlaze</dd></div>
+        <div><dt>Based in</dt><dd>Dhaka, Bangladesh</dd></div>
+        <div><dt>Experience</dt><dd>4+ years in QA</dd></div>
+        <div><dt>Focus</dt><dd>Playwright · Appium · BDD · AI-assisted QA</dd></div>
+        <div><dt>Platforms</dt><dd>Web · Mobile · Desktop · API</dd></div>
+      </dl>
     </div>
   </section>
 
