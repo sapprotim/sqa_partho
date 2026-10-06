@@ -138,9 +138,6 @@
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
   section { padding: 56px 0; }
-  /* The carousel nav already adds its own margin above it, so the full default
-     bottom padding on top of that leaves an oversized gap before the next section. */
-  #projects { padding-bottom: 32px; }
   #highlights { padding-bottom: 32px; }
   @media (max-width: 800px) {
     /* Cut the base section padding site-wide on mobile first, then the
@@ -220,7 +217,7 @@
   nav.links a { color: var(--ink-secondary); white-space: nowrap; }
   nav.links a:hover { color: var(--accent); text-decoration: none; }
   @media (max-width: 800px) {
-    /* The LinkedIn button crowds out the nav links on mobile; the same CTA
+    /* The demo button crowds out the nav links on mobile; the same CTA
        already appears in the hero and contact sections. */
     .nav-inner .btn { display: none; }
   }
@@ -801,54 +798,20 @@
   .project-card .project-details { margin-top: 20px; }
   .project-details .stat-block { margin-top: 20px; }
 
-  .project-carousel { position: relative; overflow: hidden; }
-  .project-track {
-    display: flex;
-    align-items: flex-start;
-    gap: 36px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 10px 19% 40px;
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
   }
-  .project-track::-webkit-scrollbar { display: none; }
-  .project-track .project-card {
-    flex: 0 0 62%;
-    scroll-snap-align: center;
-    opacity: 0.4;
-    transform: scale(0.86);
-    transition: transform 0.35s ease, opacity 0.35s ease;
-    cursor: pointer;
+  @media (max-width: 1000px) {
+    .project-grid { grid-template-columns: minmax(0, 1fr); max-width: 680px; margin: 0 auto; }
   }
-  .project-track .project-card.active { opacity: 1; transform: scale(1); cursor: auto; }
   @media (max-width: 900px) {
-    .project-track { padding: 10px 0 20px; }
-    .project-track .project-card { flex-basis: 100%; }
     .pc-body { padding: 20px 18px 16px; }
     .pc-term-body { padding: 16px 16px 14px; font-size: 0.7rem; }
     .pc-term-bar { gap: 10px; padding: 10px 14px; }
   }
-
-  .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
-  .carousel-arrow {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--ink);
-    font-size: 1.05rem;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.15s, color 0.15s;
-  }
-  .carousel-arrow:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
-  .carousel-arrow:disabled { opacity: 0.35; cursor: not-allowed; }
   .project-card .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
   .project-card p { color: var(--ink-secondary); font-size: 1rem; margin: 0 0 16px; }
   .project-lede {
@@ -1004,6 +967,105 @@
   .edu-row .school { color: var(--ink-secondary); font-size: 0.9rem; margin-top: 3px; }
   .edu-row .dates { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-muted); white-space: nowrap; }
 
+  /* ---------- Free demo dialog ---------- */
+  button.btn { cursor: pointer; }
+  .demo-dialog {
+    width: min(560px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,0.6);
+  }
+  .demo-dialog::backdrop { background: rgba(10, 14, 18, 0.6); backdrop-filter: blur(3px); }
+  .demo-form { position: relative; padding: 30px 30px 26px; }
+  @media (max-width: 480px) { .demo-form { padding: 24px 18px 20px; } }
+  .demo-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--surface-2);
+    color: var(--ink-secondary);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .demo-close:hover { color: var(--accent); }
+  .demo-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .demo-form h2 { margin: 6px 0 8px; font-size: 1.5rem; }
+  .demo-intro { margin: 0 0 22px; color: var(--ink-secondary); font-size: 0.92rem; }
+  .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 480px) { .demo-grid { grid-template-columns: 1fr; } }
+  .demo-full { grid-column: 1 / -1; }
+  .demo-field { display: flex; flex-direction: column; gap: 6px; margin: 0; }
+  .demo-field > span, .demo-platforms legend { font-size: 0.78rem; font-weight: 600; color: var(--ink-secondary); }
+  .demo-field input, .demo-field textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .demo-field textarea { resize: vertical; min-height: 96px; }
+  .demo-field input:focus, .demo-field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .demo-field input[aria-invalid="true"], .demo-field textarea[aria-invalid="true"] { border-color: var(--rose); }
+  .demo-platforms {
+    border: 0;
+    padding: 0;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .demo-platforms legend { padding: 0; margin-bottom: 8px; }
+  .demo-platforms label { cursor: pointer; }
+  .demo-platforms input { position: absolute; opacity: 0; pointer-events: none; }
+  .demo-platforms label span {
+    display: inline-block;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--ink-secondary);
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .demo-platforms input:checked + span { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+  .demo-platforms input:focus-visible + span { box-shadow: 0 0 0 3px var(--accent-soft); }
+  .demo-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .demo-status { min-height: 1.2em; margin: 12px 0 0; font-size: 0.84rem; color: var(--rose); }
+  .demo-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+  .demo-actions .btn { padding: 11px 18px; }
+  .demo-actions .btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+  .demo-done { text-align: center; padding: 26px 0 8px; }
+  .demo-done-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 1.5rem;
+  }
+  .demo-done p { color: var(--ink-secondary); margin: 0 0 20px; }
+
   /* ---------- Contact / Footer ---------- */
   .contact {
     display: grid;
@@ -1111,7 +1173,7 @@
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
     </nav>
-    <a class="btn btn-solid" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    <button type="button" class="btn btn-solid" data-demo-open>Get a free demo</button>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -1129,7 +1191,7 @@
       <div class="role"><span class="role-main">QA Automation Lead</span><span class="role-sep">·</span><span class="role-sub">Dhaka, Bangladesh</span></div>
       <p class="lede"><span class="lede-hook">Building a new product, launching a feature, or improving an existing one?</span>I can help you find bugs early, improve quality, and release with confidence through manual and automation testing. I ensure your product works smoothly and delivers a better user experience.</p>
       <div class="cta-row">
-        <a class="btn btn-solid" href="mailto:hparthoprotim@gmail.com">Email me →</a>
+        <button type="button" class="btn btn-solid" data-demo-open>Get a free demo →</button>
         <a class="btn btn-ghost" href="https://wa.me/8801761441989" target="_blank" rel="noopener">WhatsApp ↗</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">View LinkedIn ↗</a>
       </div>
@@ -1242,8 +1304,7 @@
       <p>I have worked across three projects that show the range of the role, from ground-up QA on a wellness platform, to a national digital health programme, to manual-first QA for a hospital application.</p>
     </div>
 
-    <div class="project-carousel">
-      <div class="project-track" id="projectTrack">
+    <div class="project-grid">
     <div class="project-card">
       <div class="pc-term" aria-hidden="true">
         <div class="pc-term-bar"><span class="pc-pill">QA + Automation</span><span class="pc-dots"><i></i><i></i><i></i></span><span class="pc-repo">Playwright-With_POM_BDD</span></div>
@@ -1298,7 +1359,7 @@
         </div>
       </div>
     </div>
-    <div class="project-card active">
+    <div class="project-card">
       <div class="pc-term" aria-hidden="true">
         <div class="pc-term-bar"><span class="pc-pill">QA + Automation</span><span class="pc-dots"><i></i><i></i><i></i></span><span class="pc-repo">Playwright_With_POM</span></div>
         <div class="pc-term-body">
@@ -1411,11 +1472,6 @@
         </div>
       </div>
     </div>
-      </div>
-      <div class="carousel-nav">
-        <button type="button" class="carousel-arrow" id="projPrev" aria-label="Previous projects">←</button>
-        <button type="button" class="carousel-arrow" id="projNext" aria-label="Next projects">→</button>
-      </div>
     </div>
   </section>
 
@@ -1707,9 +1763,9 @@
         <h2>Let's talk QA.</h2>
         <p>If you're looking for a QA engineer who can help improve quality, reduce risk, and ship with confidence, I'd welcome the opportunity to connect.</p>
         <div class="cta-row">
-          <a class="btn btn-solid" href="mailto:hparthoprotim@gmail.com">Email me</a>
+          <button type="button" class="btn btn-solid" data-demo-open>Get a free demo</button>
+          <a class="btn btn-ghost" href="mailto:hparthoprotim@gmail.com">Email me</a>
           <a class="btn btn-ghost" href="https://wa.me/8801761441989" target="_blank" rel="noopener">WhatsApp ↗</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/partho-protim/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
         </div>
       </div>
       <div class="contact-card">
@@ -1721,6 +1777,60 @@
     </div>
   </section>
 </main>
+
+<dialog class="demo-dialog" id="demo-dialog" aria-labelledby="demo-title">
+  <form class="demo-form" id="demo-form" novalidate>
+    <button type="button" class="demo-close" data-demo-close aria-label="Close">×</button>
+    <div class="demo-panel" id="demo-panel">
+      <span class="demo-eyebrow">Free demo</span>
+      <h2 id="demo-title">Try a free QA demo</h2>
+      <p class="demo-intro">Tell me about your product and I'll run a free sample test session, then send you a short report with the bugs and risks I find.</p>
+
+      <div class="demo-grid">
+        <label class="demo-field">
+          <span>Name *</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label class="demo-field">
+          <span>Email *</span>
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <label class="demo-field demo-full">
+          <span>Company or product link</span>
+          <input type="text" name="product" placeholder="https://">
+        </label>
+      </div>
+
+      <fieldset class="demo-field demo-full demo-platforms">
+        <legend>What needs testing?</legend>
+        <label><input type="checkbox" name="platform" value="Web app"><span>Web app</span></label>
+        <label><input type="checkbox" name="platform" value="Mobile app"><span>Mobile app</span></label>
+        <label><input type="checkbox" name="platform" value="Desktop app"><span>Desktop app</span></label>
+        <label><input type="checkbox" name="platform" value="API"><span>API</span></label>
+      </fieldset>
+
+      <label class="demo-field demo-full">
+        <span>Tell me about it *</span>
+        <textarea name="message" rows="4" required placeholder="What does the product do, and what would you like checked?"></textarea>
+      </label>
+
+      <!-- honeypot: real visitors never see or fill this -->
+      <input type="text" name="_honey" class="demo-honey" tabindex="-1" autocomplete="off">
+
+      <p class="demo-status" id="demo-status" role="status" aria-live="polite"></p>
+      <div class="demo-actions">
+        <button type="submit" class="btn btn-solid" id="demo-submit">Send request →</button>
+        <button type="button" class="btn btn-ghost" data-demo-close>Cancel</button>
+      </div>
+    </div>
+    <div class="demo-done" id="demo-done" hidden>
+      <span class="demo-done-icon">✓</span>
+      <h2>Request sent</h2>
+      <p>Thanks! I'll get back to you by email within 24 hours.</p>
+      <button type="button" class="btn btn-solid" data-demo-close>Close</button>
+    </div>
+  </form>
+</dialog>
 
 <footer>
   <div class="wrap footer-inner">
@@ -1814,109 +1924,6 @@
 })();
 
 (function () {
-  var track = document.getElementById('projectTrack');
-  var prevBtn = document.getElementById('projPrev');
-  var nextBtn = document.getElementById('projNext');
-  if (!track || !prevBtn || !nextBtn) return;
-
-  var cards = Array.prototype.slice.call(track.children);
-  if (cards.length < 2) { prevBtn.hidden = true; nextBtn.hidden = true; return; }
-
-  // Give the first/last card a neighbour to peek at too, so centering them
-  // never leaves a blank gutter on the side with no real card - clone the
-  // opposite end's card and let clicking it jump straight to the real one.
-  function makePeekClone(card, targetIndex) {
-    var clone = document.createElement('div');
-    clone.className = 'project-card project-card-clone';
-    clone.setAttribute('aria-hidden', 'true');
-    // Clone the whole card so both peek sides match a real neighbour's height.
-    clone.innerHTML = card.innerHTML;
-    Array.prototype.slice.call(clone.querySelectorAll('[id]')).forEach(function (el) {
-      el.removeAttribute('id');
-    });
-    // Strip the copied controls - they'd otherwise point at the real card's
-    // ids and could toggle it invisibly. The clone itself becomes the click
-    // target instead, jumping to that real card.
-    Array.prototype.slice.call(clone.querySelectorAll('button')).forEach(function (b) { b.remove(); });
-    Array.prototype.slice.call(clone.querySelectorAll('a[href]')).forEach(function (a) { a.removeAttribute('href'); });
-    clone.addEventListener('click', function () { goTo(targetIndex); });
-    return clone;
-  }
-  track.insertBefore(makePeekClone(cards[cards.length - 1], cards.length - 1), cards[0]);
-  track.appendChild(makePeekClone(cards[0], 0));
-
-  var index = 0;
-  var syncing = false;
-
-  function markActive() {
-    cards.forEach(function (c, i) { c.classList.toggle('active', i === index); });
-  }
-
-  // Collapse any expanded "More details" panel so it doesn't stay open
-  // pointing at a card that's no longer active.
-  function closeOpenDetails() {
-    Array.prototype.slice.call(track.querySelectorAll('.project-details')).forEach(function (panel) {
-      if (panel.hidden) return;
-      panel.hidden = true;
-      var toggle = track.querySelector('.details-toggle[aria-controls="' + panel.id + '"]');
-      if (!toggle) return;
-      var label = toggle.querySelector('.label');
-      toggle.setAttribute('aria-expanded', 'false');
-      if (label) label.textContent = toggle.getAttribute('data-label-open') || 'More details';
-    });
-  }
-
-  function goTo(i, instant) {
-    index = ((i % cards.length) + cards.length) % cards.length;
-    markActive();
-    closeOpenDetails();
-    syncing = true;
-    cards[index].scrollIntoView({ behavior: instant ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
-    setTimeout(function () { syncing = false; }, instant ? 50 : 500);
-  }
-
-  prevBtn.addEventListener('click', function () { goTo(index - 1); });
-  nextBtn.addEventListener('click', function () { goTo(index + 1); });
-
-  // Clicking a peeked (non-active) real card jumps to it, same as a clone.
-  // Capture phase so this runs before the card's own inner click handlers
-  // (description-text toggle, divider button) when it isn't active yet.
-  cards.forEach(function (c, i) {
-    c.addEventListener('click', function (e) {
-      if (i === index) return;
-      e.stopPropagation();
-      goTo(i);
-    }, true);
-  });
-
-  // Keep the active card in sync if the user scrolls/swipes the track directly.
-  var scrollTimer;
-  track.addEventListener('scroll', function () {
-    if (syncing) return;
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(function () {
-      var trackBox = track.getBoundingClientRect();
-      var trackCenter = trackBox.left + trackBox.width / 2;
-      var closest = 0;
-      var closestDist = Infinity;
-      cards.forEach(function (c, i) {
-        var box = c.getBoundingClientRect();
-        var dist = Math.abs((box.left + box.width / 2) - trackCenter);
-        if (dist < closestDist) { closestDist = dist; closest = i; }
-      });
-      index = closest;
-      markActive();
-    }, 120);
-  });
-
-  // Force the second card centered on load — some browsers restore a
-  // scrolled position on this track after a reload, which otherwise leaves
-  // a different card looking "active" on first paint.
-  goTo(1, true);
-  window.addEventListener('load', function () { goTo(1, true); });
-})();
-
-(function () {
   var toggles = Array.prototype.slice.call(document.querySelectorAll('.details-toggle'));
   toggles.forEach(function (btn) {
     var target = document.getElementById(btn.getAttribute('aria-controls'));
@@ -1962,6 +1969,99 @@
       btn.setAttribute('aria-expanded', String(open));
       label.textContent = open ? closeLabel : openLabel;
     });
+  });
+})();
+
+(function () {
+  // Free demo form: posts to FormSubmit, which emails each request to the inbox below.
+  var DEMO_ENDPOINT = 'https://formsubmit.co/ajax/hparthoprotim@gmail.com';
+  var dialog = document.getElementById('demo-dialog');
+  var form = document.getElementById('demo-form');
+  if (!dialog || !form) return;
+  var panel = document.getElementById('demo-panel');
+  var done = document.getElementById('demo-done');
+  var status = document.getElementById('demo-status');
+  var submit = document.getElementById('demo-submit');
+
+  function open() {
+    panel.hidden = false;
+    done.hidden = true;
+    status.textContent = '';
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else dialog.setAttribute('open', '');
+    var first = form.querySelector('input[name="name"]');
+    if (first) first.focus();
+  }
+  function close() {
+    if (typeof dialog.close === 'function') dialog.close();
+    else dialog.removeAttribute('open');
+  }
+
+  Array.prototype.slice.call(document.querySelectorAll('[data-demo-open]')).forEach(function (b) {
+    b.addEventListener('click', open);
+  });
+  Array.prototype.slice.call(form.querySelectorAll('[data-demo-close]')).forEach(function (b) {
+    b.addEventListener('click', close);
+  });
+  // Click on the dimmed backdrop (outside the form) closes it.
+  dialog.addEventListener('click', function (e) { if (e.target === dialog) close(); });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (form._honey.value) return;
+
+    var required = ['name', 'email', 'message'];
+    var firstBad = null;
+    required.forEach(function (n) {
+      var el = form.elements[n];
+      var bad = !el.value.trim() || (el.type === 'email' && !el.checkValidity());
+      el.setAttribute('aria-invalid', String(bad));
+      if (bad && !firstBad) firstBad = el;
+    });
+    if (firstBad) {
+      status.textContent = 'Please fill in your name, a valid email, and a short description.';
+      firstBad.focus();
+      return;
+    }
+
+    var platforms = Array.prototype.slice.call(form.querySelectorAll('input[name="platform"]:checked'))
+      .map(function (c) { return c.value; });
+    var payload = {
+      name: form.elements.name.value.trim(),
+      email: form.elements.email.value.trim(),
+      product: form.elements.product.value.trim() || '-',
+      platforms: platforms.join(', ') || '-',
+      message: form.elements.message.value.trim(),
+      _subject: 'Free QA demo request from ' + form.elements.name.value.trim(),
+      _replyto: form.elements.email.value.trim(),
+      _template: 'table'
+    };
+
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    status.textContent = '';
+    fetch(DEMO_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (res) {
+        if (String(res.success) === 'true') {
+          form.reset();
+          panel.hidden = true;
+          done.hidden = false;
+        } else {
+          status.textContent = res.message || 'Something went wrong. Please email me at hparthoprotim@gmail.com instead.';
+        }
+      })
+      .catch(function () {
+        status.textContent = 'Could not send right now. Please email me at hparthoprotim@gmail.com instead.';
+      })
+      .then(function () {
+        submit.disabled = false;
+        submit.textContent = 'Send request →';
+      });
   });
 })();
 
