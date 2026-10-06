@@ -715,23 +715,55 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   }
 
-  /* real product screenshot at the top of each card */
+  /* real product screenshot, framed as a browser window rising from a soft accent backdrop */
   .pc-shot {
-    display: block;
-    aspect-ratio: 16 / 8.5;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    aspect-ratio: 16 / 9;
+    padding: 26px 28px 0;
     overflow: hidden;
-    background: #0d0d0d;
+    background:
+      radial-gradient(120% 90% at 50% 0%, var(--accent-soft), transparent 70%),
+      linear-gradient(180deg, var(--surface-2), var(--surface));
     border-bottom: 1px solid var(--border);
   }
-  .pc-shot img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    transition: transform 0.4s ease;
+  .pc-shot::before {
+    /* faint dot grid for texture */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 16px 16px;
+    opacity: 0.7;
+    pointer-events: none;
   }
-  .pc-shot:hover img { transform: scale(1.03); }
+  .pc-shot-frame {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    background: #0d0d0d;
+    border: 1px solid var(--border);
+    border-bottom: 0;
+    box-shadow: 0 -2px 30px -8px rgba(0, 0, 0, 0.28);
+    transform: translateY(6px);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .pc-shot-bar {
+    display: flex;
+    gap: 5px;
+    padding: 7px 10px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .pc-shot-bar i { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+  /* fills the frame in every card; any overflow trims the bottom, never the top */
+  .pc-shot-frame img { display: block; flex: 1; min-height: 0; width: 100%; object-fit: cover; object-position: top center; }
+  .pc-shot:hover .pc-shot-frame { transform: translateY(0); box-shadow: 0 -4px 40px -6px rgba(0, 0, 0, 0.35); }
+  @media (max-width: 480px) { .pc-shot { padding: 18px 16px 0; } }
 
   .pc-body { padding: 24px 24px 18px; display: flex; flex-direction: column; flex: 1; }
   .pc-body .project-title { font-size: 1.15rem; font-weight: 600; margin: 0 0 6px; }
@@ -1232,7 +1264,7 @@
     <div class="project-grid">
     <div class="project-card">
       <a class="pc-shot" href="projects/connectedlife.html" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-        <img src="assets/projects/connectedlife.jpg" alt="ConnectedLife V2.0, sign-in screen shown on desktop and mobile" width="1620" height="866" loading="lazy">
+        <span class="pc-shot-frame"><span class="pc-shot-bar"><i></i><i></i><i></i></span><img src="assets/projects/connectedlife.jpg" alt="ConnectedLife V2.0, sign-in screen shown on desktop and mobile" width="1620" height="866" loading="lazy"></span>
       </a>
       <div class="pc-body">
         <h3 class="project-title"><a href="projects/connectedlife.html" target="_blank" rel="noopener">ConnectedLife V2.0, Navig8 AI Digital Health Monitor</a></h3>
@@ -1248,7 +1280,7 @@
     </div>
     <div class="project-card">
       <a class="pc-shot" href="projects/healthtrack-sg.html" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-        <img src="assets/projects/healthtrack-sg.jpg" alt="HealthTrack SG, clinician web dashboard and mobile wellness score view" width="1873" height="926" loading="lazy">
+        <span class="pc-shot-frame"><span class="pc-shot-bar"><i></i><i></i><i></i></span><img src="assets/projects/healthtrack-sg.jpg" alt="HealthTrack SG, clinician web dashboard and mobile wellness score view" width="1873" height="926" loading="lazy"></span>
       </a>
       <div class="pc-body">
         <h3 class="project-title"><a href="projects/healthtrack-sg.html" target="_blank" rel="noopener">HealthTrack SG</a></h3>
@@ -1264,7 +1296,7 @@
     </div>
     <div class="project-card">
       <a class="pc-shot" href="projects/alexandra-hospital.html" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-        <img src="assets/projects/alexandra-hospital.jpg" alt="Alexandra Hospital application, web dashboard and mobile view from a test account" width="1918" height="935" loading="lazy">
+        <span class="pc-shot-frame"><span class="pc-shot-bar"><i></i><i></i><i></i></span><img src="assets/projects/alexandra-hospital.jpg" alt="Alexandra Hospital application, web dashboard and mobile view from a test account" width="1918" height="935" loading="lazy"></span>
       </a>
       <div class="pc-body">
         <h3 class="project-title"><a href="projects/alexandra-hospital.html" target="_blank" rel="noopener">Alexandra Hospital</a></h3>
