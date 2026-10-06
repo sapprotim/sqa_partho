@@ -752,8 +752,10 @@
   .pc-shot {
     position: relative;
     display: flex;
-    align-items: stretch;
-    aspect-ratio: 16 / 9;
+    align-items: flex-end;
+    justify-content: center;
+    /* wide enough that every screenshot (up to ~2.05:1) fits at full height */
+    aspect-ratio: 2 / 1;
     padding: 26px 28px 0;
     overflow: hidden;
     background:
@@ -775,17 +777,21 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    height: 100%;
+    width: fit-content;
+    max-width: 100%;
     border-radius: 10px 10px 0 0;
     overflow: hidden;
     background: #0d0d0d;
     border: 1px solid var(--border);
     border-bottom: 0;
     box-shadow: 0 -2px 30px -8px rgba(0, 0, 0, 0.28);
-    transform: translateY(6px);
+    transform: translateY(0);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
   .pc-shot-bar {
+    box-sizing: border-box;
+    height: 22px;
     display: flex;
     gap: 5px;
     padding: 7px 10px;
@@ -793,9 +799,9 @@
     border-bottom: 1px solid var(--border);
   }
   .pc-shot-bar i { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
-  /* fills the frame in every card; any overflow trims the bottom, never the top */
-  .pc-shot-frame img { display: block; flex: 1; min-height: 0; width: 100%; object-fit: cover; object-position: top center; }
-  .pc-shot:hover .pc-shot-frame { transform: translateY(0); box-shadow: 0 -4px 40px -6px rgba(0, 0, 0, 0.35); }
+  /* whole screenshot, never cropped: height fills the frame, width follows the image */
+  .pc-shot-frame img { display: block; height: calc(100% - 22px); width: auto; max-width: 100%; object-fit: contain; }
+  .pc-shot:hover .pc-shot-frame { transform: translateY(-4px); box-shadow: 0 -4px 40px -6px rgba(0, 0, 0, 0.35); }
   @media (max-width: 480px) { .pc-shot { padding: 18px 16px 0; } }
 
   .pc-body { padding: 24px 24px 18px; display: flex; flex-direction: column; flex: 1; }
