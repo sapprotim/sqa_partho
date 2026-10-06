@@ -313,8 +313,8 @@
   .hero {
     padding: 64px 0 76px;
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 56px 64px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 540px);
+    gap: 56px 48px;
     align-items: center;
   }
   @media (max-width: 800px) {
@@ -357,7 +357,7 @@
   .hero .role-sub { color: var(--ink-secondary); }
   .hero p.lede {
     margin-top: 22px;
-    max-width: 54ch;
+    max-width: 62ch;
     color: var(--ink-secondary);
     font-family: var(--font-body);
     font-style: normal;
@@ -379,10 +379,10 @@
     position: relative;
     justify-self: end;
     width: 100%;
-    max-width: 440px;
+    max-width: 540px;
   }
   @media (max-width: 800px) {
-    .hero-photo { justify-self: center; max-width: 380px; }
+    .hero-photo { justify-self: center; max-width: 460px; }
   }
   .hero-photo-frame {
     padding: 10px;
